@@ -28,6 +28,16 @@ header.top .inq{margin-left:auto;border:1.5px solid var(--primary);background:#f
 header.top .inq:hover{background:var(--accent-subtle)}
 header.top .inqtext{margin-left:auto;font-size:12.5px;color:var(--text-sub);font-weight:600}
 header.top .inqtext + .inq{margin-left:10px}
+header.top .promo-top{margin-left:auto;border:0;background:linear-gradient(135deg,#EC4899,#DB2777);color:#fff;border-radius:10px;padding:9px 16px;font-size:13px;font-weight:800;cursor:pointer;font-family:inherit;transition:.15s;box-shadow:0 2px 8px rgba(219,39,119,.28)}
+header.top .promo-top:hover{filter:brightness(1.05)}
+header.top .promo-top + .inqtext{margin-left:14px}
+.promolist{display:flex;flex-direction:column;gap:12px;max-height:62vh;overflow:auto}
+.promoitem{border:1px solid var(--border);border-radius:12px;padding:14px 16px;background:#fff}
+.promoitem .pi-t{font-size:14.5px;font-weight:800;display:flex;align-items:center;gap:8px}
+.promoitem .pi-k{font-size:10.5px;font-weight:800;padding:2px 8px;border-radius:6px;background:#FCE7F3;color:#BE185D}
+.promoitem .pi-k.series{background:#DBEAFE;color:#1D4ED8}
+.promoitem .pi-m{font-size:12.5px;color:var(--text-sub);margin-top:6px;line-height:1.5}
+.promoitem .pi-d{font-size:11.5px;color:var(--text-muted);margin-top:4px}
 .fhead-r{display:flex;align-items:center;gap:10px}
 .freset{border:none;background:transparent;color:var(--text-muted);font-size:11.5px;font-weight:700;cursor:pointer;font-family:inherit;padding:2px;display:flex;align-items:center;gap:3px}
 .freset:hover{color:var(--primary)}
@@ -113,7 +123,8 @@ main{min-height:400px;display:flex;flex-direction:column;gap:18px}
 .pgroup>h4 .b{font-size:11px;font-weight:800;padding:3px 10px;border-radius:7px}
 .b.rent{background:var(--accent-subtle);color:var(--accent)}
 .b.lease{background:#F3E8FF;color:#7E22CE}
-.pgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:16px}
+.pgrid{display:flex;flex-wrap:nowrap;gap:16px;overflow-x:auto;padding-bottom:8px;scroll-snap-type:x proximity;-webkit-overflow-scrolling:touch}
+.pgrid>.pcard{flex:0 0 300px;scroll-snap-align:start}
 .pcard{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:20px;box-shadow:var(--sh-sm);transition:transform .18s ease,box-shadow .18s ease;position:relative;display:flex;flex-direction:column}
 .pcard:hover{transform:translateY(-3px);box-shadow:var(--sh-lg)}
 .pcard.fit{border-color:transparent;background:linear-gradient(#fff,#fff) padding-box,linear-gradient(135deg,var(--primary),var(--accent)) border-box;border:1.5px solid transparent;box-shadow:var(--sh)}
@@ -187,13 +198,14 @@ main{min-height:400px;display:flex;flex-direction:column;gap:18px}
  .filters{position:static}.ftoggle{display:block}.filters.collapsed .fbody{display:none}
  .matchbar{position:static}.stocklist{max-height:60vh}
  .herobar{grid-template-columns:1fr;gap:12px}
- .pgrid{grid-auto-flow:column;grid-auto-columns:min(82vw,330px);grid-template-columns:none;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:10px;margin:0 -12px;padding-left:12px;padding-right:12px;-webkit-overflow-scrolling:touch}
- .pcard{scroll-snap-align:start}
+ .pgrid{margin:0 -12px;padding-left:12px;padding-right:12px;scroll-snap-type:x mandatory}
+ .pgrid>.pcard{flex:0 0 min(82vw,330px)}
  .price .amt{font-size:27px}
 }
 </style></head>
 <body>
 <header class="top"><img class="logo" src="data:image/png;base64,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" alt="하모니렌트카"><b>하모니 자체상품 비교견적</b><span class="sp">차량과 조건을 고르면 상품별 월 납입료를 한눈에</span>
+  <button class="promo-top" id="promoTopBtn" type="button">🎁 진행중 프로모션</button>
   <span class="inqtext">찾는 차량이 없나요?</span><button class="inq" id="inqBtn" type="button">문의하기</button></header>
 <div class="wrap">
   <aside class="filters collapsed" id="filters">
@@ -226,6 +238,7 @@ main{min-height:400px;display:flex;flex-direction:column;gap:18px}
 </div></div>
 <div class="modal hidden" id="applyModal"><div class="box"><button class="mclose" id="aClose" type="button">&times;</button><div id="applyBody"></div></div></div>
 <div class="modal hidden" id="inqModal"><div class="box"><button class="mclose" id="iClose" type="button">&times;</button><div id="inqBody"></div></div></div>
+<div class="modal hidden" id="promoModal"><div class="box"><button class="mclose" id="pmClose" type="button">&times;</button><div id="promoBody"></div></div></div>
 
 <!-- 로컬 전용 데이터(선택): 페이지 옆에 자체상품비교_data.js 가 있으면 그걸 사용. 깃허브엔 이 파일을 올리지 않으므로 404(무시)되고 워커에서 데이터를 받아옵니다. -->
 <script src="자체상품비교_data.js" onerror="void 0"></script>
@@ -255,6 +268,7 @@ const uniq=a=>Array.from(new Set(a));
 const byId=id=>document.getElementById(id);
 const esc=s=>String(s==null?"":s).replace(/[<>&"]/g,c=>({"<":"&lt;",">":"&gt;","&":"&amp;",'"':"&quot;"}[c]));
 function 구입형(prod){return prod.indexOf("구입형")>=0;}
+function vid(v){return v.구분+"|"+v.code;}   /* 신차·중고가 코드를 공유하므로 (구분+코드)로 식별 */
 /* ===== 렌트료관리 파일 조회 (비구입형 상품) ===== */
 function 대표차번(v){return (v.재고&&v.재고[0])?v.재고[0].차량번호:null;}
 function 파일상품(v,prod){var cn=대표차번(v);return cn?((PRICELIST[cn]||{})[prod]||null):null;}
@@ -267,7 +281,7 @@ function 유효보증(v,prod){
   if(prod==="구입형리스"){var al=리스허용(v);return (al.indexOf(보증율())>=0)?보증율():al[0];}  /* 구입형리스: 최소 이상만 */
   return 보증율();}
 function 구입형료(v,prod,m){
-  var t=(PURCHASE[v.code]||{})[prod];if(!t)return null;
+  var t=(PURCHASE[vid(v)]||{})[prod];if(!t)return null;
   return t[유효보증(v,prod)+"_"+선수율()]||null;}
 function 보증금율of(v,prod,m,구분){
   if(구입형(prod))return 유효보증(v,prod);
@@ -294,6 +308,26 @@ function 차량프로모(v){var out=[],seen={};
     if((v.모델||"").indexOf(s.series)>=0||(v.시리즈명||"").indexOf(s.series)>=0){var ct=고객용프로모(s.title);if(!ct||seen[ct])return;seen[ct]=1;out.push({title:ct,kind:"월"});}});
   return out;}
 function hasPromo(v){return 차량프로모(v).length>0;}
+/* ===== 진행중 프로모션 팝업 ===== */
+var _plateMap=null;
+function 차량by번(cn){if(!_plateMap){_plateMap={};CATALOG.forEach(function(v){(v.재고||[]).forEach(function(u){if(u.차량번호)_plateMap[u.차량번호]=v;});});}return _plateMap[cn];}
+function 프로모기간(p){if(!p.start&&!p.end)return"";return (p.start||"상시")+" ~ "+(p.end||"상시");}
+function openPromo(){
+  var items=[];
+  (PROMO.series||[]).forEach(function(s){if(!promoActive(s))return;var ct=고객용프로모(s.title);if(!ct)return;
+    items.push({kind:"series",title:ct,sub:"대상: "+esc(s.series)+" · "+esc((s.구분||"")+(s.형태?(" / "+s.형태):"")),period:프로모기간(s)});});
+  var pmap={};
+  Object.keys(PROMO.plate||{}).forEach(function(cn){var pp=PROMO.plate[cn];if(!promoActive(pp))return;var ct=고객용프로모(pp.title);if(!ct)return;
+    if(!pmap[ct])pmap[ct]={cars:0,models:{},period:프로모기간(pp)};pmap[ct].cars++;var v=차량by번(cn);if(v)pmap[ct].models[v.모델]=1;});
+  Object.keys(pmap).forEach(function(t){var g=pmap[t],ms=Object.keys(g.models);
+    items.push({kind:"plate",title:t,sub:"대상 차량 "+g.cars+"대"+(ms.length?(" · "+esc(ms.slice(0,10).join(", "))):""),period:g.period});});
+  var body=items.length?items.map(function(it){
+    return "<div class='promoitem'><div class='pi-t'>🎁 "+esc(it.title)+" <span class='pi-k"+(it.kind==="series"?" series":"")+"'>"+(it.kind==="series"?"시리즈":"차량 한정")+"</span></div>"+
+      "<div class='pi-m'>"+it.sub+"</div>"+(it.period?"<div class='pi-d'>기간 · "+esc(it.period)+"</div>":"")+"</div>";
+  }).join(""):"<div class='empty'>진행중인 프로모션이 없어요.</div>";
+  byId("promoBody").innerHTML="<h3 style='margin:0 0 4px'>🎁 진행중 프로모션</h3><p style='color:var(--text-sub);font-size:12.5px;margin:0 0 14px'>지금 적용 중인 프로모션이에요. 차량을 선택하면 상세 견적에서도 확인할 수 있어요.</p><div class='promolist'>"+body+"</div>";
+  byId("promoModal").classList.remove("hidden");}
+function closePromo(){byId("promoModal").classList.add("hidden");}
 function 상품값(v,prod,m,구분){
   if(구입형(prod)){var g=구입형료(v,prod,m);return g?g.월:null;}
   var f=파일가(v,prod,m);return f?f.료:null;}
@@ -345,8 +379,8 @@ function refreshCascade(){
   fillSel("fTrim",uniq(pm2.map(x=>x.세부)).sort(),"전체");
   var pt=pm2.filter(x=>!byId("fTrim").value||x.세부===byId("fTrim").value);
   fillSel("fYear",uniq(pt.map(x=>String(x.연식))).filter(Boolean).sort().reverse(),"전체");
-  byId("fFuel").innerHTML=uniq(p.map(x=>x.유종)).filter(Boolean).map(u=>'<button data-f="'+u+'"'+(window._fuel===u?' class="on"':'')+'>'+u+'</button>').join("");
-  byId("fClass").innerHTML=차급목록.map(c=>'<button data-c="'+c+'"'+(window._cls===c?' class="on"':'')+'>'+c+'</button>').join("");
+  byId("fFuel").innerHTML='<button data-f=""'+(!window._fuel?' class="on"':'')+'>전체</button>'+uniq(p.map(x=>x.유종)).filter(Boolean).map(u=>'<button data-f="'+u+'"'+(window._fuel===u?' class="on"':'')+'>'+u+'</button>').join("");
+  byId("fClass").innerHTML='<button data-c=""'+(!window._cls?' class="on"':'')+'>전체</button>'+차급목록.map(c=>'<button data-c="'+c+'"'+(window._cls===c?' class="on"':'')+'>'+c+'</button>').join("");
 }
 function anyFilter(f){return f.q||f.brand||f.model||f.trim||f.year||f.fuel||f.cls||f.promo;}
 function 형태라벨(){return 형태==="리스"?"리스":(형태==="전체"?"장기렌트·리스":"장기렌트");}
@@ -355,27 +389,27 @@ function srowHTML(x,hot){
   var meta=x.제조사+' · '+x.유종+' · '+(x.배기량||0)+'cc · '+man(x.가격)+'원'+
     (x.구분==="중고"?(' · 등록 '+(x.대표등록일||"–")+' · '+(x.대표주행||0).toLocaleString()+'km'):' · 신차')+(col?(' · '+col):"");
   var tags=(pr?'<span class="stag promo">🎁 프로모션</span>':'')+(hot?'<span class="stag hot">즉시출고 우선</span>':'')+'<span class="stag">'+(x.구분==="신차"?"신차":"재렌트")+' · '+형태라벨()+'</span>';
-  return '<div class="scard'+(선택차&&선택차.code===x.code?" sel":"")+'" data-code="'+x.code+'">'+
+  return '<div class="scard'+(선택차&&vid(선택차)===vid(x)?" sel":"")+'" data-vid="'+esc(vid(x))+'">'+
     '<div class="sc-l"><div class="snm">'+esc(x.모델명)+'</div><div class="smeta">'+esc(meta)+'</div></div>'+
     '<div class="stags">'+tags+'</div></div>';
 }
 function renderMatches(){
   var f=curFilters(),list=applyFilters(pool(),f);
   if(!anyFilter(f)){
-    var rec=pool().slice().sort((a,b)=>(b.재고수||0)-(a.재고수||0)).slice(0,8);
-    byId("matchcnt").innerHTML='🔥 지금 바로 출고 가능한 <b>추천 차량</b> · 차량을 선택해 견적을 확인하세요';
+    var rec=pool().slice().sort((a,b)=>(b.재고수||0)-(a.재고수||0));   /* 재고 많은 순 · 전체 */
+    byId("matchcnt").innerHTML='🔥 지금 바로 출고 가능한 <b>추천 차량</b> '+rec.length+'종 · 재고 많은 순 · 차량을 선택해 견적을 확인하세요';
     byId("stocklist").innerHTML=rec.map(x=>srowHTML(x,false)).join("")||noStockHTML();
     byId("hero").innerHTML="";byId("products").innerHTML="";선택차=null;return;
   }
-  list.sort((a,b)=>구분==="중고"?(a.대표등록일||"9999").localeCompare(b.대표등록일||"9999"):String(a.모델명).localeCompare(b.모델명));
-  byId("matchcnt").innerHTML=list.length?('조건에 맞는 재고 <b>'+list.length+'</b>종 · '+(구분==="중고"?"등록일 오래된 순(즉시 출고 우선)":"모델순")):'조건에 맞는 재고가 없어요.';
-  byId("stocklist").innerHTML=list.length?list.slice(0,40).map((x,i)=>srowHTML(x,구분==="중고"&&i===0&&x.구분==="중고")).join(""):noStockHTML();
-  if(list.length){var pick=선택차&&list.find(x=>x.code===선택차.code)||list[0];selectCar(pick);}
+  list.sort((a,b)=>(b.재고수||0)-(a.재고수||0));   /* 재고 많은 순 */
+  byId("matchcnt").innerHTML=list.length?('조건에 맞는 재고 <b>'+list.length+'</b>종 · 재고 많은 순'):'조건에 맞는 재고가 없어요.';
+  byId("stocklist").innerHTML=list.length?list.map(x=>srowHTML(x,false)).join(""):noStockHTML();
+  if(list.length){var pick=선택차&&list.find(x=>vid(x)===vid(선택차))||list[0];selectCar(pick);}
   else{선택차=null;byId("hero").innerHTML="";byId("products").innerHTML=noStockHTML();}
 }
 function noStockHTML(){return '<div class="empty">조건에 맞는 재고가 없어요.<br>찾으시는 차량이 있다면 <span class="inqlink" onclick="openInq()">문의하기</span>로 남겨주세요.</div>';}
 function selectCar(x){선택차=x;
-  document.querySelectorAll(".scard").forEach(e=>e.classList.toggle("sel",e.getAttribute("data-code")===x.code));
+  document.querySelectorAll(".scard").forEach(e=>e.classList.toggle("sel",e.getAttribute("data-vid")===vid(x)));
   renderHero(x);renderProducts(x);}
 /* ===== hero ===== */
 function renderHero(v){
@@ -572,6 +606,9 @@ function openInq(){
 function closeInq(){byId("inqModal").classList.add("hidden");}
 byId("iClose").addEventListener("click",closeInq);
 byId("inqBtn").addEventListener("click",openInq);
+byId("promoTopBtn").addEventListener("click",openPromo);
+byId("pmClose").addEventListener("click",closePromo);
+byId("promoModal").addEventListener("click",e=>{if(e.target===byId("promoModal"))closePromo();});
 byId("inqModal").addEventListener("click",e=>{if(e.target===byId("inqModal"))closeInq();});
 /* 필터 이벤트 */
 byId("segType").onclick=e=>{var b=e.target.closest("button");if(!b)return;구분=b.getAttribute("data-t");
@@ -587,8 +624,14 @@ byId("fFuel").onclick=e=>{var b=e.target.closest("button");if(!b)return;var f=b.
 byId("fClass").onclick=e=>{var b=e.target.closest("button");if(!b)return;var c=b.getAttribute("data-c");window._cls=(window._cls===c)?"":c;refreshCascade();renderMatches();};
 byId("promoBtn").onclick=()=>{window._promoOnly=!window._promoOnly;byId("promoBtn").classList.toggle("on",window._promoOnly);selectCar_reset();renderMatches();};
 function selectCar_reset(){선택차=null;}
-byId("stocklist").onclick=e=>{var r=e.target.closest(".scard");if(!r)return;var x=pool().find(v=>v.code===r.getAttribute("data-code"));if(x)selectCar(x);};
-byId("reset").onclick=()=>{window._fuel="";window._cls="";window._term="";window._promoOnly=false;byId("promoBtn").classList.remove("on");선택차=null;["fSearch","fBrand","fModel","fTrim","fYear","budget"].forEach(id=>byId(id).value="");refreshCascade();renderMatches();};
+byId("stocklist").onclick=e=>{var r=e.target.closest(".scard");if(!r)return;var x=pool().find(v=>vid(v)===r.getAttribute("data-vid"));if(x)selectCar(x);};
+byId("reset").onclick=()=>{
+  구분="전체";형태="전체";
+  document.querySelectorAll("#segType button").forEach(x=>x.classList.toggle("on",x.getAttribute("data-t")==="전체"));
+  document.querySelectorAll("#segForm button").forEach(x=>x.classList.toggle("on",x.getAttribute("data-f")==="전체"));
+  window._fuel="";window._cls="";window._term="";window._promoOnly=false;byId("promoBtn").classList.remove("on");선택차=null;
+  ["fSearch","fBrand","fModel","fTrim","fYear","budget"].forEach(id=>byId(id).value="");
+  refreshCascade();renderMatches();};
 byId("ftoggle").onclick=()=>{var f=byId("filters");f.classList.toggle("collapsed");byId("ftoggle").textContent=f.classList.contains("collapsed")?"필터 열기":"필터 닫기";};
 /* init — 데이터는 Cloudflare Worker(CONFIG.DATA_API)에서 받아옴 (공개 저장소엔 데이터 없음) */
 window._fuel="";window._cls="";window._term="";window._promoOnly=false;
