@@ -35,7 +35,9 @@ header.top .inqtext + .inq{margin-left:10px}
 .promobtn{border:1.5px solid #F9A8D4;background:#FDF2F8;color:#BE185D;border-radius:11px;padding:11px;font-size:13px;font-weight:800;cursor:pointer;font-family:inherit;transition:.15s;width:100%}
 .promobtn:hover{background:#FCE7F3}
 .promobtn.on{background:#BE185D;color:#fff;border-color:#BE185D}
-.wrap{display:grid;grid-template-columns:290px 1fr;gap:20px;padding:20px;max-width:1440px;margin:0 auto;align-items:start}
+.wrap{display:grid;grid-template-columns:270px 320px 1fr;grid-template-areas:"f match main";gap:18px;padding:20px;max-width:1560px;margin:0 auto;align-items:start}
+.filters{grid-area:f}.matchbar{grid-area:match}main{grid-area:main}
+@media(max-width:1180px){.wrap{grid-template-columns:250px 1fr;grid-template-areas:"f match" "f main"}}
 .filters{background:var(--card);border:1px solid var(--border);border-radius:var(--r);box-shadow:var(--sh-sm);position:sticky;top:80px;overflow:hidden}
 .fhead{display:flex;align-items:center;justify-content:space-between;padding:18px 20px}
 .fhead h3{margin:0;font-size:15px;font-weight:800}
@@ -49,7 +51,7 @@ header.top .inqtext + .inq{margin-left:10px}
 .budgetfld input{font-weight:800;font-size:16px;color:var(--accent);text-align:right}
 .bhint{font-size:11px;color:var(--text-muted);margin-top:6px}
 .seg{display:flex;gap:6px;background:#F1F5F9;padding:4px;border-radius:11px}
-.seg button{flex:1;padding:9px;border:none;background:transparent;border-radius:8px;font-size:12.5px;font-weight:700;color:var(--text-sub);cursor:pointer;transition:.15s;font-family:inherit}
+.seg button{flex:1;padding:9px 6px;border:none;background:transparent;border-radius:8px;font-size:12.5px;line-height:1.25;font-weight:700;color:var(--text-sub);cursor:pointer;transition:.15s;font-family:inherit;white-space:nowrap;min-width:0}
 .seg button.on{background:#fff;color:var(--primary);box-shadow:var(--sh-sm)}
 .chips{display:flex;flex-wrap:wrap;gap:7px}
 .chips button{padding:8px 13px;border:1px solid var(--border);background:#fff;border-radius:20px;font-size:12px;font-weight:700;color:var(--text-sub);cursor:pointer;transition:.15s;font-family:inherit}
@@ -58,10 +60,10 @@ header.top .inqtext + .inq{margin-left:10px}
 .gho{background:#fff;border:1px solid var(--border);border-radius:10px;padding:10px;font-size:12.5px;font-weight:700;color:var(--text-sub);cursor:pointer;width:100%;transition:.15s}
 .gho:hover{background:#F8FAFC;border-color:var(--border-focus)}
 main{min-height:400px;display:flex;flex-direction:column;gap:18px}
-.matchbar{background:var(--card);border:1px solid var(--border);border-radius:var(--r);box-shadow:var(--sh-sm);padding:16px 20px}
+.matchbar{background:var(--card);border:1px solid var(--border);border-radius:var(--r);box-shadow:var(--sh-sm);padding:16px 18px;position:sticky;top:80px;align-self:start}
 .matchcnt{font-size:13px;color:var(--text-sub);font-weight:600}
 .matchcnt b{color:var(--primary);font-size:16px;font-weight:800}
-.stocklist{display:flex;flex-direction:column;max-height:440px;overflow:auto;margin-top:12px;border:1px solid var(--border);border-radius:12px}
+.stocklist{display:flex;flex-direction:column;max-height:calc(100vh - 190px);overflow:auto;margin-top:12px;border:1px solid var(--border);border-radius:12px}
 .scard{display:flex;justify-content:space-between;align-items:center;gap:14px;padding:12px 16px;border-bottom:1px solid var(--border);cursor:pointer;background:#fff;transition:.12s}
 .scard:last-child{border-bottom:none}
 .scard:hover{background:var(--accent-subtle)}
@@ -180,9 +182,10 @@ main{min-height:400px;display:flex;flex-direction:column;gap:18px}
 .okmsg .ic{font-size:44px;margin-bottom:10px}
 .warn{font-size:11.5px;color:var(--gold);background:var(--gold-subtle);border-radius:8px;padding:8px 10px;margin-bottom:14px}
 @media(max-width:768px){
- .wrap{grid-template-columns:1fr;padding:12px;gap:12px}
+ .wrap{grid-template-columns:1fr;grid-template-areas:"f" "match" "main";padding:12px;gap:12px}
  header.top{padding:14px 16px}header.top .sp{display:none}
  .filters{position:static}.ftoggle{display:block}.filters.collapsed .fbody{display:none}
+ .matchbar{position:static}.stocklist{max-height:60vh}
  .herobar{grid-template-columns:1fr;gap:12px}
  .pgrid{grid-auto-flow:column;grid-auto-columns:min(82vw,330px);grid-template-columns:none;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:10px;margin:0 -12px;padding-left:12px;padding-right:12px;-webkit-overflow-scrolling:touch}
  .pcard{scroll-snap-align:start}
@@ -199,8 +202,8 @@ main{min-height:400px;display:flex;flex-direction:column;gap:18px}
       <div class="fld"><input id="fSearch" type="text" placeholder="🔍 원하는 차량 검색 (예: 카니발, 그랜저)" autocomplete="off"></div>
       <button class="promobtn" id="promoBtn" type="button">🎁 프로모션 차량만 보기</button>
       <div class="fld budgetfld"><label>월 예산 (만원)</label><input id="budget" type="number" placeholder="예: 60" inputmode="numeric"><div class="bhint">입력하면 예산에 맞는 상품을 추천해 드려요</div></div>
-      <div class="fld"><label>구분</label><div class="seg" id="segType"><button data-t="전체">전체</button><button data-t="신차" class="on">신차</button><button data-t="중고">중고(재렌트)</button></div></div>
-      <div class="fld"><label>계약 형태</label><div class="seg" id="segForm"><button data-f="전체">전체</button><button data-f="장기" class="on">장기렌트</button><button data-f="리스">리스</button></div></div>
+      <div class="fld"><label>구분</label><div class="seg" id="segType"><button data-t="전체" class="on">전체</button><button data-t="신차">신차</button><button data-t="중고">중고(재렌트)</button></div></div>
+      <div class="fld"><label>계약 형태</label><div class="seg" id="segForm"><button data-f="전체" class="on">전체</button><button data-f="장기">장기렌트</button><button data-f="리스">리스</button></div></div>
       <div class="fld"><label>차급</label><div class="chips" id="fClass"></div></div>
       <div class="fld"><label>제조사</label><select id="fBrand"></select></div>
       <div class="fld"><label>모델</label><select id="fModel"></select></div>
@@ -209,8 +212,8 @@ main{min-height:400px;display:flex;flex-direction:column;gap:18px}
       <div class="fld"><label>연료</label><div class="chips" id="fFuel"></div></div>
     </div>
   </aside>
+  <aside class="matchbar" id="matchbar"><div class="matchcnt" id="matchcnt">차량 스펙을 선택하세요.</div><div class="stocklist" id="stocklist"></div></aside>
   <main>
-    <div class="matchbar" id="matchbar"><div class="matchcnt" id="matchcnt">차량 스펙을 선택하세요.</div><div class="stocklist" id="stocklist"></div></div>
     <div id="hero"></div>
     <div id="products"></div>
   </main>
@@ -281,10 +284,14 @@ function 상품기간(prod,v,구분){
 /* ===== 프로모션 ===== */
 function todayStr(){var t=new Date();return t.getFullYear()+"-"+String(t.getMonth()+1).padStart(2,"0")+"-"+String(t.getDate()).padStart(2,"0");}
 function promoActive(p){var t=todayStr();if(p.start&&p.start>t)return false;if(p.end&&p.end<t)return false;return true;}
+/* 고객 화면용 프로모션 제목: 수수료(대리점 수수료) 관련 문구는 노출하지 않음 */
+function 고객용프로모(t){
+  var parts=String(t||"").split(/[,·\/]+/).map(function(s){return s.trim();}).filter(function(s){return s && s.indexOf("수수료")<0;});
+  return parts.join(", ");}
 function 차량프로모(v){var out=[],seen={};
-  (v.재고||[]).forEach(function(u){var pp=(PROMO.plate||{})[u.차량번호];if(pp&&promoActive(pp)&&!seen[pp.title]){seen[pp.title]=1;out.push({title:pp.title,kind:"수량한정"});}});
+  (v.재고||[]).forEach(function(u){var pp=(PROMO.plate||{})[u.차량번호];if(!pp||!promoActive(pp))return;var ct=고객용프로모(pp.title);if(!ct||seen[ct])return;seen[ct]=1;out.push({title:ct,kind:"수량한정"});});
   (PROMO.series||[]).forEach(function(s){if(s.구분!==v.구분||(형태!=="전체"&&s.형태!==형태)||!promoActive(s))return;
-    if(((v.모델||"").indexOf(s.series)>=0||(v.시리즈명||"").indexOf(s.series)>=0)&&!seen[s.title]){seen[s.title]=1;out.push({title:s.title,kind:"월"});}});
+    if((v.모델||"").indexOf(s.series)>=0||(v.시리즈명||"").indexOf(s.series)>=0){var ct=고객용프로모(s.title);if(!ct||seen[ct])return;seen[ct]=1;out.push({title:ct,kind:"월"});}});
   return out;}
 function hasPromo(v){return 차량프로모(v).length>0;}
 function 상품값(v,prod,m,구분){
@@ -299,14 +306,16 @@ const 리스상품=["구입형리스","동반차리스","믿음카리스"];
 const 표시명={"동반차(구입형)":"구입형렌트"};
 const 상품설명={"동반차":"매달 같은 월 렌트료","동반차(구입형)":"만기에 차량 인수 가능","6&12렌트":"6·12개월 단기","믿음카":"기존 동반차 고객 전용","월렌트":"월 단위 초단기","동반차리스":"월 정액 기본 리스","구입형리스":"만기에 내 차가 되는 리스","믿음카리스":"기존 동반차 고객 전용(리스)"};
 const 믿음상품=["믿음카","믿음카리스"];
-const 헤더배지={"동반차":"인기","동반차(구입형)":"만기인수","6&12렌트":"단기","믿음카":"기존고객","월렌트":"초단기","동반차리스":"월 정액","구입형리스":"BEST 구입형","믿음카리스":"기존고객"};
+const 헤더배지={"동반차":"장기, 반납","동반차(구입형)":"만기인수","6&12렌트":"단기","믿음카":"기존고객","월렌트":"초단기","동반차리스":"월 정액","구입형리스":"BEST 구입형","믿음카리스":"기존고객"};
+/* 상품 노출 순서 (렌트·리스 그룹 각각) */
+const 상품순서={"동반차":0,"동반차(구입형)":1,"6&12렌트":2,"믿음카":3,"월렌트":4,"구입형리스":0,"동반차리스":1,"믿음카리스":2};
 function 혜택태그(prod){
   if(prod.indexOf("리스")>=0)return 구입형(prod)?["세금·보험 별도","만기 인수 특화","내 차 되는 구조"]:["세금·보험 별도","월 정액 납부"];
   return ["보험료 포함","자동차세 포함","정비 옵션"];
 }
-function prodPriority(prod){ if(믿음상품.indexOf(prod)>=0)return 9; if(prod==="구입형리스")return 0; return 1; }
+function prodPriority(prod){ return (prod in 상품순서)?상품순서[prod]:9; }
 /* ===== 상태 ===== */
-let 구분="신차",형태="장기",선택차=null,_mideum=null;
+let 구분="전체",형태="전체",선택차=null,_mideum=null;
 let _보증=10,_선수=0;
 function 보증율(){return _보증;} function 선수율(){return _선수;}
 function budgetVal(){return (+byId("budget").value||0)*10000;}
@@ -417,7 +426,7 @@ function 상품카드(v,prod,budget){
   var hb=owner?'<span class="hbadge owner">기존 고객 전용</span>':(hi?'<span class="hbadge hi">'+(헤더배지[prod]||"")+'</span>':(fits?'<span class="hbadge best">BEST 추천</span>':'<span class="hbadge">'+(헤더배지[prod]||"")+'</span>'));
   var opts=terms.map(t=>'<option value="'+t.m+'"'+(t.m===rec.m?" selected":"")+'>'+t.m+'개월 · '+won(t.v)+'원/월</option>').join("");
   var cta=owner?'<button class="cta owner" data-owner="1">자격 확인 후 견적 &rsaquo;</button>':'<button class="cta" data-apply="1">이 조건으로 간편 상담 신청 &rsaquo;</button>';
-  var depTxt='보증금 <b>'+보증율표+'%</b> · '+won(보증액)+'원'+(buy?'':' (환급)');
+  var depTxt='보증금 <b>'+won(보증액)+'원</b>';
   var eff=구입형(prod)?유효보증(v,prod):보증율();
   var lockDep=(prod==="동반차(구입형)");
   var allowDep=lockDep?[eff]:리스허용(v);
@@ -444,6 +453,7 @@ function 상품카드(v,prod,budget){
 }
 function 사용가능(v,p){
   if(p==="동반차(구입형)"&&v.구분==="중고")return false;   /* 구입형렌트는 재렌트(중고) 불가 */
+  if(p==="월렌트"&&v.구분==="신차")return false;           /* 월렌트는 신차 노출 안 함 */
   if(구입형(p))return (v.가격||0)>0;                        /* 구입형: 차량가격만 있으면 계산 가능 */
   return 파일상품(v,p)!=null;                               /* 그 외: 렌트료관리 파일에 값이 있어야 노출 */
 }
@@ -474,7 +484,7 @@ byId("products").addEventListener("change",function(e){
   card.querySelector("[data-amt]").innerHTML=won(price)+'<span class="u">원</span>';
   card.querySelector(".per").textContent="월 납입료 (VAT 포함) · "+m+"개월 기준";
   window._cardData[id].rec=m;
-  var dep=card.querySelector("[data-dep]");if(dep){var g=선택차.구분,br=보증금율of(선택차,prod,m,g),ba=보증금액of(선택차,prod,m,g);dep.innerHTML='보증금 <b>'+br+'%</b> · '+won(ba)+'원'+(구입형(prod)?'':' (환급)');}
+  var dep=card.querySelector("[data-dep]");if(dep){var g=선택차.구분,ba=보증금액of(선택차,prod,m,g);dep.innerHTML='보증금 <b>'+won(ba)+'원</b>';}
   var mat=card.querySelector("[data-mat]");if(mat&&구입형(prod))mat.innerHTML='만기 인수금액 · '+won(만기인수of(선택차,prod,m))+'원';
   var b=budgetVal(),sv=card.querySelector("[data-save]");
   if(sv){if(b>0&&price<=b)sv.outerHTML='<div class="save" data-save>예산 대비 월 '+won(b-price)+'원 절약</div>';else sv.outerHTML='<span data-save></span>';}
