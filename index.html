@@ -234,7 +234,7 @@ main{min-height:400px;display:flex;flex-direction:column;gap:18px}
    GAS_URL  : 상담신청/문의를 구글시트에 저장하는 Apps Script 웹앱 주소. */
 const CONFIG={
   DATA_API:"https://jache-compare-api.hmn1234.workers.dev",
-  GAS_URL:"https://script.google.com/macros/s/AKfycbx0WMS1Nd8vilWHqHG9eu4cvCS9nr0fpVk5kBKXAuYR-g0AkLwTR5qUvR-QZn3IT4eU/exec"
+  GAS_URL:"https://script.google.com/macros/s/AKfycbzikOGis1zwrZPggxfOBUOm7PuiLvAu40UAFPdx8XDHJ3HUka2lQgZEO351BG14MvW5/exec"
 };
 function sendToSheet(payload){
   if(!CONFIG.GAS_URL)return Promise.resolve({saved:false,noconfig:true});
