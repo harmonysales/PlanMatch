@@ -87,6 +87,7 @@ main{min-height:400px;display:flex;flex-direction:column;gap:18px}
 .scard .stag.promo{background:#FCE7F3;color:#BE185D}
 .empty{background:var(--card);border:1px dashed var(--border);border-radius:var(--r);padding:56px 20px;text-align:center;color:var(--text-muted)}
 .empty .inqlink{color:var(--primary);font-weight:800;cursor:pointer;text-decoration:underline}
+.empty .switchbtn{margin-top:14px;border:0;background:var(--primary);color:#fff;border-radius:10px;padding:10px 18px;font-size:13px;font-weight:800;cursor:pointer;font-family:inherit}
 .hero{background:var(--card);border:1px solid var(--border);border-radius:var(--r);box-shadow:var(--sh);padding:20px 22px}
 .hero .vname{font-size:20px;font-weight:800;margin-bottom:4px}
 .hero .vtags{display:flex;gap:6px;margin-bottom:4px}
@@ -408,6 +409,7 @@ function renderMatches(){
   else{선택차=null;byId("hero").innerHTML="";byId("products").innerHTML=noStockHTML();}
 }
 function noStockHTML(){return '<div class="empty">조건에 맞는 재고가 없어요.<br>찾으시는 차량이 있다면 <span class="inqlink" onclick="openInq()">문의하기</span>로 남겨주세요.</div>';}
+function 계약형태전환(f){형태=f;document.querySelectorAll("#segForm button").forEach(x=>x.classList.toggle("on",x.getAttribute("data-f")===f));if(선택차){renderHero(선택차);renderProducts(선택차);}else renderMatches();}
 function selectCar(x){선택차=x;
   document.querySelectorAll(".scard").forEach(e=>e.classList.toggle("sel",e.getAttribute("data-vid")===vid(x)));
   renderHero(x);renderProducts(x);}
@@ -502,7 +504,13 @@ function renderProducts(v){
   var groups=[];
   if(형태==="장기"||형태==="전체")groups.push(grp("장기렌트","rent",렌트상품));
   if(형태==="리스"||형태==="전체")groups.push(grp("리스","lease",리스상품));
-  var body=groups.map(x=>x.html).join("")||'<div class="empty">이 차량에 해당 상품이 없어요.</div>';
+  var body=groups.map(x=>x.html).join("");
+  if(!body){
+    var 렌트가능=렌트상품.some(p=>사용가능(v,p)), 리스가능=리스상품.some(p=>사용가능(v,p));
+    if(형태==="장기"&&리스가능) body='<div class="empty">이 차량은 <b>리스 상품</b>만 있어요.<br><button class="switchbtn" type="button" onclick="계약형태전환(\'전체\')">전체 상품 보기</button></div>';
+    else if(형태==="리스"&&렌트가능) body='<div class="empty">이 차량은 <b>장기렌트 상품</b>만 있어요.<br><button class="switchbtn" type="button" onclick="계약형태전환(\'전체\')">전체 상품 보기</button></div>';
+    else body='<div class="empty">이 차량은 현재 안내 가능한 상품이 없어요.<br>찾으시는 조건이 있다면 <span class="inqlink" onclick="openInq()">문의하기</span>로 남겨주세요.</div>';
+  }
   var banner="";
   if(budget>0&&groups.length){var tot=groups.reduce((s,x)=>s+x.fit,0);
     banner=tot?'<div class="recbanner">💡 월 예산 <span class="big">'+(+byId("budget").value).toLocaleString()+'만원</span> 이내 <span class="big">추천 '+tot+'개</span> · 예산에 맞는 상품을 위쪽에 배치했어요</div>'
