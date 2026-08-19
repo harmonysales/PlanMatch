@@ -215,7 +215,7 @@ main{min-height:400px;display:flex;flex-direction:column;gap:18px}
       <div class="fld"><input id="fSearch" type="text" placeholder="🔍 원하는 차량 검색 (예: 카니발, 그랜저)" autocomplete="off"></div>
       <button class="promobtn" id="promoBtn" type="button">🎁 프로모션 차량만 보기</button>
       <div class="fld budgetfld"><label>월 예산 (만원)</label><input id="budget" type="number" placeholder="예: 60" inputmode="numeric"><div class="bhint">입력하면 예산에 맞는 상품을 추천해 드려요</div></div>
-      <div class="fld"><label>구분</label><div class="seg" id="segType"><button data-t="전체" class="on">전체</button><button data-t="신차">신차</button><button data-t="중고">중고(재렌트)</button></div></div>
+      <div class="fld"><label>구분</label><div class="seg" id="segType"><button data-t="전체" class="on">전체</button><button data-t="신차">신차</button><button data-t="중고">중고</button></div></div>
       <div class="fld"><label>계약 형태</label><div class="seg" id="segForm"><button data-f="전체" class="on">전체</button><button data-f="장기">장기렌트</button><button data-f="리스">리스</button></div></div>
       <div class="fld"><label>차급</label><div class="chips" id="fClass"></div></div>
       <div class="fld"><label>제조사</label><select id="fBrand"></select></div>
@@ -241,8 +241,7 @@ main{min-height:400px;display:flex;flex-direction:column;gap:18px}
 <div class="modal hidden" id="inqModal"><div class="box"><button class="mclose" id="iClose" type="button">&times;</button><div id="inqBody"></div></div></div>
 <div class="modal hidden" id="promoModal"><div class="box"><button class="mclose" id="pmClose" type="button">&times;</button><div id="promoBody"></div></div></div>
 
-<!-- 로컬 전용 데이터(선택): 페이지 옆에 자체상품비교_data.js 가 있으면 그걸 사용. 깃허브엔 이 파일을 올리지 않으므로 404(무시)되고 워커에서 데이터를 받아옵니다. -->
-<script src="자체상품비교_data.js" onerror="void 0"></script>
+<!--DATA-->
 <script>
 /* ====== 설정 ======
    DATA_API : 데이터(차량·렌트료·구입형)를 제공하는 Cloudflare Worker 주소.
@@ -648,13 +647,21 @@ function 앱시작(){refreshCascade();renderMatches();}
 function 데이터적용(d){
   window.CATALOG=d.CATALOG||[];window.PROMO=d.PROMO||{plate:{},series:[]};
   window.PRICELIST=d.PRICELIST||{};window.PURCHASE=d.PURCHASE||{};앱시작();}
-(function boot(){
-  if(byId("stocklist"))byId("stocklist").innerHTML='<div class="empty">차량 정보를 불러오는 중…</div>';
-  /* 로컬 테스트용: 페이지 옆에 자체상품비교_data.js 를 넣고 열면 그 데이터를 사용 (window.CATALOG 존재 시) */
-  if(typeof window.CATALOG!=="undefined"&&window.CATALOG&&window.CATALOG.length){앱시작();return;}
+function 워커로드(){
   if(!CONFIG.DATA_API){byId("stocklist").innerHTML='<div class="empty">데이터 주소(CONFIG.DATA_API)가 설정되지 않았어요.<br>워커 배포 후 주소를 입력해 주세요.</div>';return;}
   fetch(CONFIG.DATA_API,{cache:"no-store"}).then(function(r){return r.json();}).then(데이터적용).catch(function(e){
-    byId("stocklist").innerHTML='<div class="empty">데이터를 불러오지 못했어요.<br>잠시 후 다시 시도해 주세요.</div>';});
+    byId("stocklist").innerHTML='<div class="empty">데이터를 불러오지 못했어요.<br>잠시 후 다시 시도해 주세요.</div>';});}
+(function boot(){
+  if(byId("stocklist"))byId("stocklist").innerHTML='<div class="empty">차량 정보를 불러오는 중…</div>';
+  /* 확인용(인라인 데이터)이면 window.CATALOG 이미 존재 → 그대로 사용 */
+  if(typeof window.CATALOG!=="undefined"&&window.CATALOG&&window.CATALOG.length){앱시작();return;}
+  /* 로컬: 옆의 자체상품비교_data.js 를 캐시 무효화(?t=) 로 매번 새로 로드 → 캐시 때문에 옛 데이터 물던 문제 방지.
+     없으면(깃허브 배포본) 404 → 워커에서 로드 */
+  var s=document.createElement("script");
+  s.src="자체상품비교_data.js?t="+(new Date().getTime());
+  s.onload=function(){ if(typeof window.CATALOG!=="undefined"&&window.CATALOG&&window.CATALOG.length){앱시작();} else 워커로드(); };
+  s.onerror=function(){ 워커로드(); };
+  document.head.appendChild(s);
 })();
 </script>
 </body></html>
