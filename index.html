@@ -125,7 +125,7 @@ main{min-height:400px;display:flex;flex-direction:column;gap:18px}
 .b.rent{background:var(--accent-subtle);color:var(--accent)}
 .b.lease{background:#F3E8FF;color:#7E22CE}
 .pgrid{display:flex;flex-wrap:nowrap;gap:14px;overflow-x:auto;padding-bottom:8px;scroll-snap-type:x proximity;-webkit-overflow-scrolling:touch}
-.pgrid>.pcard{flex:1 1 0;min-width:210px;scroll-snap-align:start}   /* 한 줄에 균등 분할 · 화면 폭에 맞춰 채움 */
+.pgrid>.pcard{flex:1 1 240px;min-width:220px;max-width:360px;scroll-snap-align:start}   /* 균등 분할하되 1개여도 과하게 안 늘어나게 최대 360px */
 .pcard{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:16px;box-shadow:var(--sh-sm);transition:transform .18s ease,box-shadow .18s ease;position:relative;display:flex;flex-direction:column}
 .pcard:hover{transform:translateY(-3px);box-shadow:var(--sh-lg)}
 .pcard.fit{border-color:transparent;background:linear-gradient(#fff,#fff) padding-box,linear-gradient(135deg,var(--primary),var(--accent)) border-box;border:1.5px solid transparent;box-shadow:var(--sh)}
