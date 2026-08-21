@@ -118,9 +118,30 @@ header.top .inq:hover{background:var(--blue-dark)}
 @keyframes secFlash{0%{background:var(--blue-50)}100%{background:var(--card)}}
 .sec-result.flash{animation:secFlash .8s ease-out}
 @media(prefers-reduced-motion:reduce){.sec-result.flash{animation:none}}
+
+/* ==========================================================================
+   2단계 화면 전환 (VIEW 1 선택 ↔ VIEW 2 결과)
+   - DOM 은 그대로 두고 body.view-result 클래스로 노출만 제어
+   - 계산/렌더 로직(renderHero/renderProducts)은 변경하지 않음
+   ========================================================================== */
+.sec-result{display:none}                         /* 처음엔 결과 화면 숨김 */
+body.view-result .intro{display:none}             /* 결과 화면에선 큰 Intro 숨김 */
+body.view-result .sec-cond{display:none}          /* 결과 화면에선 선택 화면 숨김 */
+body.view-result .sec-result{display:block}       /* 결과 화면 노출 */
+body:not(.view-result) .mcta{display:none!important}  /* 모바일 하단 CTA 는 결과 화면에서만 */
+@keyframes viewIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+body.view-result .sec-result{animation:viewIn .26s ease both}
+body:not(.view-result) .sec-cond{animation:viewIn .24s ease both}
+@media(prefers-reduced-motion:reduce){
+  body.view-result .sec-result,
+  body:not(.view-result) .sec-cond{animation:none}
+}
+
+/* 결과 화면 상단 '다른 차량 찾기' 바 (좌측 상단 고정 위치) */
+.resultBar{display:flex;align-items:center;margin-bottom:var(--s4)}
 .ph-top{display:flex;align-items:center;justify-content:space-between;gap:var(--s2)}
-.backsel{border:0;background:transparent;color:var(--ink-mute);font-size:var(--fs-cap);font-weight:700;padding:4px 6px;border-radius:var(--r-sm)}
-.backsel:hover{color:var(--blue);background:var(--blue-50)}
+.backsel{border:1px solid var(--line);background:var(--card);color:var(--ink-sub);font-size:var(--fs-sm);font-weight:700;padding:9px 16px;border-radius:var(--r-pill);cursor:pointer;transition:background .14s,border-color .14s,color .14s}
+.backsel:hover{color:var(--blue-deep);background:var(--blue-50);border-color:var(--blue-200)}
 .sechead{display:flex;align-items:flex-end;justify-content:space-between;gap:var(--s4);margin-bottom:var(--s5)}
 .sechead h2{margin:0;font-size:26px;font-weight:800;letter-spacing:-.035em;line-height:1.3}
 .sechead p{margin:6px 0 0;font-size:var(--fs-base);color:var(--ink-sub);font-weight:600}
@@ -337,33 +358,47 @@ header.top .inq:hover{background:var(--blue-dark)}
 /* ==========================================================================
    결과 — 선택 차량 (독립 카드가 아니라 섹션 콘텐츠)
    ========================================================================== */
+/* 결과 상단 = 차량 소개 (좁게·중앙 집중) / 상품 비교는 아래에서 넓게 */
+.planOverview{max-width:920px;margin:0 auto var(--s6);text-align:center}
 .planHead{margin-bottom:var(--s4)}
-.planHead h2{margin:0;font-size:26px;font-weight:800;letter-spacing:-.035em;line-height:1.3}
+.planHead .eyebrow{justify-content:center}
+.planHead h2{margin:6px 0 0;font-size:26px;font-weight:800;letter-spacing:-.035em;line-height:1.3}
 .planHead p{margin:6px 0 0;font-size:var(--fs-base);color:var(--ink-sub);font-weight:600}
-.planCar{display:flex;align-items:center;gap:var(--s5);padding-bottom:var(--s4);border-bottom:1px solid var(--line)}
-.pc-txt{flex:1;min-width:0}
-.planCar .vtags{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:6px}
-.planCar .vtags .vt{font-size:var(--fs-cap);font-weight:700;padding:3px 10px;border-radius:var(--r-pill);background:var(--bg);color:var(--ink-sub)}
+.planHead .plan-cond{margin-top:3px;font-size:var(--fs-cap);color:var(--ink-mute);font-weight:600}
+/* 차량 태그 (신차 · 가솔린 · 2026년형) — 한 줄, 중앙 */
+.planCar{display:flex;flex-direction:column;align-items:center;gap:var(--s2)}
+.planCar .vtags{display:flex;flex-wrap:wrap;justify-content:center;gap:6px}
+.planCar .vtags .vt{font-size:var(--fs-cap);font-weight:700;padding:3px 12px;border-radius:var(--r-pill);background:var(--bg);color:var(--ink-sub)}
 .planCar .vtags .vt.promo{background:var(--blue-50);color:var(--blue-dark)}
-.planCar .vsub{font-size:var(--fs-base);color:var(--ink);font-weight:700}
+/* 차량 이미지 = 결과 화면의 시각적 중심 (크게·중앙) */
 .carPhoto{
-  flex:0 0 240px;width:240px;height:120px;border-radius:var(--r);overflow:hidden;
-  background:var(--blue-50);display:flex;align-items:center;justify-content:center;
+  width:min(440px,82vw);height:230px;margin:2px auto var(--s2);
+  border-radius:var(--r-lg,18px);overflow:hidden;
+  background:linear-gradient(180deg,var(--blue-50),var(--card));
+  border:1px solid var(--line-soft);
+  display:flex;align-items:center;justify-content:center;
 }
-.carPhoto img{max-width:94%;max-height:94%;object-fit:contain;display:block}
+.carPhoto img{max-width:90%;max-height:90%;object-fit:contain;display:block}
+/* 차량명 / 트림 / 차량가 */
+.pc-title{font-size:23px;font-weight:800;letter-spacing:-.03em;line-height:1.25;color:var(--ink)}
+.pc-trim{font-size:var(--fs-base);font-weight:600;color:var(--ink-sub)}
+.pc-price{font-size:17px;font-weight:800;color:var(--blue-deep);font-variant-numeric:tabular-nums;margin-top:2px}
 
-/* 추천 한 줄 */
+/* 추천 요약 — 차량 정보 바로 아래 compact 카드 (full-width 배너 아님) */
 .herorec{
-  display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-top:var(--s2);
-  background:var(--blue-50);border:1px solid var(--blue-200);border-radius:var(--r-sm);padding:8px 12px;
+  display:flex;flex-direction:column;align-items:center;gap:4px;
+  max-width:560px;margin:var(--s3) auto 0;
+  background:var(--blue-50);border:1px solid var(--blue-200);border-radius:var(--r);padding:12px 18px;
 }
-.herorec .hr-i{font-size:var(--fs-base);line-height:1}
-.herorec b{font-size:var(--fs-base);font-weight:800;color:var(--blue-deep);font-variant-numeric:tabular-nums}
-.herorec .hr-why{border:0;background:transparent;color:var(--blue);font-size:var(--fs-cap);font-weight:700;padding:2px 4px;text-decoration:underline}
-.herorec .hr-reason{flex:1 1 100%;font-size:var(--fs-cap);color:var(--ink-sub);font-weight:600;line-height:1.55}
+.herorec .hr-i{font-size:18px;line-height:1}
+.herorec b{font-size:var(--fs-card,17px);font-weight:800;color:var(--blue-deep);font-variant-numeric:tabular-nums;line-height:1.4}
+.herorec .hr-why{border:0;background:transparent;color:var(--blue);font-size:var(--fs-cap);font-weight:700;padding:2px 4px;text-decoration:underline;cursor:pointer}
+.herorec .hr-reason{font-size:var(--fs-cap);color:var(--ink-sub);font-weight:600;line-height:1.55}
 .herorec .hr-reason[hidden]{display:none}
 .herorec.soft{background:var(--bg);border-color:var(--line)}
 .herorec.soft b{color:var(--ink-sub)}
+.planOverview .vmore{display:flex;margin:var(--s3) auto 0}
+.planOverview .vdetail{max-width:720px;margin-left:auto;margin-right:auto;text-align:left}
 
 /* 차량 상세정보 (기본 접힘) */
 .vmore{
@@ -629,8 +664,10 @@ header.top .inq:hover{background:var(--blue-dark)}
   .stocklist{max-height:300px}   /* 모바일: 약 4대 */
   .filters.collapsed .fbody{display:none}
   .ftoggle{display:block}
-  .planCar{flex-direction:column;align-items:stretch;gap:var(--s3)}
-  .carPhoto{width:100%;flex:none;height:160px;order:-1}
+  .planCar{align-items:center;gap:var(--s2)}
+  .carPhoto{width:min(340px,86vw);height:180px}
+  .pc-title{font-size:20px}
+  .resultBar{margin-bottom:var(--s3)}
   .vd-grid{grid-template-columns:1fr}
   .swipehint{display:block;font-size:var(--fs-cap);font-weight:600;color:var(--ink-mute);text-align:center;margin:0 0 var(--s1)}
   .pgrid{
@@ -747,6 +784,7 @@ header.top .inq:hover{background:var(--blue-dark)}
 
 <section class="sec sec-result"><div class="cont">
   <main>
+    <div class="resultBar"><button type="button" class="backsel" id="backselBtn" aria-label="차량 선택 화면으로 돌아가기">&larr; 다른 차량 찾기</button></div>
     <div id="hero"></div>
     <div id="products"></div>
   </main>
@@ -851,7 +889,9 @@ function 유효보증(v,prod){
   return 보증율();}
 function 구입형료(v,prod,m){
   var t=(PURCHASE[vid(v)]||{})[prod];if(!t)return null;
-  return t[유효보증(v,prod)+"_"+선수율()]||null;}
+  var mm=m||48;                                  /* 계약개월(48/60)을 키에 포함 */
+  var base=유효보증(v,prod)+"_"+선수율();
+  return t[base+"_"+mm] || t[base+"_48"] || t[base] || null;}  /* 신·구 키 모두 대응 */
 function 보증금율of(v,prod,m,구분){
   if(구입형(prod))return 유효보증(v,prod);
   var f=파일가(v,prod,m);return (f&&v.가격)?Math.round(f.보증/v.가격*1000)/10:0;}
@@ -862,7 +902,7 @@ function 만기인수of(v,prod,m){
   if(구입형(prod)){var g=구입형료(v,prod,m);return g?g.만기:0;}
   var f=파일가(v,prod,m);return f?(f.만기||0):0;}
 function 상품기간(prod,v,구분){
-  if(구입형(prod))return [48];   /* 구입형렌트·구입형리스 = 48개월 */
+  if(구입형(prod))return [48,60];   /* 구입형렌트·구입형리스 = 48·60개월 */
   var d=파일상품(v,prod);return d?Object.keys(d).map(Number).sort((a,b)=>a-b):[];}
 /* ===== 프로모션 ===== */
 function todayStr(){var t=new Date();return t.getFullYear()+"-"+String(t.getMonth()+1).padStart(2,"0")+"-"+String(t.getDate()).padStart(2,"0");}
@@ -1098,30 +1138,40 @@ function 부드럽게이동(el){
   try{el.scrollIntoView({behavior:reduce?"auto":"smooth",block:"start"});}
   catch(e){el.scrollIntoView(true);}
 }
-function 결과로이동(){
-  var sec=document.querySelector(".sec-result");if(!sec)return;
-  부드럽게이동(sec);
-  sec.classList.remove("flash");void sec.offsetWidth;sec.classList.add("flash");
-  setTimeout(function(){sec.classList.remove("flash");},900);
+/* ===== 2단계 화면 전환 (VIEW 1 선택 ↔ VIEW 2 결과) =====
+   페이지를 길게 스크롤하지 않고, 같은 서비스 안에서 Step 이 바뀌는 느낌.
+   DOM/계산은 그대로 두고 body.view-result 클래스로 노출만 제어(한 곳에서 관리). */
+var _selectScrollY=0;
+function showResultView(){
+  _selectScrollY=window.scrollY||window.pageYOffset||0;   /* 선택 화면에서 보던 위치 기억 */
+  document.body.classList.add("view-result");
+  try{window.scrollTo({top:0,behavior:"instant"});}catch(e){window.scrollTo(0,0);}   /* 결과는 항상 상단부터 */
 }
-function 조건으로이동(){부드럽게이동(document.querySelector(".sec-cond"));}
+function showSelectView(){
+  document.body.classList.remove("view-result");           /* 선택/필터 상태는 유지(초기화 안 함) */
+  try{window.scrollTo({top:_selectScrollY,behavior:"instant"});}catch(e){window.scrollTo(0,_selectScrollY);}
+}
+/* 하위 호환 별칭 — 기존 호출부는 화면 전환으로 연결 */
+function 결과로이동(){showResultView();}
+function 조건으로이동(){showSelectView();}
 /* STEP 2 하단 Action Footer */
 function updateStepAction(){
   var el=byId("stepAction");if(!el)return;
   if(!선택차){
     el.className="stepAction";
     el.innerHTML='<div class="sa-l"><span class="sa-hint">상품을 비교하려면 차량을 선택해주세요</span></div>'+
-      '<button type="button" class="sa-btn" id="goPlanBtn" disabled aria-disabled="true">맞춤 상품 보기 <i>↓</i></button>';
+      '<button type="button" class="sa-btn" id="goPlanBtn" disabled aria-disabled="true">이 차량으로 상품 비교하기 <i>→</i></button>';
   }else{
     el.className="stepAction on";
     el.innerHTML='<div class="sa-l"><span class="sa-k">✓ 선택한 차량</span>'+
       '<b class="sa-v">'+esc(선택차.모델||선택차.모델명)+' <span>'+esc(트림명(선택차))+'</span></b></div>'+
-      '<button type="button" class="sa-btn on" id="goPlanBtn" aria-label="맞춤 상품 비교 결과로 이동">맞춤 상품 보기 <i>↓</i></button>';
+      '<button type="button" class="sa-btn on" id="goPlanBtn" aria-label="선택 차량으로 상품 비교 화면 열기">이 차량으로 상품 비교하기 <i>→</i></button>';
   }
 }
 byId("stepAction").addEventListener("click",function(e){
-  var b=e.target.closest("#goPlanBtn");if(!b||b.disabled)return;결과로이동();
+  var b=e.target.closest("#goPlanBtn");if(!b||b.disabled)return;showResultView();
 });
+byId("backselBtn").addEventListener("click",showSelectView);
 /* 차량 목록 스크롤 여지 힌트 (아래에 더 있을 때만) */
 function updateScrollHint(){
   var box=byId("stocklist"),hint=byId("scrollHint");if(!box||!hint)return;
@@ -1155,23 +1205,23 @@ function renderHero(v){
   var 옵션들=[];(v.재고||[]).forEach(function(u){if(u.옵션&&옵션들.indexOf(u.옵션)<0)옵션들.push(u.옵션);});
   var cond='월 예산 '+(budgetOn()?budgetText():'미설정')+' · 희망 '+(wantTerm()?(wantTerm()+'개월'):'자동 추천')+' · '+형태라벨();
   byId("hero").innerHTML=
-    '<div class="planHead">'+
-      '<div class="ph-top"><span class="eyebrow">MY HARMONY PLAN</span>'+
-      '<button type="button" class="backsel" data-backsel>&larr; 차량 다시 선택</button></div>'+
-      '<h2>'+esc(v.모델||v.모델명)+'에 맞는 상품을 비교해보세요</h2>'+
-      '<p>'+esc(cond)+'</p>'+
-    '</div>'+
-    '<div class="planCar">'+
-      '<div class="pc-txt">'+
-        '<div class="vtags"><span class="vt">'+(v.구분==="신차"?"신차":"중고(재렌트)")+' · '+esc(v.유종)+'</span>'+
-          (v.연식?('<span class="vt">'+esc(v.연식)+'년형</span>'):'')+promoChip+'</div>'+
-        '<div class="vsub">'+esc(트림명(v))+' · '+(v.배기량||0)+'cc · 차량가 '+won(v.가격)+'원</div>'+
+    '<div class="planOverview">'+
+      '<div class="planHead">'+
+        '<span class="eyebrow">MY HARMONY PLAN</span>'+
+        '<h2>'+esc(v.모델||v.모델명)+'에 맞는 상품을 비교해보세요</h2>'+
+        '<p>선택하신 조건을 기준으로 추천했어요</p>'+
+        '<p class="plan-cond">'+esc(cond)+'</p>'+
+      '</div>'+
+      '<div class="planCar">'+
+        '<div class="vtags"><span class="vt">'+[(v.구분==="신차"?"신차":"중고(재렌트)"),esc(v.유종)].concat(v.연식?[esc(v.연식)+'년형']:[]).join(" · ")+'</span>'+promoChip+'</div>'+
+        사진HTML(v,'carPhoto')+
+        '<div class="pc-title">'+esc(v.모델||v.모델명)+'</div>'+
+        '<div class="pc-trim">'+esc(트림명(v))+' · '+(v.배기량||0)+'cc</div>'+
+        '<div class="pc-price">차량가 '+won(v.가격)+'원</div>'+
         '<div id="heroRec"></div>'+
         '<button class="vmore" type="button" data-vmore aria-expanded="false" aria-controls="vdetail">차량 상세정보<i>∨</i></button>'+
       '</div>'+
-      사진HTML(v,'carPhoto')+
-    '</div>'+
-    '<div class="vdetail" id="vdetail" hidden>'+
+      '<div class="vdetail" id="vdetail" hidden>'+
       '<div class="vd-grid">'+
         '<div class="vd-row"><span class="vd-k">총 차량가</span><span class="vd-v">'+won(v.가격)+'원</span></div>'+
         '<div class="vd-row"><span class="vd-k">보증금</span><span class="vd-v">상품별 · 카드에서 확인</span></div>'+
@@ -1181,6 +1231,7 @@ function renderHero(v){
       (색상.length?('<div class="vd-row wrap"><span class="vd-k">재고 색상</span><span class="vd-v chips">'+색상.map(c=>'<span class="colchip">'+esc(c)+'</span>').join("")+'</span></div>'):'')+
       (옵션들.length?('<div class="vd-row wrap"><span class="vd-k">주요 옵션</span><span class="vd-v chips">'+옵션들.slice(0,8).map(o=>'<span class="optchip">'+esc(o)+'</span>').join("")+'</span></div>'):'')+
       (promos.length>1?('<div class="vd-row wrap"><span class="vd-k">프로모션</span><span class="vd-v chips">'+promos.map(p=>'<span class="pbadge">🎁 '+esc(p.title)+(p.kind==="수량한정"?" (수량한정)":"")+'</span>').join("")+'</span></div>'):'')+
+    '</div>'+
     '</div>';
   byId("termSel").onchange=e=>{window._term=e.target.value;renderTermPills();renderHero(선택차);renderProducts(선택차);openVDetail();};
 }
