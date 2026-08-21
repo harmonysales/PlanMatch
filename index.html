@@ -120,22 +120,138 @@ header.top .inq:hover{background:var(--blue-dark)}
 @media(prefers-reduced-motion:reduce){.sec-result.flash{animation:none}}
 
 /* ==========================================================================
-   2단계 화면 전환 (VIEW 1 선택 ↔ VIEW 2 결과)
-   - DOM 은 그대로 두고 body.view-result 클래스로 노출만 제어
-   - 계산/렌더 로직(renderHero/renderProducts)은 변경하지 않음
+   3단계 화면 전환 (STEP1 니즈진단 → STEP2 차량선택 → STEP3 상품비교)
+   - DOM 은 그대로 두고 body[data-view] 로 노출만 제어 (한 곳에서 관리)
+   - 계산/렌더 로직(renderHero/renderProducts/상품계산)은 변경하지 않음
    ========================================================================== */
-.sec-result{display:none}                         /* 처음엔 결과 화면 숨김 */
-body.view-result .intro{display:none}             /* 결과 화면에선 큰 Intro 숨김 */
-body.view-result .sec-cond{display:none}          /* 결과 화면에선 선택 화면 숨김 */
-body.view-result .sec-result{display:block}       /* 결과 화면 노출 */
-body:not(.view-result) .mcta{display:none!important}  /* 모바일 하단 CTA 는 결과 화면에서만 */
+.intro{display:none}                              /* 옛 인트로는 STEP1 히어로로 대체 */
+.sec-needs{display:none}
+.sec-result{display:none}
+body[data-view="needs"] .sec-cond,
+body[data-view="needs"] .sec-result{display:none}
+body[data-view="needs"] .sec-needs{display:block}
+body[data-view="vehicle"] .sec-needs,
+body[data-view="vehicle"] .sec-result{display:none}
+body[data-view="vehicle"] .sec-cond{display:block}
+body[data-view="plan"] .sec-needs,
+body[data-view="plan"] .sec-cond{display:none}
+body[data-view="plan"] .sec-result{display:block}
+body:not([data-view="plan"]) .mcta{display:none!important}   /* 모바일 하단 CTA 는 상품비교 화면에서만 */
 @keyframes viewIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
-body.view-result .sec-result{animation:viewIn .26s ease both}
-body:not(.view-result) .sec-cond{animation:viewIn .24s ease both}
+body[data-view="needs"] .sec-needs,
+body[data-view="vehicle"] .sec-cond,
+body[data-view="plan"] .sec-result{animation:viewIn .26s ease both}
 @media(prefers-reduced-motion:reduce){
-  body.view-result .sec-result,
-  body:not(.view-result) .sec-cond{animation:none}
+  .sec-needs,.sec-cond,.sec-result{animation:none!important}
 }
+
+/* ── 전체 흐름 표시 (01 이용방법 → 02 차량선택 → 03 상품비교) ── */
+.flownav{display:flex;align-items:center;justify-content:center;gap:8px;flex-wrap:wrap;margin-bottom:var(--s5)}
+.flownav .fn-step{display:inline-flex;align-items:center;gap:6px;font-size:var(--fs-cap);font-weight:700;color:var(--ink-mute)}
+.flownav .fn-step b{display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;border-radius:50%;background:var(--fill);color:var(--ink-mute);font-size:11px;font-weight:800}
+.flownav .fn-step.on{color:var(--blue-deep)}
+.flownav .fn-step.on b{background:var(--blue);color:#fff}
+.flownav i{font-style:normal;color:var(--line);font-weight:700}
+
+/* ── STEP 1 : 니즈 진단 ── */
+.sec-needs{background:var(--card);padding:44px 0 64px}
+.needsHero{text-align:center;max-width:760px;margin:0 auto var(--s6)}
+.needsHero .eyebrow{justify-content:center}
+.needsHero h1{margin:6px 0 8px;font-size:32px;font-weight:800;letter-spacing:-.04em;line-height:1.22}
+.needsHero p{margin:0;font-size:var(--fs-base);color:var(--ink-sub);font-weight:600;line-height:1.6}
+.needsWrap{max-width:920px;margin:0 auto}
+.qprog{display:flex;align-items:center;justify-content:center;gap:12px;margin-bottom:var(--s3)}
+.qprog .qcount{font-size:var(--fs-cap);font-weight:800;color:var(--blue);letter-spacing:.06em}
+.qprog .qdots{display:inline-flex;gap:6px}
+.qprog .qdots span{width:26px;height:5px;border-radius:var(--r-pill);background:var(--line)}
+.qprog .qdots span.on{background:var(--blue);width:34px}
+.qprog .qdots span.done{background:var(--blue-200)}
+.qtitle{text-align:center;font-size:23px;font-weight:800;letter-spacing:-.03em;line-height:1.35;margin:0 auto var(--s5);max-width:640px}
+.qcards{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--s3);margin-bottom:var(--s5)}
+.qcard{position:relative;display:flex;flex-direction:column;align-items:flex-start;gap:6px;text-align:left;
+  background:var(--card);border:1.5px solid var(--line);border-radius:var(--r-lg);padding:var(--s4);cursor:pointer;
+  transition:border-color .15s,background .15s,box-shadow .15s;min-height:186px}
+.qcard:hover{border-color:var(--blue-200);box-shadow:var(--sh-1)}
+.qcard.on{border-color:var(--blue);background:var(--blue-50)}
+.qc-ic{display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;border-radius:var(--r);background:var(--blue-50);color:var(--blue);margin-bottom:2px}
+.qcard.on .qc-ic{background:var(--blue);color:#fff}
+.qc-ic svg{width:24px;height:24px}
+.qc-t{font-size:var(--fs-card);font-weight:800;letter-spacing:-.02em;line-height:1.3;color:var(--ink)}
+.qc-d{font-size:var(--fs-cap);font-weight:600;color:var(--ink-sub);line-height:1.5}
+.qc-b{margin-top:auto;font-size:var(--fs-cap);font-weight:700;color:var(--blue-dark);background:var(--blue-50);border-radius:var(--r-pill);padding:3px 10px}
+.qcard.on .qc-b{background:var(--card)}
+.qc-ck{position:absolute;top:12px;right:12px;width:22px;height:22px;border-radius:50%;background:var(--blue);color:#fff;font-size:13px;font-weight:800;display:none;align-items:center;justify-content:center}
+.qcard.on .qc-ck{display:inline-flex}
+.qnav{display:flex;align-items:center;justify-content:space-between;gap:var(--s3)}
+.qbtn{border:0;border-radius:var(--r);background:var(--blue);color:#fff;font-size:var(--fs-sm);font-weight:800;padding:12px 24px;cursor:pointer;transition:background .14s}
+.qbtn:hover{background:var(--blue-dark)}
+.qbtn.ghost{background:transparent;color:var(--ink-sub);border:1px solid var(--line)}
+.qbtn.ghost:hover{background:var(--fill);color:var(--blue-deep)}
+.qbtn.disabled,.qbtn[disabled]{background:var(--line);color:var(--ink-mute);cursor:not-allowed}
+
+/* 진단 결과 (YOUR HARMONY TYPE) */
+.ntype{max-width:840px;margin:0 auto;text-align:center;background:var(--blue-50);border:1px solid var(--blue-200);border-radius:var(--r-lg);padding:36px var(--s6)}
+.ntype .eyebrow{justify-content:center;color:var(--blue)}
+.ntype h2{margin:8px 0 6px;font-size:27px;font-weight:800;letter-spacing:-.035em;line-height:1.3;color:var(--blue-deep)}
+.ntype .ntype-sub{margin:0 auto;max-width:600px;font-size:var(--fs-base);color:var(--ink-sub);font-weight:600;line-height:1.6}
+.ntype .nbenefits{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--s3);margin:var(--s5) 0}
+.nben{background:var(--card);border:1px solid var(--blue-200);border-radius:var(--r);padding:var(--s3);text-align:left}
+.nben .nb-t{display:flex;align-items:center;gap:5px;font-size:var(--fs-sm);font-weight:800;color:var(--blue-deep);margin-bottom:4px}
+.nben .nb-t i{font-style:normal;color:var(--blue)}
+.nben .nb-d{font-size:var(--fs-cap);font-weight:600;color:var(--ink-sub);line-height:1.5}
+.ntype .nnote{background:var(--card);border:1px dashed var(--blue-200);border-radius:var(--r);padding:var(--s3);font-size:var(--fs-cap);font-weight:600;color:var(--ink-sub);line-height:1.55;margin-bottom:var(--s4)}
+.ntype .nnote b{color:var(--blue-deep);font-weight:800}
+.ntype .nprod{font-size:var(--fs-base);font-weight:700;color:var(--blue-deep);margin-bottom:var(--s4)}
+.ncta{display:flex;flex-direction:column;align-items:center;gap:10px}
+.ncta .qbtn{padding:14px 30px;font-size:var(--fs-base)}
+.ncta .nlink{border:0;background:transparent;color:var(--ink-sub);font-size:var(--fs-cap);font-weight:700;text-decoration:underline;cursor:pointer}
+.ntype.soft{background:var(--bg);border-color:var(--line)}
+.ntype.soft h2{color:var(--ink)}
+
+/* STEP 2 상단 : 이용방법 다시 선택 + 니즈 결과 chip */
+.needsBar{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:var(--s4)}
+.needsChip{display:inline-flex;align-items:center;gap:6px;font-size:var(--fs-cap);font-weight:700;color:var(--blue-deep);background:var(--blue-50);border:1px solid var(--blue-200);border-radius:var(--r-pill);padding:6px 13px}
+.needsChip.off{display:none}
+
+/* ── STEP 3 : MY HARMONY PICK ── */
+.pickPanel{max-width:960px;margin:0 auto var(--s6)}
+.pick{background:var(--card);border:1.5px solid var(--blue);border-radius:var(--r-lg);padding:var(--s6);text-align:center}
+.pick .pk-eye{display:inline-flex;align-items:center;gap:6px;font-size:var(--fs-cap);font-weight:800;letter-spacing:.08em;color:#fff;background:var(--blue);border-radius:var(--r-pill);padding:5px 14px;text-transform:uppercase}
+.pick h3{margin:var(--s3) 0 4px;font-size:22px;font-weight:800;letter-spacing:-.03em;line-height:1.3}
+.pick h3 b{color:var(--blue-deep)}
+.pick .pk-why{max-width:620px;margin:0 auto;font-size:var(--fs-base);color:var(--ink-sub);font-weight:600;line-height:1.6}
+.pick .pk-info{margin-top:6px;font-size:var(--fs-cap);color:var(--ink-mute);font-weight:600}
+.pick .pk-photo{width:min(360px,72vw);height:180px;margin:var(--s4) auto var(--s2);border-radius:var(--r);overflow:hidden;
+  background:linear-gradient(180deg,var(--blue-50),var(--card));border:1px solid var(--line-soft);display:flex;align-items:center;justify-content:center}
+.pick .pk-photo img{max-width:90%;max-height:90%;object-fit:contain}
+.pick .pk-prod{font-size:var(--fs-card);font-weight:800;color:var(--ink);margin-top:var(--s2)}
+.pick .pk-amt{font-size:38px;font-weight:800;letter-spacing:-.045em;color:var(--blue-deep);line-height:1.1;font-variant-numeric:tabular-nums;margin-top:2px}
+.pick .pk-amt .u{font-size:18px;font-weight:700;color:var(--ink-sub);margin-left:2px}
+.pick .pk-per{font-size:var(--fs-cap);color:var(--ink-mute);font-weight:600;margin-top:2px}
+.pick .pk-burden{display:inline-block;margin-top:var(--s2);font-size:var(--fs-sm);font-weight:700;color:var(--blue);background:var(--blue-50);border-radius:var(--r-pill);padding:6px 14px}
+.pick .pk-burden b{font-weight:800;color:var(--blue-deep)}
+.pick .pk-mini{max-width:420px;margin:var(--s3) auto 0;border:1px solid var(--line);border-radius:var(--r);overflow:hidden}
+.pick .pk-mini .pm-row{display:flex;justify-content:space-between;align-items:center;gap:8px;padding:9px 14px;font-size:var(--fs-cap);font-weight:700;color:var(--ink-sub)}
+.pick .pk-mini .pm-row+.pm-row{border-top:1px solid var(--line-soft)}
+.pick .pk-mini .pm-row b{font-weight:800;color:var(--ink);font-variant-numeric:tabular-nums}
+.pick .pk-mini .pm-row.on{background:var(--blue-50)}
+.pick .pk-mini .pm-row.on b{color:var(--blue-deep)}
+.pick .pk-mini .pm-tag{font-size:11px;font-weight:800;color:#fff;background:var(--blue);border-radius:var(--r-pill);padding:2px 8px;margin-left:6px}
+.pick .pk-acq{max-width:520px;margin:var(--s4) auto 0;border:1px solid var(--blue-200);background:var(--blue-50);border-radius:var(--r);padding:var(--s3) var(--s4)}
+.pick .pk-acq .pa-lb{font-size:var(--fs-cap);color:var(--ink-sub);font-weight:700}
+.pick .pk-acq .pa-v{font-size:24px;font-weight:800;color:var(--blue-deep);line-height:1.2;font-variant-numeric:tabular-nums;margin-top:2px}
+.pick .pk-acq .pa-car{font-size:var(--fs-cap);color:var(--ink-mute);font-weight:600;margin-top:4px}
+.pick .pk-vp{margin:var(--s4) auto 0;max-width:560px;font-size:var(--fs-card);font-weight:800;color:var(--ink);line-height:1.4;letter-spacing:-.02em}
+.pick .pk-benefits{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;max-width:640px;margin:var(--s3) auto var(--s5)}
+.pick .pk-benefits .pkb{display:flex;align-items:flex-start;gap:6px;text-align:left;font-size:var(--fs-cap);font-weight:700;color:var(--ink-sub);line-height:1.4}
+.pick .pk-benefits .pkb i{font-style:normal;color:var(--blue);font-weight:800;flex:0 0 auto}
+.pick .pk-cta{border:0;border-radius:var(--r);background:var(--blue);color:#fff;font-size:var(--fs-base);font-weight:800;padding:15px 34px;cursor:pointer;transition:background .14s}
+.pick .pk-cta:hover{background:var(--blue-dark)}
+.pick .pk-more{display:block;margin:12px auto 0;border:0;background:transparent;color:var(--ink-sub);font-size:var(--fs-cap);font-weight:700;text-decoration:underline;cursor:pointer}
+.pick.soft{border-color:var(--blue-200);text-align:center}
+.pick.soft h3{font-size:19px}
+.hbadge.pick{background:var(--blue);color:#fff;letter-spacing:.02em}
+.hbadge.pickbest{background:var(--blue-deep);color:#fff;letter-spacing:.01em;font-size:11px}
 
 /* 결과 화면 상단 '다른 차량 찾기' 바 (좌측 상단 고정 위치) */
 .resultBar{display:flex;align-items:center;margin-bottom:var(--s4)}
@@ -725,13 +841,29 @@ body:not(.view-result) .sec-cond{animation:viewIn .24s ease both}
   .sortbar select{flex:1 1 auto}
   /* 모바일은 목록을 더 짧게 (약 4대) — 패널 규칙보다 뒤에 와야 하므로 같은 특이성으로 재지정 */
   .condPanel>.matchbar>.listWrap>.stocklist{max-height:300px}
+  /* STEP1 니즈 진단 · MY HARMONY PICK 모바일 (세로 1열) */
+  .needsHero h1{font-size:24px}
+  .qtitle{font-size:19px}
+  .qcards{grid-template-columns:1fr;gap:var(--s2)}
+  .qcard{min-height:0}
+  .qcard .qc-b{margin-top:6px}
+  .ntype{padding:26px var(--s4)}
+  .ntype h2{font-size:22px}
+  .ntype .nbenefits{grid-template-columns:1fr}
+  .pick{padding:var(--s4)}
+  .pick h3{font-size:19px}
+  .pick .pk-amt{font-size:32px}
+  .pick .pk-benefits{grid-template-columns:1fr;gap:8px}
+  .pick .pk-cta{width:100%}
+  .flownav{gap:5px}
+  .flownav .fn-step{font-size:11px}
 }
 @media(max-width:420px){
   header.top b{font-size:var(--fs-sm)}
   .pgrid>.pcard{flex:0 0 92vw}
 }
 </style></head>
-<body>
+<body data-view="needs">
 <header class="top"><div class="cont hcont"><img class="logo" src="data:image/png;base64,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" alt="하모니렌트카"><b>하모니렌트카</b><span class="sp">자체상품 비교견적</span>
   <button class="promo-top" id="promoTopBtn" type="button">🎁 진행중 프로모션</button>
   <span class="inqtext">찾는 차량이 없나요?</span><button class="inq" id="inqBtn" type="button">문의하기</button></div></header>
@@ -741,9 +873,33 @@ body:not(.view-result) .sec-cond{animation:viewIn .24s ease both}
   <p>원하는 차량과 이용 조건을 선택하면, 지금 바로 이용 가능한 렌트·리스 상품을 한눈에 비교해 드립니다.</p>
 </div></section>
 
+<!-- ===== STEP 1 : 나에게 맞는 이용방법 찾기 (니즈 진단) ===== -->
+<section class="sec sec-needs"><div class="cont">
+  <nav class="flownav" aria-label="진행 단계">
+    <span class="fn-step on"><b>01</b> 이용방법</span><i>→</i>
+    <span class="fn-step"><b>02</b> 차량선택</span><i>→</i>
+    <span class="fn-step"><b>03</b> 상품비교</span>
+  </nav>
+  <div class="needsHero">
+    <span class="eyebrow">HARMONY SMART ESTIMATE</span>
+    <h1>어떤 방식으로 차를 이용하고 싶으세요?</h1>
+    <p>몇 가지 질문에 답하면 이용 목적에 맞는 차량과 상품을 함께 찾아드려요.</p>
+  </div>
+  <div class="needsWrap" id="needsBody"></div>
+</div></section>
+
 <section class="sec sec-cond"><div class="cont">
+  <nav class="flownav" aria-label="진행 단계">
+    <span class="fn-step"><b>01</b> 이용방법</span><i>→</i>
+    <span class="fn-step on"><b>02</b> 차량선택</span><i>→</i>
+    <span class="fn-step"><b>03</b> 상품비교</span>
+  </nav>
+  <div class="needsBar">
+    <button type="button" class="backsel" id="toNeedsBtn">&larr; 이용방법 다시 선택</button>
+    <span class="needsChip off" id="needsChip"></span>
+  </div>
   <div class="sechead">
-    <div><span class="eyebrow">STEP 1</span><h2>견적 조건 설정</h2><p>원하는 조건을 선택하고 차량을 골라주세요.</p></div>
+    <div><span class="eyebrow">STEP 2</span><h2>차량 찾기</h2><p>원하는 조건을 선택하고 차량을 골라주세요.</p></div>
   </div>
   <div class="condPanel">
   <aside class="filters collapsed" id="filters">
@@ -806,8 +962,14 @@ body:not(.view-result) .sec-cond{animation:viewIn .24s ease both}
 
 <section class="sec sec-result"><div class="cont">
   <main>
+    <nav class="flownav" aria-label="진행 단계">
+      <span class="fn-step"><b>01</b> 이용방법</span><i>→</i>
+      <span class="fn-step"><b>02</b> 차량선택</span><i>→</i>
+      <span class="fn-step on"><b>03</b> 상품비교</span>
+    </nav>
     <div class="resultBar"><button type="button" class="backsel" id="backselBtn" aria-label="차량 선택 화면으로 돌아가기">&larr; 다른 차량 찾기</button></div>
     <div id="hero"></div>
+    <div class="pickPanel" id="pickPanel"></div>
     <div id="products"></div>
   </main>
 </div></section>
@@ -1161,22 +1323,160 @@ function 부드럽게이동(el){
   try{el.scrollIntoView({behavior:reduce?"auto":"smooth",block:"start"});}
   catch(e){el.scrollIntoView(true);}
 }
-/* ===== 2단계 화면 전환 (VIEW 1 선택 ↔ VIEW 2 결과) =====
+/* ===== 3단계 화면 전환 (STEP1 니즈 → STEP2 차량 → STEP3 상품) =====
    페이지를 길게 스크롤하지 않고, 같은 서비스 안에서 Step 이 바뀌는 느낌.
-   DOM/계산은 그대로 두고 body.view-result 클래스로 노출만 제어(한 곳에서 관리). */
-var _selectScrollY=0;
-function showResultView(){
-  _selectScrollY=window.scrollY||window.pageYOffset||0;   /* 선택 화면에서 보던 위치 기억 */
-  document.body.classList.add("view-result");
-  try{window.scrollTo({top:0,behavior:"instant"});}catch(e){window.scrollTo(0,0);}   /* 결과는 항상 상단부터 */
+   DOM/계산은 그대로 두고 body[data-view] 로 노출만 제어(한 곳에서 관리). */
+var _vehScrollY=0;
+function _toTop(){try{window.scrollTo({top:0,behavior:"instant"});}catch(e){window.scrollTo(0,0);}}
+function setView(name){document.body.setAttribute("data-view",name);}
+function showNeedsView(){setView("needs");renderNeeds();_toTop();}   /* 답변/진행상태는 초기화하지 않음 */
+function showVehicleView(){
+  setView("vehicle");updateNeedsChip();
+  try{window.scrollTo({top:_vehScrollY||0,behavior:"instant"});}catch(e){window.scrollTo(0,_vehScrollY||0);}
 }
-function showSelectView(){
-  document.body.classList.remove("view-result");           /* 선택/필터 상태는 유지(초기화 안 함) */
-  try{window.scrollTo({top:_selectScrollY,behavior:"instant"});}catch(e){window.scrollTo(0,_selectScrollY);}
+function showPlanView(){
+  _vehScrollY=window.scrollY||window.pageYOffset||0;      /* 차량 화면에서 보던 위치 기억 */
+  setView("plan");_toTop();                                /* 상품 비교는 항상 상단부터 */
 }
-/* 하위 호환 별칭 — 기존 호출부는 화면 전환으로 연결 */
-function 결과로이동(){showResultView();}
-function 조건으로이동(){showSelectView();}
+/* 하위 호환 별칭 — 기존 호출부는 새 화면 전환으로 연결 */
+function showResultView(){showPlanView();}
+function showSelectView(){showVehicleView();}
+function 결과로이동(){showPlanView();}
+function 조건으로이동(){showVehicleView();}
+
+/* =====================================================================
+   STEP 1 — 고객 니즈 진단 (상품명 대신 '이용 성향'을 먼저 묻는다)
+   · 답변은 needsState 로만 관리, 기존 계산/필터/상품 로직과 분리
+   · 진단은 '추천 방향'만 정하고, STEP2 에서 모든 필터·상품은 그대로 제공
+   ===================================================================== */
+var needsState={usage:null,priority:null,ownership:null};   /* usage:long/swap/unsure · priority:low_monthly/normal_term/unsure · ownership:own/return/unsure */
+var _needsStep=0;                                           /* 0·1·2=질문, 3=진단결과 */
+var NEEDS_Q=[
+  {key:"usage",q:"차량을 어떻게 이용하고 싶으세요?",opts:[
+    {v:"long",t:"오래 타고 싶어요",d:"마음에 드는 차량이라면 장기간 이용하고 싶어요.",b:"내 차로 가져가는 것도 고려"},
+    {v:"swap",t:"몇 년 타고 바꾸고 싶어요",d:"일정 기간 이용한 뒤 새로운 차량으로 바꾸고 싶어요.",b:"반납 · 교체 중심"},
+    {v:"unsure",t:"아직 잘 모르겠어요",d:"조건을 보고 나에게 맞는 방법을 비교해보고 싶어요."}
+  ]},
+  {key:"priority",q:"차량 이용에서 어떤 부분이 더 중요하세요?",opts:[
+    {v:"low_monthly",t:"매달 내는 금액을 낮추고 싶어요",d:"이용기간을 길게 나눠 월 부담을 낮추는 방법을 선호해요."},
+    {v:"normal_term",t:"적당한 기간으로 이용하고 싶어요",d:"약 48개월 전후의 일반적인 이용기간을 선호해요."},
+    {v:"unsure",t:"잘 모르겠어요",d:"조건을 비교해서 추천받고 싶어요."}
+  ]},
+  {key:"ownership",q:"오래 이용하게 된다면 어떤 방식이 더 마음에 드세요?",opts:[
+    {v:"own",t:"마음에 들면 내 차로 계속 타고 싶어요",d:"계약 종료 후 차량 인수도 고려하고 있어요."},
+    {v:"return",t:"반납하고 새로운 차를 타고 싶어요",d:"차량을 소유하기보다 주기적으로 바꾸는 편이 좋아요."},
+    {v:"unsure",t:"아직 결정하지 않았어요",d:"인수와 반납 조건을 모두 비교하고 싶어요."}
+  ]}
+];
+function needIcon(v){
+  var I={
+    long:'<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>',
+    swap:'<path d="M21 12a9 9 0 1 1-2.6-6.4"/><path d="M21 3v6h-6"/>',
+    low_monthly:'<path d="M12 4v13"/><path d="M6 12l6 6 6-6"/>',
+    normal_term:'<rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/>',
+    own:'<circle cx="8" cy="15" r="4"/><path d="M11.5 12.5 20 4M17 7l2 2M15 9l2 2"/>',
+    "return":'<path d="M21 12a9 9 0 1 1-2.6-6.4"/><path d="M21 3v6h-6"/>',
+    unsure:'<circle cx="12" cy="12" r="9"/><path d="M9.6 9a2.4 2.4 0 1 1 3.4 2.2c-.8.4-1 .9-1 1.8"/><path d="M12 17h.01"/>'
+  };
+  return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">'+(I[v]||I.unsure)+'</svg>';
+}
+function renderNeeds(){
+  var box=byId("needsBody");if(!box)return;
+  if(_needsStep>=3){box.innerHTML=needsResultHTML();return;}
+  var Q=NEEDS_Q[_needsStep],sel=needsState[Q.key];
+  var dots=NEEDS_Q.map(function(_,i){return '<span class="'+(i===_needsStep?'on':(i<_needsStep?'done':''))+'"></span>';}).join("");
+  box.innerHTML=
+    '<div class="qprog"><span class="qcount">'+(_needsStep+1)+' / 3</span><span class="qdots">'+dots+'</span></div>'+
+    '<h2 class="qtitle">'+esc(Q.q)+'</h2>'+
+    '<div class="qcards">'+Q.opts.map(function(o){
+      return '<button type="button" class="qcard'+(sel===o.v?' on':'')+'" data-need="'+o.v+'">'+
+        '<span class="qc-ic">'+needIcon(o.v)+'</span>'+
+        '<span class="qc-t">'+esc(o.t)+'</span>'+
+        '<span class="qc-d">'+esc(o.d)+'</span>'+
+        (o.b?'<span class="qc-b">'+esc(o.b)+'</span>':'')+
+        '<span class="qc-ck" aria-hidden="true">✓</span>'+
+      '</button>';
+    }).join("")+'</div>'+
+    '<div class="qnav">'+
+      (_needsStep>0?'<button type="button" class="qbtn ghost" data-needprev>← 이전</button>':'<span></span>')+
+      '<button type="button" class="qbtn'+(sel?'':' disabled')+'" data-neednext'+(sel?'':' disabled')+'>다음 →</button>'+
+    '</div>';
+}
+/* 답변 조합으로 이용 성향 판단 (점수 하나로만 결정하지 않음) */
+function 진단타입(){
+  var u=needsState.usage,p=needsState.priority,o=needsState.ownership;
+  var buy=0,ret=0;
+  if(u==="long")buy++; else if(u==="swap")ret++;
+  if(o==="own")buy++; else if(o==="return")ret++;
+  if(p==="low_monthly")buy+=0.5; else if(p==="normal_term")ret+=0.5;
+  if(u==="long"&&o==="own")return "buy";        /* 오래 이용 + 인수 = 가장 강한 구입형 신호 */
+  if(u==="swap"&&o==="return")return "return";   /* 교체 + 반납 = 강한 반납형 신호 */
+  if(buy>=2&&buy>ret)return "buy";
+  if(ret>=2&&ret>buy)return "return";
+  return "compare";
+}
+function low60(){return needsState.priority==="low_monthly";}   /* 60개월 제안 추가 신호 */
+/* 진단결과 추천 이유 (고객이 실제 선택한 답변을 근거로) */
+function 진단이유(){
+  var u=needsState.usage,o=needsState.ownership;
+  var parts=[];
+  if(u==="long")parts.push("오래 이용");
+  if(o==="own")parts.push("차량 인수도 고려");
+  var base=parts.length?("<b>"+parts.join(" · ")+"</b>한다고 답변하셔서 구입형 상품을 우선 비교해드릴게요."):"선택하신 이용 성향에 맞춰 구입형 상품을 우선 비교해드릴게요.";
+  if(low60())base+=" 월 부담을 낮추고 싶다고 하셔서 <b>60개월</b> 조건도 함께 비교해드릴게요.";
+  return base;
+}
+function needsResultHTML(){
+  var t=진단타입();
+  var prev='<button type="button" class="nlink" data-needprev>← 답변 다시 선택</button>';
+  if(t==="buy"){
+    var b=[
+      ["월 부담 분산","60개월 등 장기 이용으로 월 납입 부담을 나눌 수 있어요."],
+      ["만기 인수 가능","계약 종료 후 차량을 인수해 계속 이용할 수 있어요."],
+      ["장기 이용에 적합","마음에 드는 차량을 오래 이용하려는 고객에게 적합해요."]
+    ];
+    return '<div class="ntype">'+
+      '<span class="eyebrow">YOUR HARMONY TYPE</span>'+
+      '<h2>오래 타면서 내 차 마련까지 생각한다면<br>‘내 차 마련형’이 잘 맞아요</h2>'+
+      '<p class="ntype-sub">월 부담을 나눠 차량을 이용하고, 계약 종료 후에는 차량 인수까지 고려할 수 있는 방식이에요.</p>'+
+      '<div class="nbenefits">'+b.map(function(x){return '<div class="nben"><div class="nb-t"><i>✓</i>'+esc(x[0])+'</div><div class="nb-d">'+esc(x[1])+'</div></div>';}).join("")+'</div>'+
+      '<div class="nprod">고객님의 이용 성향에는 <b>구입형 상품</b>이 잘 맞을 수 있어요.</div>'+
+      '<div class="nnote">'+진단이유()+(low60()?'<br><span style="color:var(--ink-mute)">※ 이용기간이 길어질수록 총액이 아니라 <b>월 납입 부담</b>이 낮아집니다. 실제 48/60개월 금액은 차량 선택 후 확인돼요.</span>':'')+'</div>'+
+      '<div class="ncta"><button type="button" class="qbtn" data-toveh>내 조건으로 차량 찾기 →</button>'+
+        '<button type="button" class="nlink" data-toveh>다른 이용방법도 비교할게요</button>'+prev+'</div>'+
+    '</div>';
+  }
+  if(t==="return"){
+    return '<div class="ntype">'+
+      '<span class="eyebrow">YOUR HARMONY TYPE</span>'+
+      '<h2>새로운 차량으로 주기적으로 바꾸는 편이<br>잘 맞아요</h2>'+
+      '<p class="ntype-sub">차량을 일정 기간 이용하고 반납·교체하는 방식의 상품을 우선 비교해드릴게요.</p>'+
+      '<div class="ncta"><button type="button" class="qbtn" data-toveh>내 조건으로 차량 찾기 →</button>'+prev+'</div>'+
+    '</div>';
+  }
+  return '<div class="ntype soft">'+
+    '<span class="eyebrow">YOUR HARMONY TYPE</span>'+
+    '<h2>여러 방법을 함께 비교해보세요</h2>'+
+    '<p class="ntype-sub">렌트·리스·인수형 상품을 조건에 맞춰 함께 비교해드릴게요.</p>'+
+    '<div class="ncta"><button type="button" class="qbtn" data-toveh>내 조건으로 차량 찾기 →</button>'+prev+'</div>'+
+  '</div>';
+}
+/* STEP2 상단 chip — 진단 방향을 작게 이어붙임 */
+function updateNeedsChip(){
+  var el=byId("needsChip");if(!el)return;
+  if(!(needsState.usage||needsState.priority||needsState.ownership)){el.classList.add("off");return;}
+  var t=진단타입(),txt=t==="buy"?"내 차 마련형을 우선 비교 중":(t==="return"?"반납 · 교체형 조건으로 비교 중":"여러 이용방법을 함께 비교 중");
+  el.textContent="🧭 "+txt;el.classList.remove("off");
+}
+/* 니즈 화면 클릭 (선택/다음/이전/차량찾기) */
+byId("needsBody").addEventListener("click",function(e){
+  var pick=e.target.closest("[data-need]");
+  if(pick){needsState[NEEDS_Q[_needsStep].key]=pick.getAttribute("data-need");renderNeeds();return;}
+  if(e.target.closest("[data-neednext]")){var b=e.target.closest("[data-neednext]");if(b.hasAttribute("disabled"))return;
+    if(!needsState[NEEDS_Q[_needsStep].key])return;_needsStep=Math.min(3,_needsStep+1);renderNeeds();_toTop();return;}
+  if(e.target.closest("[data-needprev]")){_needsStep=Math.max(0,_needsStep-1);renderNeeds();_toTop();return;}
+  if(e.target.closest("[data-toveh]")){showVehicleView();return;}
+});
 /* STEP 2 하단 Action Footer */
 function updateStepAction(){
   var el=byId("stepAction");if(!el)return;
@@ -1192,9 +1492,10 @@ function updateStepAction(){
   }
 }
 byId("stepAction").addEventListener("click",function(e){
-  var b=e.target.closest("#goPlanBtn");if(!b||b.disabled)return;showResultView();
+  var b=e.target.closest("#goPlanBtn");if(!b||b.disabled)return;showPlanView();
 });
-byId("backselBtn").addEventListener("click",showSelectView);
+byId("backselBtn").addEventListener("click",showVehicleView);   /* STEP3 → STEP2 (다른 차량 찾기) */
+byId("toNeedsBtn").addEventListener("click",showNeedsView);     /* STEP2 → STEP1 (이용방법 다시 선택) */
 /* 차량 목록 스크롤 여지 힌트 (아래에 더 있을 때만) */
 function updateScrollHint(){
   var box=byId("stocklist"),hint=byId("scrollHint");if(!box||!hint)return;
@@ -1339,7 +1640,7 @@ function 일반비교HTML(v,prod,m){                       /* 동일 차량·동
 /* 상품 카드 — 요약(기본) + 상세(접힘) 2단 구조
    상세를 접어도 계산 UI(보증금/선수금/기간 select)와 data-* 훅은 DOM 에 그대로 남는다. */
 var _openProd={};   /* 상세를 펼쳐 둔 상품 기억 (재계산 후에도 유지) */
-function 상품카드(v,c,budget,isBest,reasons){
+function 상품카드(v,c,budget,isBest,reasons,isPick){
   var prod=c.prod, g=v.구분, terms=c.terms, rec=c.rec, fits=c.fits;
   var buy=구입형(prod), owner=믿음상품.indexOf(prod)>=0, lease=리스상품.indexOf(prod)>=0;
   var save=(fits&&budget>0)?(budget-rec.v):0;
@@ -1347,7 +1648,12 @@ function 상품카드(v,c,budget,isBest,reasons){
   var tot=총납입(v,prod,rec.m,rec.v);
   var id="c"+(_cardSeq++);
   window._cardData[id]={terms:{},rec:rec.m,prod:prod};terms.forEach(t=>window._cardData[id].terms[t.m]=t.v);
-  var hb=isBest?'<span class="hbadge best">BEST</span>':(owner?'<span class="hbadge owner">기존 고객</span>':(buy?'<span class="hbadge buy">내 차 마련형</span>':''));
+  /* 배지: BEST=계산 기준 / MY PICK=니즈 기준 (동시 선정 시 둘 다 표기) */
+  var hb=(isBest&&isPick)?'<span class="hbadge pickbest">BEST · MY PICK</span>'
+    :isPick?'<span class="hbadge pick">MY PICK</span>'
+    :isBest?'<span class="hbadge best">BEST</span>'
+    :owner?'<span class="hbadge owner">기존 고객</span>'
+    :buy?'<span class="hbadge buy">내 차 마련형</span>':'';
   /* 구입형: 48/60 중 월 납입료가 더 낮은 기간에만 '추천' 표시 (무조건 60에 붙이지 않음) */
   var lowM=null;
   if(buy){var _t48=terms.find(t=>t.m===48),_t60=terms.find(t=>t.m===60);
@@ -1423,6 +1729,75 @@ function 사용가능(v,p){
   if(구입형(p))return (v.가격||0)>0;                        /* 구입형: 차량가격만 있으면 계산 가능 */
   return 파일상품(v,p)!=null;                               /* 그 외: 렌트료관리 파일에 값이 있어야 노출 */
 }
+/* ===== MY HARMONY PICK — 고객 니즈 기준 추천 (BEST=계산 기준 추천 과는 별개, BEST 로직 미변경) =====
+   STEP1 답변으로 '방향'만 정하고, 금액은 전부 실제 계산값(상품계산 결과)을 사용 */
+function 니즈픽선정(v,목록,best){
+  var t=진단타입();
+  if(t==="buy"){
+    var buys=목록.filter(function(c){return 구입형(c.prod);});
+    if(buys.length){buys.sort(function(a,b){return a.rec.v-b.rec.v;});return {type:"buy",c:buys[0]};}  /* 조건 적합 구입형 중 월 납입 낮은 것 */
+  }
+  if(t==="return"){
+    var norms=목록.filter(function(c){return !구입형(c.prod)&&믿음상품.indexOf(c.prod)<0;});
+    if(norms.length){var pick=(best&&norms.indexOf(best)>=0)?best:norms[0];return {type:"return",c:pick};}
+  }
+  return null;   /* compare 이거나 적합 상품 없음 → 픽 없음(기존 BEST 중심) */
+}
+function 픽미니비교(v,c){                               /* 48/60 compact 비교 (구입형만) */
+  var p48=최종가(v,c.prod,48,v.구분),p60=최종가(v,c.prod,60,v.구분);
+  if(p48==null||p60==null)return '';
+  var diff=p48-p60, recM=c.rec.m;
+  function row(m,val,lower){
+    return '<div class="pm-row'+(m===recM?' on':'')+'"><span>'+m+'개월</span>'+
+      '<b>월 '+won(val)+'원'+(lower&&diff>0?'<span class="pm-tag">추천</span>':'')+'</b></div>';
+  }
+  return '<div class="pk-mini">'+row(48,p48,false)+row(60,p60,recM===60)+'</div>';
+}
+function pickPanelHTML(v,pick){
+  var c=pick.c, prod=c.prod, m=c.rec.m, price=c.rec.v;
+  var 만기액=만기인수of(v,prod,m), 보증액=보증금액of(v,prod,m,v.구분);
+  var info='<div class="pk-info">MY HARMONY PICK 은 앞에서 선택하신 이용 방식에 따라 추천됩니다.</div>';
+  if(pick.type==="buy"){
+    var burden=부담차이HTML(v,prod,m);   /* 60개월일 때 48대비 월부담차이 (실제 계산값) */
+    var ben=[
+      ["월 부담 분산","60개월 등 장기 이용으로 월 납입 부담을 나눌 수 있어요."],
+      ["만기 인수 가능","계약 종료 후 차량을 인수해 계속 이용할 수 있어요."],
+      ["장기 이용에 적합","마음에 드는 차량을 오래 이용하려는 경우에 적합해요."]
+    ];
+    return '<div class="pick" data-picktype="buy">'+
+      '<span class="pk-eye">MY HARMONY PICK</span>'+
+      '<h3>고객님의 이용 방식에는<br><b>‘내 차 마련형’</b>이 잘 맞아요</h3>'+
+      '<div class="pk-why">'+진단이유()+'</div>'+info+
+      사진HTML(v,'pk-photo')+
+      '<div class="pk-prod">'+esc(표시명[prod]||prod)+'</div>'+
+      '<div class="pk-amt">'+won(price)+'<span class="u">원</span></div>'+
+      '<div class="pk-per">월 납입료 (VAT 포함) · '+m+'개월 기준</div>'+
+      (burden?'<div class="pk-burden">'+burden+'</div>':'')+
+      픽미니비교(v,c)+
+      (만기액>0?('<div class="pk-acq"><div class="pa-lb">'+m+'개월 후 인수 시</div>'+
+        '<div class="pa-v">'+won(만기액)+'원으로 내 차</div>'+
+        '<div class="pa-car">현재 차량가 '+won(v.가격)+'원</div></div>'):'')+
+      '<div class="pk-vp">월 부담은 나누고, 만기에는 내 차로.</div>'+
+      '<div class="pk-benefits">'+ben.map(function(x){return '<div class="pkb"><i>✓</i><span><b>'+esc(x[0])+'</b><br>'+esc(x[1])+'</span></div>';}).join("")+'</div>'+
+      '<button type="button" class="pk-cta" data-pickapply="'+esc(prod)+'">이 조건으로 상담받기</button>'+
+      '<button type="button" class="pk-more" data-topgrid>전체 상품도 비교하기 ↓</button>'+
+    '</div>';
+  }
+  /* 반납형 — 억지 구입형 추천 금지, 일반 상품을 담백하게 */
+  return '<div class="pick soft" data-picktype="return">'+
+    '<span class="pk-eye">MY HARMONY PICK</span>'+
+    '<h3>고객님의 이용 방식에는<br><b>'+esc(표시명[prod]||prod)+'</b>가 잘 맞아요</h3>'+
+    '<div class="pk-why">차량을 일정 기간 이용하고 반납·교체하는 방식을 선호한다고 답변하셔서 이 상품을 먼저 비교해드려요.</div>'+info+
+    '<div class="pk-prod">'+esc(표시명[prod]||prod)+'</div>'+
+    '<div class="pk-amt">'+won(price)+'<span class="u">원</span></div>'+
+    '<div class="pk-per">월 납입료 (VAT 포함) · '+m+'개월 기준 · 만기 반납</div>'+
+    '<div class="pk-benefits"><div class="pkb"><i>✓</i><span><b>월 정액 이용</b><br>정해진 기간 동안 부담 없이 이용해요.</span></div>'+
+      '<div class="pkb"><i>✓</i><span><b>만기 반납</b><br>계약 종료 후 반납하고 새 차로 바꿀 수 있어요.</span></div>'+
+      '<div class="pkb"><i>✓</i><span><b>교체 편의</b><br>주기적으로 새로운 차량을 이용하기 좋아요.</span></div></div>'+
+    '<button type="button" class="pk-cta" data-pickapply="'+esc(prod)+'">이 조건으로 상담받기</button>'+
+    '<button type="button" class="pk-more" data-topgrid>전체 상품도 비교하기 ↓</button>'+
+  '</div>';
+}
 function renderProducts(v){
   var budget=budgetVal();_cardSeq=0;window._cardData={};
   function calc(list){
@@ -1440,6 +1815,7 @@ function renderProducts(v){
   var reasons=best?추천근거(v,best,pool,budget):null;
   /* 전체 탭에서는 장기렌트·리스를 세로로 쌓지 않고 추천순 단일 그리드로 합쳐서 보여준다 */
   var 목록=all.slice().sort(function(a,b){return a.sortKey-b.sortKey;});
+  var 픽=니즈픽선정(v,목록,best), 픽C=픽?픽.c:null;   /* MY HARMONY PICK (고객 니즈 기준) */
   var cnt={"전체":렌트All.length+리스All.length,"장기":렌트All.length,"리스":리스All.length};
   var tabs='<div class="ptabs" role="tablist">'+
     [["전체","전체"],["장기","장기렌트"],["리스","리스"]].map(function(t){
@@ -1451,7 +1827,7 @@ function renderProducts(v){
   var body="";
   if(목록.length){
     body='<div class="swipehint">← 좌우로 밀어 비교하세요 →</div>'+
-      '<div class="pgrid">'+목록.map(function(c){return 상품카드(v,c,budget,c===best,reasons);}).join("")+'</div>';
+      '<div class="pgrid">'+목록.map(function(c){return 상품카드(v,c,budget,c===best,reasons,c===픽C);}).join("")+'</div>';
   }else{
     var 렌트가능=렌트상품.some(p=>사용가능(v,p)), 리스가능=리스상품.some(p=>사용가능(v,p));
     if(형태==="장기"&&리스가능) body='<div class="empty">이 차량은 <b>리스 상품</b>만 있어요.<br><button class="switchbtn" type="button" onclick="계약형태전환(\'전체\')">전체 상품 보기</button></div>';
@@ -1461,6 +1837,7 @@ function renderProducts(v){
   var note='<details class="note"><summary'+기준일툴팁()+'>안내 · 견적 기준일 '+기준일()+'</summary>'+
     '동반차·6&12·월렌트·믿음카·동반차리스 등은 렌트료관리 파일 기준(그룹 내 차량별 최저가)입니다. 구입형렌트·구입형리스는 실제 계산식으로 보증금/선수금 선택 시 월 납입료가 즉시 재계산되며 만기 인수금액을 함께 표기합니다. 보증금은 만기 반환분이라 총 납입 예상액에서 제외했습니다. 표시 금액은 예상값이며 최종 조건은 상담·심사 결과에 따라 달라질 수 있습니다.</details>';
   byId("products").innerHTML=pshead+body+note;
+  var pp=byId("pickPanel");if(pp)pp.innerHTML=(픽&&목록.length)?pickPanelHTML(v,픽):"";   /* MY HARMONY PICK 패널 (선택 차량 아래·전체 비교 위) */
   /* 추천은 Hero 안 한 줄 요약으로 (별도 큰 배너 없음) */
   var hr=byId("heroRec");
   if(hr){
@@ -1527,6 +1904,22 @@ byId("products").addEventListener("click",function(e){
   var card=e.target.closest(".pcard");if(!card)return;
   if(e.target.closest("[data-owner]")){ if(_mideum!==true)openMideum(); else openApply(card); return; }
   if(e.target.closest("[data-apply]"))openApply(card);
+});
+/* MY HARMONY PICK 패널 액션 — 상담(기존 openApply 재사용) / 전체 상품으로 스크롤 */
+byId("pickPanel").addEventListener("click",function(e){
+  var ap=e.target.closest("[data-pickapply]");
+  if(ap){
+    var prod=ap.getAttribute("data-pickapply");
+    var card=document.querySelector('.pcard[data-prod="'+prod.replace(/"/g,'\\"')+'"]');
+    if(card)openApply(card); else openInq();
+    return;
+  }
+  if(e.target.closest("[data-topgrid]")){
+    var h=document.querySelector(".pshead")||byId("products");
+    if(h){var reduce=window.matchMedia&&window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      try{h.scrollIntoView({behavior:reduce?"auto":"smooth",block:"start"});}catch(e2){h.scrollIntoView(true);}}
+    return;
+  }
 });
 /* ===== 모달 공통 (a11y: role/aria/ESC/포커스 트랩/포커스 복귀) ===== */
 var _modalStack=[],_lastFocus=null;
@@ -1772,7 +2165,7 @@ byId("ftoggle").onclick=()=>{var f=byId("filters");f.classList.toggle("collapsed
 /* init — 데이터는 Cloudflare Worker(CONFIG.DATA_API)에서 받아옴 (공개 저장소엔 데이터 없음) */
 window._fuel="";window._cls="";window._term="";window._promoOnly=false;
 if(window.matchMedia&&window.matchMedia("(min-width:769px)").matches)byId("filters").classList.remove("collapsed");
-function 앱시작(){syncRange();renderTermPills();refreshCascade();renderMatches();updateAdvCnt();updateStepAction();updateScrollHint();}
+function 앱시작(){renderNeeds();updateNeedsChip();syncRange();renderTermPills();refreshCascade();renderMatches();updateAdvCnt();updateStepAction();updateScrollHint();}
 function 데이터적용(d){
   window.CATALOG=d.CATALOG||[];window.PROMO=d.PROMO||{plate:{},series:[]};
   window.PRICELIST=d.PRICELIST||{};window.PURCHASE=d.PURCHASE||{};
@@ -1807,6 +2200,7 @@ function 워커로드(){
   fetch(CONFIG.DATA_API,{cache:"no-store"}).then(function(r){if(!r.ok)throw new Error("HTTP "+r.status);return r.json();}).then(데이터적용).catch(function(e){
     console.warn("[자체상품비교] 데이터 로드 실패",e);로딩실패("데이터를 불러오지 못했어요.");});}
 (function boot(){
+  try{renderNeeds();}catch(e){}   /* STEP1 질문은 데이터와 무관하게 먼저 표시 */
   if(byId("stocklist"))byId("stocklist").innerHTML='<div class="empty">차량 정보를 불러오는 중…</div>';
   /* 확인용(인라인 데이터)이면 window.CATALOG 이미 존재 → 그대로 사용 */
   if(typeof window.CATALOG!=="undefined"&&window.CATALOG&&window.CATALOG.length){데이터검증();앱시작();return;}
