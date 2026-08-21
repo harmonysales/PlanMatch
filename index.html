@@ -925,6 +925,9 @@ body[data-view="plan"] .sec-result{animation:viewIn .26s ease both}
   .vtchip{padding:8px 14px;font-size:var(--fs-cap)}
   .journeyMore{padding:var(--s4)}
   .journeyMore .jm-btn{width:100%}
+  /* 모바일: 자동완성을 드롭다운(absolute) 대신 검색창 아래 인라인 리스트로 → 부모 overflow 로 잘리는 문제 방지 */
+  .vsearchwrap{position:static}
+  .vauto{position:static;left:auto;right:auto;top:auto;margin-top:8px;box-shadow:none}
 }
 @media(max-width:420px){
   header.top b{font-size:var(--fs-sm)}
@@ -1205,7 +1208,7 @@ const 헤더배지={"동반차":"장기, 반납","동반차(구입형)":"만기�
 /* 상품 노출 순서 (렌트·리스 그룹 각각) */
 const 상품순서={"동반차":0,"동반차(구입형)":1,"6&12렌트":2,"믿음카":3,"월렌트":4,"구입형리스":0,"동반차리스":1,"믿음카리스":2};
 function 혜택태그(prod){
-  if(구입형(prod))return ["만기 인수 가능","월 부담 분산"];   /* 구입형 공통 · 최대 2개 (배지 '내 차 마련형'과 중복 회피) */
+  if(구입형(prod))return ["만기 인수 가능","월 부담 분산"];   /* 구입형 공통 · 최대 2개 */
   if(prod.indexOf("리스")>=0)return ["월 정액 납부"];
   return ["보험료 포함","자동차세 포함","정비 옵션"];
 }
@@ -1508,7 +1511,7 @@ function needsResultHTML(){
     ];
     return '<div class="ntype">'+
       '<span class="eyebrow">YOUR HARMONY TYPE</span>'+
-      '<h2>오래 타면서 내 차 마련까지 생각한다면<br>‘내 차 마련형’이 잘 맞아요</h2>'+
+      '<h2>오래 이용하면서 차량 인수까지 고려한다면<br><b>구입형</b>이 잘 맞아요</h2>'+
       '<p class="ntype-sub">월 부담을 나눠 차량을 이용하고, 계약 종료 후에는 차량 인수까지 고려할 수 있는 방식이에요.</p>'+
       '<div class="nbenefits">'+b.map(function(x){return '<div class="nben"><div class="nb-t"><i>✓</i>'+esc(x[0])+'</div><div class="nb-d">'+esc(x[1])+'</div></div>';}).join("")+'</div>'+
       '<div class="nprod">고객님의 이용 성향에는 <b>구입형 상품</b>이 잘 맞을 수 있어요.</div>'+
@@ -1616,7 +1619,7 @@ function renderNeedAuto(){
 function updateNeedsChip(){
   var el=byId("needsChip");if(!el)return;
   if(!(needsState.usage||needsState.priority||needsState.ownership)){el.classList.add("off");return;}
-  var t=진단타입(),txt=t==="buy"?"내 차 마련형을 우선 비교 중":(t==="return"?"반납 · 교체형 조건으로 비교 중":"여러 이용방법을 함께 비교 중");
+  var t=진단타입(),txt=t==="buy"?"구입형을 우선 비교 중":(t==="return"?"반납 · 교체형 조건으로 비교 중":"여러 이용방법을 함께 비교 중");
   el.textContent="🧭 "+txt;el.classList.remove("off");
 }
 /* 니즈 화면 클릭 (질문 선택/다음/이전 · Q4 차량 검색/차종/선택) */
@@ -1705,7 +1708,7 @@ function renderHero(v){
     '<div class="planOverview">'+
       '<div class="planHead">'+
         '<span class="eyebrow">MY HARMONY PLAN</span>'+
-        (진단타입()==="buy"?'<div class="planType">YOUR HARMONY TYPE · <b>내 차 마련형</b></div>':'')+
+        (진단타입()==="buy"?'<div class="planType">YOUR HARMONY TYPE · <b>구입형</b></div>':'')+
         '<h2>'+((needsState.usage||needsState.ownership)?('고객님의 선택을 바탕으로<br>'+esc(v.모델||v.모델명)+' 이용방법을 찾아봤어요'):(esc(v.모델||v.모델명)+'에 맞는 상품을 비교해보세요'))+'</h2>'+
         '<p>선택하신 조건을 기준으로 추천했어요</p>'+
         '<p class="plan-cond">'+esc(cond)+'</p>'+
@@ -1827,7 +1830,7 @@ function 상품카드(v,c,budget,isBest,reasons,isPick){
     :isPick?'<span class="hbadge pick">MY PICK</span>'
     :isBest?'<span class="hbadge best">BEST</span>'
     :owner?'<span class="hbadge owner">기존 고객</span>'
-    :buy?'<span class="hbadge buy">내 차 마련형</span>':'';
+    :buy?'<span class="hbadge buy">구입형</span>':'';
   /* 구입형: 48/60 중 월 납입료가 더 낮은 기간에만 '추천' 표시 (무조건 60에 붙이지 않음) */
   var lowM=null;
   if(buy){var _t48=terms.find(t=>t.m===48),_t60=terms.find(t=>t.m===60);
@@ -1940,7 +1943,7 @@ function pickPanelHTML(v,pick){
     ];
     return '<div class="pick" data-picktype="buy">'+
       '<span class="pk-eye">MY HARMONY PICK</span>'+
-      '<h3>고객님의 이용 방식에는<br><b>‘내 차 마련형’</b>이 잘 맞아요</h3>'+
+      '<h3>고객님의 이용 성향에는<br><b>구입형</b>이 잘 맞아요</h3>'+
       '<div class="pk-why">'+진단이유()+'</div>'+info+
       사진HTML(v,'pk-photo')+
       '<div class="pk-prod">'+esc(표시명[prod]||prod)+'</div>'+
