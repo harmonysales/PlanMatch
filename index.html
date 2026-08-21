@@ -1325,7 +1325,9 @@ function 정렬적용(list){
       if(pa==null&&pb==null)return (b.재고수||0)-(a.재고수||0);
       if(pa==null)return 1; if(pb==null)return -1; return pa-pb;}
     if(mode==="new"){var na=(a.구분==="신차")?0:1,nb=(b.구분==="신차")?0:1;if(na!==nb)return na-nb;}
-    /* 추천순: 프로모션 > 재고 많은 순 > 차량가 낮은 순 */
+    /* 추천순: 신차 우선 > 프로모션 > 재고 많은 순 > 차량가 낮은 순 (되도록 신차를 먼저 노출) */
+    var sa=(a.구분==="신차")?0:1, sb=(b.구분==="신차")?0:1;
+    if(sa!==sb)return sa-sb;
     var ra=hasPromo(a)?0:1, rb=hasPromo(b)?0:1;
     if(ra!==rb)return ra-rb;
     if((b.재고수||0)!==(a.재고수||0))return (b.재고수||0)-(a.재고수||0);
@@ -1552,11 +1554,17 @@ function 차량그룹(list){
   var map={},order=[];
   list.forEach(function(v){
     var k=v.모델||v.시리즈명||v.모델명;if(!k)return;
-    if(!map[k]){map[k]={model:k,제조사:v.제조사,유종:v.유종,차급:차급of(v),rep:v,min:(v.가격||0),count:0};order.push(k);}
+    var isNew=(v.구분==="신차");
+    if(!map[k]){map[k]={model:k,제조사:v.제조사,유종:v.유종,차급:차급of(v),rep:v,min:(v.가격||0),repNew:isNew,count:0};order.push(k);}
     map[k].count++;
-    if((v.가격||0)&&(!map[k].min||(v.가격||0)<map[k].min)){map[k].min=v.가격;map[k].rep=v;}
+    var g=map[k];
+    /* 대표 차량: 되도록 신차 우선 → 같은 구분이면 최저가 */
+    var better=(isNew&&!g.repNew)||(isNew===g.repNew&&(v.가격||0)&&(!g.min||(v.가격||0)<g.min));
+    if(better){g.rep=v;g.min=(v.가격||0);g.repNew=isNew;g.유종=v.유종;g.차급=차급of(v);g.제조사=v.제조사;}
   });
-  return order.map(function(k){return map[k];});
+  var groups=order.map(function(k){return map[k];});
+  groups.sort(function(a,b){return (a.repNew?0:1)-(b.repNew?0:1);});   /* 신차 대표 그룹을 먼저 (안정 정렬) */
+  return groups;
 }
 function 차량후보(){
   var list=CATALOG.slice();
