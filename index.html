@@ -259,6 +259,8 @@ body[data-view="plan"] .sec-result{animation:viewIn .26s ease both}
 .vtchip:hover{border-color:var(--blue-200);color:var(--blue-deep)}
 .vtchip.on{background:var(--blue);color:#fff;border-color:var(--blue)}
 .vcars{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--s3);max-width:960px;margin:0 auto}
+.vsec-h{max-width:960px;margin:var(--s5) auto var(--s2);font-size:var(--fs-sm);font-weight:800;color:var(--blue-deep);display:flex;align-items:center;gap:8px}
+.vsec-h::after{content:"";flex:1;height:1px;background:var(--line-soft)}
 .vcard{display:flex;flex-direction:column;align-items:center;text-align:center;gap:4px;background:var(--card);border:1px solid var(--line);border-radius:var(--r-lg);padding:var(--s4);cursor:pointer;transition:border-color .15s,box-shadow .15s}
 .vcard:hover{border-color:var(--blue);box-shadow:var(--sh-2)}
 .vc-photo{width:100%;height:120px;border-radius:var(--r);overflow:hidden;background:linear-gradient(180deg,var(--blue-50),var(--card));display:flex;align-items:center;justify-content:center;margin-bottom:6px}
@@ -268,7 +270,7 @@ body[data-view="plan"] .sec-result{animation:viewIn .26s ease both}
 .vc-brand{font-size:var(--fs-cap);font-weight:600;color:var(--ink-sub)}
 .vc-btn{margin-top:8px;border:1px solid var(--blue-200);background:var(--blue-50);color:var(--blue-deep);font-size:var(--fs-cap);font-weight:800;padding:8px 14px;border-radius:var(--r-pill);cursor:pointer;transition:all .14s}
 .vcard:hover .vc-btn{background:var(--blue);color:#fff;border-color:var(--blue)}
-.vmore-wrap{grid-column:1/-1;text-align:center;margin-top:var(--s2)}
+.vmore-wrap{text-align:center;margin-top:var(--s2)}
 .vall{text-align:center;margin-top:var(--s5)}
 .qskip{text-align:center;margin-top:var(--s4);font-size:var(--fs-cap);color:var(--ink-sub);font-weight:600}
 .nlink{border:0;background:transparent;color:var(--blue);font-size:var(--fs-cap);font-weight:700;text-decoration:underline;cursor:pointer}
@@ -716,6 +718,12 @@ body[data-view="plan"] .sec-result{animation:viewIn .26s ease both}
 .spec .tot dd{color:var(--blue-deep)}
 .spec.sub{border-top:0;margin-bottom:var(--s1)}
 .spec.sub .tot2 dd{color:var(--ink-sub)}
+.spec dd .dep-note{font-size:var(--fs-cap);font-weight:700;color:var(--blue);white-space:normal}
+.pcard.pick .spec dd,.pcard.pick .price .amt{color:var(--blue-deep)}
+/* 상품 한 줄 특징 (모든 카드 동일 위치) */
+.pfeature{margin-top:var(--s2);font-size:var(--fs-sm);font-weight:700;color:var(--ink);line-height:1.4}
+/* 카드 높이 통일: 특징 아래 공간을 채워 상세조건·CTA를 하단 정렬 */
+.pcard .moreBtn{margin-top:auto}
 
 /* 혜택 · 상세 토글 */
 .perks{font-size:var(--fs-cap);color:var(--ink-sub);font-weight:600;padding:var(--s1) 0 0;
@@ -1271,6 +1279,20 @@ function 상품장점(prod){
     ["만기 반납","계약 종료 후 차량을 반납할 수 있어요."],
     ["장기 이용에 적합","차량 소유 부담 없이 정해진 기간 동안 안정적으로 이용하기 좋아요."]];
 }
+/* 카드 한 줄 특징 — 상품별로 이용 방식이 바로 이해되도록 (겹치지 않게 구분) */
+function 상품특징(prod,v){
+  if(prod==="동반차(구입형)")return "오래 타고, 계약이 끝나면 내 차";
+  if(prod==="구입형리스")return "일반 번호판으로 이용하고, 계약이 끝나면 내 차";
+  if(prod==="6&12렌트"||prod==="월렌트")return "필요한 기간만 짧고 유연하게";
+  if(믿음상품.indexOf(prod)>=0)return "기존 고객을 위한 전용 상품";
+  return "정해진 기간 이용하고, 만기에는 반납";   /* 동반차 · 동반차리스 등 */
+}
+/* 만기 인수금 표시 (모든 카드 동일 위치) — 구입형은 보증금=만기일 때 '보증금으로 준비' 표기 */
+function 만기표시HTML(v,prod,m){
+  var 만기액=만기인수of(v,prod,m), 보증액=보증금액of(v,prod,m,v.구분);
+  if(!(만기액>0))return '해당 없음';
+  return won(만기액)+'원'+((구입형(prod)&&보증액===만기액)?' <span class="dep-note">· 보증금으로 준비</span>':'');
+}
 function prodPriority(prod){ return (prod in 상품순서)?상품순서[prod]:9; }
 /* ===== 차량 대표 이미지 (제조사 공식) =====
    키: 모델명에 포함된 문자열(공백 무시·대문자). 새 모델은 여기에 한 줄 추가하면 됨. */
@@ -1465,6 +1487,9 @@ function showNeedsView(){setView("needs");renderNeeds();_toTop();}   /* 답변/�
 function showVehicleSearch(){_needsStep=NEEDS_Q.length;setView("needs");renderNeeds();_toTop();}   /* 니즈는 유지하고 차량 선택 단계로 */
 /* 니즈의 렌트/리스 선택 → 결과 계약형태(형태)로 동기화 (rent→장기 · lease→리스 · all→전체) */
 function 형태동기화(){var f=needsState.form;형태=(f==="rent")?"장기":(f==="lease")?"리스":"전체";}
+/* 니즈의 신차/중고 선택 → 구분으로 동기화 (new→신차 · used→중고 · all/미선택→전체) */
+function 조건동기화(){var c=needsState.vehicleCondition;구분=(c==="new")?"신차":(c==="used")?"중고":"전체";}
+function 차량매칭(v){var c=needsState.vehicleCondition;if(!c||c==="all")return true;return c==="new"?(v.구분==="신차"):(v.구분==="중고");}
 function showVehicleView(){
   setView("vehicle");updateNeedsChip();
   try{window.scrollTo({top:_vehScrollY||0,behavior:"instant"});}catch(e){window.scrollTo(0,_vehScrollY||0);}
@@ -1484,10 +1509,15 @@ function 조건으로이동(){showVehicleView();}
    · 답변은 needsState 로만 관리, 기존 계산/필터/상품 로직과 분리
    · 진단은 '추천 방향'만 정하고, STEP2 에서 모든 필터·상품은 그대로 제공
    ===================================================================== */
-var needsState={usage:null,priority:null,ownership:null,form:null};   /* usage · priority · ownership · form:rent/lease/all */
+var needsState={vehicleCondition:null,usage:null,priority:null,ownership:null,form:null};   /* vehicleCondition:new/used/all · usage · priority · ownership · form:rent/lease/all */
 var _needsStep=0;                                           /* 0..N-1=질문, N=차량 선택 */
 var _needQ="",_needCat="전체",_needShowAll=false;            /* Q4 차량 검색 상태 (검색어·차종·더보기) */
 var NEEDS_Q=[
+  {key:"vehicleCondition",q:"어떤 차량을 찾고 있으세요?",compact:true,opts:[
+    {v:"new",t:"신차"},
+    {v:"used",t:"중고(재렌트)"},
+    {v:"all",t:"둘 다"}
+  ]},
   {key:"usage",q:"차량을 어떻게 이용하고 싶으세요?",opts:[
     {v:"long",t:"오래 타고 싶어요",d:"마음에 드는 차량이라면 장기간 이용하고 싶어요.",b:"내 차로 가져가는 것도 고려"},
     {v:"swap",t:"몇 년 타고 바꾸고 싶어요",d:"일정 기간 이용한 뒤 새로운 차량으로 바꾸고 싶어요.",b:"반납 · 교체 중심"},
@@ -1582,13 +1612,13 @@ function needsResultHTML(){
   if(t==="buy"){
     var b=[
       ["월 부담 분산","60개월 등 장기 이용으로 월 납입 부담을 나눌 수 있어요."],
-      ["만기 인수 가능","계약 종료 후 차량을 인수해 계속 이용할 수 있어요."],
+      ["계약이 끝나면 내 차","계약기간 종료 후 차량을 인수해 내 차로 계속 이용할 수 있어요."],
       ["장기 이용에 적합","마음에 드는 차량을 오래 이용하려는 고객에게 적합해요."]
     ];
     return '<div class="ntype">'+
       '<span class="eyebrow">YOUR HARMONY TYPE</span>'+
-      '<h2>오래 이용하면서 차량 인수까지 고려한다면<br><b>구입형</b>이 잘 맞아요</h2>'+
-      '<p class="ntype-sub">월 부담을 나눠 차량을 이용하고, 계약 종료 후에는 차량 인수까지 고려할 수 있는 방식이에요.</p>'+
+      '<h2>오래 이용하고 계약이 끝나면 내 차까지 생각한다면<br><b>구입형</b>이 잘 맞아요</h2>'+
+      '<p class="ntype-sub">월 부담을 나눠 차량을 이용하고, 계약 종료 후 차량을 인수하는 방식이에요.</p>'+
       '<div class="nbenefits">'+b.map(function(x){return '<div class="nben"><div class="nb-t"><i>✓</i>'+esc(x[0])+'</div><div class="nb-d">'+esc(x[1])+'</div></div>';}).join("")+'</div>'+
       '<div class="nprod">고객님의 이용 성향에는 <b>구입형 상품</b>이 잘 맞을 수 있어요.</div>'+
       '<div class="nnote">'+진단이유()+(low60()?'<br><span style="color:var(--ink-mute)">※ 이용기간이 길어질수록 총액이 아니라 <b>월 납입 부담</b>이 낮아집니다. 실제 48/60개월 금액은 차량 선택 후 확인돼요.</span>':'')+'</div>'+
@@ -1613,11 +1643,12 @@ function needsResultHTML(){
 }
 /* ===== Q4 — 원하는 차량 찾기 (같은 니즈 흐름 안에서 · 실제 CATALOG 데이터 사용) ===== */
 function 니즈요약칩(){
-  var m={usage:{long:"오래 이용",swap:"교체·반납 선호",unsure:"이용방식 탐색"},
+  var m={vehicleCondition:{new:"신차",used:"중고(재렌트)",all:"신차·중고"},
+    usage:{long:"오래 이용",swap:"교체·반납 선호",unsure:"이용방식 탐색"},
     priority:{low_monthly:"월 부담 중요",normal_term:"적당한 기간",unsure:"기간 유연"},
     ownership:{own:"인수 고려",return:"반납 선호",unsure:"인수 미정"},
     form:{rent:"렌트",lease:"리스",all:"렌트·리스"}};
-  var out=[];["usage","priority","ownership","form"].forEach(function(k){var v=needsState[k];if(v&&m[k][v])out.push(m[k][v]);});
+  var out=[];["vehicleCondition","usage","priority","ownership","form"].forEach(function(k){var v=needsState[k];if(v&&m[k][v])out.push(m[k][v]);});
   return out;
 }
 function 니즈선택리스트(){   /* 고객이 실제로 고른 답변 문구 (추천 이유 체크리스트용) */
@@ -1641,16 +1672,17 @@ function 차량그룹(list){
   groups.sort(function(a,b){return (a.repNew?0:1)-(b.repNew?0:1);});   /* 신차 대표 그룹을 먼저 (안정 정렬) */
   return groups;
 }
-function 차량후보(){
-  var list=CATALOG.slice();
+function _차량필터(){   /* 검색어/차종 + 신차·중고 조건까지 반영한 실제 후보 목록 */
+  var list=CATALOG.filter(차량매칭);
   if(_needQ){var q=_needQ.toLowerCase();
     list=list.filter(function(v){return 검색맞음(v,_needQ)||String(v.모델||"").toLowerCase().indexOf(q)>=0;});}
   else if(_needCat&&_needCat!=="전체"){
     if(_needCat==="전기차")list=list.filter(function(v){return v.유종==="전기";});
     else list=list.filter(function(v){return 차급of(v)===_needCat;});
   }
-  return 차량그룹(list);
+  return list;
 }
+function 차량후보(){return 차량그룹(_차량필터());}   /* 자동완성용 (신차 우선 정렬) */
 function vehicleSearchHTML(){
   var chips=니즈요약칩();
   var summary=chips.length?('<div class="nsum"><span class="nsum-lb">나의 이용 스타일</span>'+
@@ -1669,23 +1701,39 @@ function vehicleSearchHTML(){
       '</div><div class="vauto" id="needAuto"></div></div>'+
     '<div class="vor"><span>또는 차종으로 찾아보세요</span></div>'+
     typechips+
-    '<div class="vcars" id="needCars"></div>'+
+    '<div id="needCars"></div>'+
     '<div class="vall"><button type="button" class="nlink" data-allcars>원하는 차량이 없나요? 전체 차량 보기 →</button></div>';
+}
+function _vcardHTML(g){
+  var idv=vid(g.rep);
+  return '<div class="vcard" data-selcar="'+esc(idv)+'">'+
+    (사진HTML(g.rep,'vc-photo')||'<div class="vc-photo vc-noimg"><span>'+esc(g.model)+'</span></div>')+
+    '<div class="vc-model">'+esc(g.model)+'</div>'+
+    '<div class="vc-brand">'+esc(g.제조사||"")+' · '+esc(g.차급)+(g.count>1?(' · '+g.count+'개 트림'):'')+'</div>'+
+    '<button type="button" class="vc-btn" data-selcar="'+esc(idv)+'">이 차량으로 견적보기 →</button>'+
+  '</div>';
+}
+function _vsection(title,groups){
+  if(!groups.length)return '';
+  var showN=_needShowAll?groups.length:6, shown=groups.slice(0,showN);
+  return (title?'<div class="vsec-h">'+esc(title)+'</div>':'')+
+    '<div class="vcars">'+shown.map(_vcardHTML).join("")+'</div>'+
+    (groups.length>showN?('<div class="vmore-wrap"><button type="button" class="nlink" data-morecars>더 많은 차량 보기 ('+(groups.length-showN)+') ↓</button></div>'):'');
 }
 function renderVehicleCards(){
   var box=byId("needCars");if(!box)return;
-  var groups=차량후보();
-  if(!groups.length){box.innerHTML='<div class="empty">조건에 맞는 차량이 없어요. 검색어나 차종을 바꿔보세요.</div>';return;}
-  var showN=_needShowAll?groups.length:6, shown=groups.slice(0,showN);
-  box.innerHTML=shown.map(function(g){
-    var idv=vid(g.rep);
-    return '<div class="vcard" data-selcar="'+esc(idv)+'">'+
-      (사진HTML(g.rep,'vc-photo')||'<div class="vc-photo vc-noimg"><span>'+esc(g.model)+'</span></div>')+
-      '<div class="vc-model">'+esc(g.model)+'</div>'+
-      '<div class="vc-brand">'+esc(g.제조사||"")+' · '+esc(g.차급)+(g.count>1?(' · '+g.count+'개 트림'):'')+'</div>'+
-      '<button type="button" class="vc-btn" data-selcar="'+esc(idv)+'">이 차량으로 견적보기 →</button>'+
-    '</div>';
-  }).join("")+(groups.length>showN?('<div class="vmore-wrap"><button type="button" class="nlink" data-morecars>더 많은 차량 보기 ('+(groups.length-showN)+') ↓</button></div>'):'');
+  var list=_차량필터(), cond=needsState.vehicleCondition, html="";
+  if(cond==="all"){   /* 둘 다: 신차 먼저, 그다음 중고(재렌트) — 시각적으로 구분 */
+    var 신=차량그룹(list.filter(function(v){return v.구분==="신차";}));
+    var 중=차량그룹(list.filter(function(v){return v.구분==="중고";}));
+    if(!신.length&&!중.length){box.innerHTML='<div class="empty">조건에 맞는 차량이 없어요. 검색어나 차종을 바꿔보세요.</div>';return;}
+    html=_vsection("신차",신)+_vsection("중고(재렌트)",중);
+  }else{
+    var groups=차량그룹(list);
+    if(!groups.length){box.innerHTML='<div class="empty">조건에 맞는 차량이 없어요. 검색어나 차종을 바꿔보세요.</div>';return;}
+    html=_vsection("",groups);
+  }
+  box.innerHTML=html;
 }
 function renderNeedAuto(){
   var box=byId("needAuto");if(!box)return;
@@ -1701,7 +1749,7 @@ function renderNeedAuto(){
 /* STEP2 상단 chip — 진단 방향을 작게 이어붙임 */
 function updateNeedsChip(){
   var el=byId("needsChip");if(!el)return;
-  if(!(needsState.usage||needsState.priority||needsState.ownership)){el.classList.add("off");return;}
+  if(!(needsState.vehicleCondition||needsState.usage||needsState.priority||needsState.ownership||needsState.form)){el.classList.add("off");return;}
   var t=진단타입(),txt=t==="buy"?"구입형을 우선 비교 중":(t==="return"?"반납 · 교체형 조건으로 비교 중":"여러 이용방법을 함께 비교 중");
   el.textContent="🧭 "+txt;el.classList.remove("off");
 }
@@ -1722,7 +1770,10 @@ byId("needsBody").addEventListener("click",function(e){
   if(e.target.closest("[data-allcars]")){showVehicleView();return;}
   /* 질문 카드 선택 */
   var pick=e.target.closest("[data-need]");
-  if(pick){needsState[NEEDS_Q[_needsStep].key]=pick.getAttribute("data-need");if(NEEDS_Q[_needsStep].key==="form")형태동기화();renderNeeds();return;}
+  if(pick){var k=NEEDS_Q[_needsStep].key;needsState[k]=pick.getAttribute("data-need");
+    if(k==="form")형태동기화();
+    if(k==="vehicleCondition"){조건동기화();if(선택차&&!차량매칭(선택차))선택차=null;}   /* 신차/중고 변경 시 조건 불일치 차량은 해제 */
+    renderNeeds();return;}
   if(e.target.closest("[data-neednext]")){var b=e.target.closest("[data-neednext]");if(b.hasAttribute("disabled"))return;
     if(!needsState[NEEDS_Q[_needsStep].key])return;_needsStep=Math.min(NEEDS_Q.length,_needsStep+1);renderNeeds();_toTop();return;}
   if(e.target.closest("[data-needprev]")){_needsStep=Math.max(0,_needsStep-1);renderNeeds();_toTop();return;}
@@ -1773,6 +1824,7 @@ function 목록에보이기(el){
 }
 function selectCar(x){선택차=x;
   if(needsState.form)형태동기화();   /* 니즈에서 고른 렌트/리스를 결과 계약형태로 반영 */
+  if(needsState.vehicleCondition)조건동기화();   /* 신차/중고 조건을 구분에 반영 */
   var selEl=null;
   document.querySelectorAll(".scard").forEach(function(e){
     var on=e.getAttribute("data-vid")===vid(x);
@@ -1896,9 +1948,9 @@ function 구입형추천이유(v,prod,m){
   if(needsState.ownership==="own") out.push(["계약이 끝나면 내 차","계약기간 종료 후 차량을 인수해 내 차로 계속 이용할 수 있어요."]);
   var dep=보증금액of(v,prod,m,v.구분),mat=만기인수of(v,prod,m);
   if(dep>0&&mat>0&&dep===mat) out.push(["초기 보증금으로 인수까지 준비해요","처음 납부한 보증금이 만기 인수금 역할을 해요."]);
-  if(needsState.form==="rent") out.push(["렌트로 이용하는 구입형이에요","렌트로 이용하면서 계약 종료 후 차량 인수까지 고려할 수 있어요."]);
-  else if(needsState.form==="lease") out.push(["리스로 이용하는 구입형이에요","리스로 이용하면서 계약 종료 후 차량 인수까지 고려할 수 있어요."]);
-  if(!out.length) out.push(["구입형이 잘 맞아요","월 부담을 나누며 이용하고, 계약 종료 후 차량 인수까지 고려할 수 있어요."]);
+  if(needsState.form==="rent") out.push(["렌트로 이용하는 구입형이에요","렌트로 이용하고, 계약 종료 후 차량을 인수하는 상품이에요."]);
+  else if(needsState.form==="lease") out.push(["일반 번호판으로 이용해요","하·허·호가 아닌 일반 번호판으로 이용하고, 계약 종료 후 차량을 인수하는 상품이에요."]);
+  if(!out.length) out.push(["구입형이 잘 맞아요","월 부담을 나누며 이용하고, 계약 종료 후 차량을 인수하는 상품이에요."]);
   return out;
 }
 /* 구입형 보증금 구조: 초기 보증금이 만기 인수금 역할 (실제 데이터 기준 · 두 값이 같을 때만 '=' 표기) */
@@ -1919,7 +1971,7 @@ function 일반비교HTML(v,prod,m){                       /* 동일 차량·동
   var diff=Math.abs(구입-일반);
   return '<div class="cmp">'+
     '<div class="cmp-row"><span>일반 장기렌트</span><b>월 '+won(일반)+'원 · 만기 반납</b></div>'+
-    '<div class="cmp-row on"><span>'+esc(표시명[prod]||prod)+'</span><b>월 '+won(구입)+'원 · 만기 인수 가능</b></div>'+
+    '<div class="cmp-row on"><span>'+esc(표시명[prod]||prod)+'</span><b>월 '+won(구입)+'원 · 만기 인수</b></div>'+
     '<div class="cmp-note">월 '+won(diff)+'원 차이로 만기 인수 선택권</div></div>';
 }
 /* 상품 카드 — 요약(기본) + 상세(접힘) 2단 구조
@@ -1935,8 +1987,7 @@ function 상품카드(v,c,budget,isPick){
   window._cardData[id]={terms:{},rec:rec.m,prod:prod};terms.forEach(t=>window._cardData[id].terms[t.m]=t.v);
   /* 고객 화면 추천 표시는 MY HARMONY PICK 하나로 통일 (BEST 배지 제거) */
   var hb=isPick?'<span class="hbadge pick">MY PICK</span>'
-    :owner?'<span class="hbadge owner">기존 고객</span>'
-    :buy?'<span class="hbadge buy">구입형</span>':'';
+    :owner?'<span class="hbadge owner">기존 고객</span>':'';
   /* 구입형: 48/60 중 월 납입료가 더 낮은 기간에만 '추천' 표시 (무조건 60에 붙이지 않음) */
   var lowM=null;
   if(buy){var _t48=terms.find(t=>t.m===48),_t60=terms.find(t=>t.m===60);
@@ -1956,43 +2007,28 @@ function 상품카드(v,c,budget,isPick){
     '<div class="cprow"><span class="cpl">보증금</span><div class="cp" data-cp="dep">'+depBtns+'</div>'+depHint+'</div>'+
     '<div class="cprow"><span class="cpl">선수금</span><div class="cp" data-cp="adv">'+[0,10,20,30,40,50].map(p=>'<button type="button" data-v="'+p+'"'+(p===선수율()?' class="on"':'')+'>'+p+'%</button>').join("")+'</div></div>'+
     '</div>'):'';
+  /* ===== 모든 상품 동일 구조 : 월 납입료 → 계약기간 → 보증금 → 만기 인수금 → 특징 → 상세 → CTA ===== */
   var priceBlk='<div class="price"><div class="amt" data-amt>'+won(rec.v)+'<span class="u">원</span></div>'+
-    '<div class="per" data-per>월 납입료 (VAT 포함) · '+rec.m+'개월 기준</div></div>';
-  var perksBlk='<div class="perks">'+esc(혜택태그(prod).slice(0,2).join(" · "))+'</div>';
-  /* 일반 상품 요약: 같은 4행 (계약기간·보증금·만기인수금·총납입) — 카드 높이·숫자 위치 정렬 */
+    '<div class="per" data-per>월 납입료 (VAT 포함)</div></div>';
   var spec='<dl class="spec">'+
     '<div><dt>계약기간</dt><dd data-term>'+rec.m+'개월</dd></div>'+
     '<div><dt>보증금</dt><dd data-dep>'+won(보증액)+'원</dd></div>'+
-    '<div><dt>만기 인수금</dt><dd data-mat>'+(만기액>0?won(만기액)+'원':'해당 없음')+'</dd></div>'+
-    '<div class="tot"><dt>총 납입 예상액</dt><dd data-total>'+won(tot)+'원</dd></div>'+
+    '<div><dt>만기 인수금</dt><dd data-mat>'+만기표시HTML(v,prod,rec.m)+'</dd></div>'+
   '</dl>';
-  /* 구입형 요약: 가치제안 → 월납입(60기준) → 48대비 월부담차이 → 만기인수금 → 차량가/보증금
-     (첫 화면에서 3초 안에 ①월 얼마 ②60개월 월부담↓ ③만기 인수금 을 알 수 있게) */
-  var buySummary=
-    '<div class="valueprop">'+esc(상품설명[prod]||'')+'</div>'+
-    priceBlk+
-    '<div class="burden'+(월부담차이(v,prod,rec.m)>0?'':' off')+'" data-burden>'+부담차이HTML(v,prod,rec.m)+'</div>'+
-    '<div class="depbox" data-acquire>'+초기보증HTML(v,prod,rec.m)+'</div>'+
-    '<dl class="spec buyspec">'+
-      '<div><dt>차량가</dt><dd>'+won(v.가격)+'원</dd></div>'+
-    '</dl>'+
-    '<span data-term hidden>'+rec.m+'개월</span>';   /* data-term 훅 유지 (기간변경 핸들러 호환) */
-  var midBody=buy?(buySummary+perksBlk):(priceBlk+spec+perksBlk);
-  var why='';   /* 고객 화면 BEST 개념 제거 → 추천 사유는 MY HARMONY PICK 패널에서만 */
-  /* 구입형은 총 납입 예상액을 상세로 이동(첫 화면 과다강조 방지). 일반 상품은 요약에 유지 */
-  var totalRowSub=buy?('<div class="tot"><dt>총 납입 예상액</dt><dd data-total>'+won(tot)+'원</dd></div>'):'';
+  var feature='<div class="pfeature">'+esc(상품특징(prod,v))+'</div>';
+  var midBody=priceBlk+spec+feature;
+  /* 상세조건: 총 납입 예상액·선수금·만기 인수 시 총액·보증금/선수금 선택(구입형)·기간 선택·비교(구입형) */
   var cmpBlk=buy?일반비교HTML(v,prod,rec.m):'';
   var detail='<div class="pdetail">'+
     '<dl class="spec sub">'+
       '<div><dt>선수금 <span class="dtn">'+(buy?'선택':'해당 없음')+'</span></dt><dd data-adv>'+(선수액>0?won(선수액)+'원':'0원')+'</dd></div>'+
-      totalRowSub+
+      '<div class="tot"><dt>총 납입 예상액</dt><dd data-total>'+won(tot)+'원</dd></div>'+
       (만기액>0?'<div class="tot2"><dt>만기 인수 시 총액</dt><dd data-total2>'+won(tot+만기액)+'원</dd></div>':'<span data-total2></span>')+
     '</dl>'+
     (save>0?'<div class="save" data-save>월 예산 대비 '+won(save)+'원 여유<small>보증금·선수금 조건에 따라 실제 부담은 달라져요</small></div>':'<span data-save></span>')+
     cardpills+
     '<div class="termsel"><select data-sel aria-label="계약 개월수 선택">'+opts+'</select></div>'+
     (buy?('<div class="cmpwrap" data-cmp>'+cmpBlk+'</div>'):'')+
-    why+
   '</div>';
   var isOpen=!!_openProd[prod];
   return '<div class="pcard'+(buy?" buy":"")+(isPick?" pick":"")+(isOpen?" open":"")+'" data-id="'+id+'" data-prod="'+prod+'">'+
@@ -2038,7 +2074,11 @@ function pickPanelHTML(v,pick){
   var info='';   /* 중복 안내 제거 (상단 니즈 칩 + 추천 이유로 충분) */
   if(pick.type==="buy"){
     var burden=부담차이HTML(v,prod,m);   /* 60개월일 때 48대비 월부담차이 (실제 계산값) */
-    var ben=[
+    var ben=(prod==="구입형리스")?[
+      ["일반 번호판 이용","하·허·호가 아닌 일반 번호판으로 이용해요."],
+      ["내 차처럼 이용","리스 기간 동안 일반 번호판으로 자연스럽게 이용할 수 있어요."],
+      ["계약 종료 후 인수","계약기간이 끝나면 차량을 인수하는 상품이에요."]
+    ]:[
       ["월 부담을 나눠서","60개월 이용으로 월 납입 부담을 나눌 수 있어요."],
       ["초기 보증금으로 인수까지 준비","처음 납부한 보증금이 만기 인수금에 활용돼요."],
       ["계약이 끝나면 내 차","계약기간 종료 후 차량을 인수해 내 차로 계속 이용할 수 있어요."]
@@ -2056,7 +2096,7 @@ function pickPanelHTML(v,pick){
       픽미니비교(v,c)+
       '<div class="pk-acq depbox">'+초기보증HTML(v,prod,m)+
         '<div class="pa-car">현재 차량가 '+won(v.가격)+'원</div></div>'+
-      '<div class="pk-vp">월 부담은 나누고, 초기 보증금으로 만기 인수까지 준비.</div>'+
+      '<div class="pk-vp">'+(prod==="구입형리스"?'일반 번호판으로 내 차처럼 이용하고, 계약이 끝나면 내 차.':'월 부담은 나누고, 초기 보증금으로 만기 인수까지 준비.')+'</div>'+
       '<div class="pk-reasons"><div class="pk-rt">왜 구입형을 추천하나요?</div>'+
         '<ul class="pk-rlist">'+이유.map(function(x){return '<li><i>✓</i><div><b>'+esc(x[0])+'</b><span>'+esc(x[1])+'</span></div></li>';}).join("")+'</ul>'+
         '<div class="pk-legal">※ 계약조건 충족 및 만기 인수 절차 완료 기준</div></div>'+
@@ -2145,14 +2185,12 @@ byId("products").addEventListener("change",function(e){
   if(q("[data-term]"))q("[data-term]").textContent=m+"개월";
   if(q("[data-dep]"))q("[data-dep]").textContent=won(보증액)+"원";
   if(q("[data-adv]"))q("[data-adv]").textContent=(선수액>0?won(선수액)+"원":"0원");
-  if(q("[data-mat]"))q("[data-mat]").textContent=(만기액>0?won(만기액)+"원":"해당 없음");
+  if(q("[data-mat]"))q("[data-mat]").innerHTML=만기표시HTML(v,prod,m);
   if(q("[data-total]"))q("[data-total]").textContent=won(tot)+"원";
   var t2=q("[data-total2]");
   if(t2)t2.outerHTML=(만기액>0?'<div class="tot2"><dt>만기 인수 시 총액</dt><dd data-total2>'+won(tot+만기액)+'원</dd></div>':'<span data-total2></span>');
-  /* 구입형: 48대비 월부담 차이 · 만기 인수 강조 · 일반렌트 비교 즉시 갱신 */
+  /* 구입형: 상세조건 안의 일반렌트 비교 즉시 갱신 */
   if(구입형(prod)){
-    var bd=q("[data-burden]"); if(bd){var bh=부담차이HTML(v,prod,m);bd.innerHTML=bh;bd.classList.toggle("off",!bh);}
-    var aq=q("[data-acquire]"); if(aq){aq.innerHTML=초기보증HTML(v,prod,m);}   /* 초기 보증금 = 만기 인수금 구조 갱신 */
     var cm=q("[data-cmp]"); if(cm)cm.innerHTML=일반비교HTML(v,prod,m);
   }
   var b=budgetVal(),sv=q("[data-save]");
@@ -2447,7 +2485,7 @@ byId("advToggle").onclick=function(){
 byId("ftoggle").onclick=()=>{var f=byId("filters");f.classList.toggle("collapsed");byId("ftoggle").textContent=f.classList.contains("collapsed")?"필터 열기":"필터 닫기";};
 /* ===== ↻ 처음으로 — 모든 견적 상태 초기화 후 첫 질문으로 (다른 차량 찾기·이전 과는 별개) ===== */
 function 전체초기화(){
-  needsState={usage:null,priority:null,ownership:null,form:null};
+  needsState={vehicleCondition:null,usage:null,priority:null,ownership:null,form:null};
   _needsStep=0;_needQ="";_needCat="전체";_needShowAll=false;
   선택차=null;_mideum=null;_보증=10;_선수=0;
   구분="전체";형태="전체";
