@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html lang="ko"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
@@ -1182,6 +1183,16 @@ body[data-view="compare"] .sec-compare{display:block;animation:viewIn .26s ease 
 @media(max-width:768px){.directBuyJourney{padding:20px 16px;margin-top:24px}.directBuyJourney h3{font-size:21px}.dbj-metrics{grid-template-columns:1fr}.dbj-row{grid-template-columns:.9fr 1fr 1fr}.dbj-row>div{padding:9px 7px;font-size:11px}.dbj-actions{flex-direction:column}.dbj-primary,.dbj-secondary{width:100%}}
 
 .nd-visual-step{margin-bottom:22px}.nd-step-title{display:block;margin-bottom:8px;font-size:12px;font-weight:900;color:var(--ink-sub)}.nd-search{width:100%;min-height:46px;border:1px solid var(--line);border-radius:12px;padding:10px 14px;font-size:14px;font-weight:700;margin-bottom:12px}.nd-brand-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:10px}.nd-brand-card{min-height:82px;border:1px solid var(--line);border-radius:14px;background:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;cursor:pointer;font-weight:800}.nd-brand-card:hover,.nd-brand-card.on,.nd-model-card:hover,.nd-model-card.on{border:2px solid var(--blue);background:var(--blue-50);color:var(--blue-deep)}.nd-brand-mark{height:42px;min-width:72px;padding:0 6px;border-radius:9px;background:#fff;display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:950}.nd-brand-mark img{max-width:72px;max-height:40px;object-fit:contain;display:block}.nd-model-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;max-height:370px;overflow:auto;padding:2px}.nd-model-card{border:1px solid var(--line);border-radius:14px;background:#fff;padding:10px;cursor:pointer;text-align:center;font-weight:800}.nd-model-img{height:82px;display:flex;align-items:center;justify-content:center;margin-bottom:5px}.nd-model-img img{max-width:100%;max-height:78px;object-fit:contain}.nd-model-ph{width:100%;height:72px;border-radius:10px;background:#f5f8fc;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;font-size:12px;color:#607086}.nd-model-ph b{font-size:14px;color:#18243a}.nd-model-ph small{font-size:10px;font-weight:700}.nd-flow-detail{grid-template-columns:repeat(3,minmax(0,1fr))}@media(max-width:768px){.nd-brand-grid{grid-template-columns:repeat(3,1fr)}.nd-model-grid{grid-template-columns:repeat(2,1fr)}.nd-flow-detail{grid-template-columns:1fr}}
+ 
+.direct-product-intro{margin:8px 0 22px;padding:16px 18px;border:1px solid var(--blue-200);background:var(--blue-50);border-radius:14px;display:flex;gap:8px;flex-direction:column}
+.direct-product-intro b{font-size:16px;color:var(--blue-deep)}
+.direct-product-intro span{font-size:13px;color:var(--ink-sub);font-weight:600}
+.direct-prod-section{margin:0 0 38px}
+.direct-prod-section.lease{padding-top:30px;border-top:2px solid var(--line-soft)}
+.direct-prod-head{margin:0 0 14px}
+.direct-prod-head>span{font-size:11px;font-weight:850;letter-spacing:.12em;color:var(--blue)}
+.direct-prod-head h3{margin:2px 0 4px;font-size:21px}
+.direct-prod-head p{margin:0;color:var(--ink-sub);font-size:13px;font-weight:600}
 </style></head>
 <body data-view="entry">
 <header class="top"><div class="cont hcont"><button class="homeLink" id="homeLink" type="button" aria-label="처음 화면으로"><img class="logo" src="data:image/png;base64,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" alt="하모니렌트카"><b>하모니렌트카</b></button><span class="sp">자체상품 비교견적</span>
@@ -1254,8 +1265,8 @@ body[data-view="compare"] .sec-compare{display:block;animation:viewIn .26s ease 
   </div>
 
   <div class="vehicleModeTabs" id="vehicleModeTabs" aria-label="차량 선택 방식">
-    <button type="button" class="on" data-vmode="stock"><b>보유 차량에서 찾기</b><small>현재 등록된 차량 중에서 선택</small></button>
-    <button type="button" data-vmode="direct"><b>신차 직접 견적내기</b><small>브랜드 → 모델 → 연료 → 트림 → 옵션 구성</small></button>
+    <button type="button" class="on" data-vmode="direct"><b>신차 직접 견적내기</b><small>브랜드 → 모델 → 연식 → 연료 → 트림 → 색상 → 옵션 구성</small></button>
+    <button type="button" data-vmode="stock"><b>즉시 출고 차량 찾기</b><small>즉시 출고 가능한 차량을 단계별로 찾아보기</small></button>
   </div>
   <div class="directNewPanel" id="directNewPanel" hidden>
     <div class="nd-head">
@@ -1267,24 +1278,106 @@ body[data-view="compare"] .sec-compare{display:block;animation:viewIn .26s ease 
     <div class="nd-visual-step"><label class="nd-step-title">01 브랜드</label><input id="ndBrandSearch" class="nd-search" placeholder="브랜드명을 입력하거나 아래에서 선택하세요"><div class="nd-brand-grid" id="ndBrandGrid"></div></div>
     <div class="nd-visual-step"><label class="nd-step-title">02 모델</label><input id="ndModelSearch" class="nd-search" placeholder="모델명을 입력하거나 아래에서 선택하세요" disabled><div class="nd-model-grid" id="ndModelGrid"></div></div>
     <div class="nd-flow nd-flow-detail">
-      <div class="nd-field"><label for="ndFuel">03 연료</label><select id="ndFuel" disabled></select></div>
-      <div class="nd-field"><label for="ndTrim">04 트림 / 세부모델</label><select id="ndTrim" disabled></select></div>
-      <div class="nd-field"><label for="ndOption">05 옵션 구성</label><select id="ndOption" disabled></select></div>
+      <div class="nd-field"><label for="ndYear">03 연식</label><select id="ndYear" disabled></select></div>
+      <div class="nd-field"><label for="ndFuel">04 연료</label><select id="ndFuel" disabled></select></div>
+      <div class="nd-field"><label for="ndTrim">05 트림 / 세부모델</label><select id="ndTrim" disabled></select></div>
+      <div class="nd-field"><label for="ndColor">06 색상</label><select id="ndColor" disabled></select></div>
+      <div class="nd-field"><label for="ndOption">07 옵션 구성</label><select id="ndOption" disabled></select></div>
     </div><select id="ndSeries" hidden></select>
     <div class="nd-preview" id="ndPreview" hidden></div>
     <div class="nd-actions"><button type="button" class="nd-go" id="ndGo" disabled>이 신차로 견적보기 →</button></div>
+    <div class="ndInquiry direct-inquiry">
+      <div><b>찾으시는 차량이 없나요?</b><span>목록에 없는 모델이나 원하는 옵션 구성이 있다면 담당자가 확인해드릴게요.</span></div>
+      <button type="button" class="nd-inquiry-btn" onclick="openInq()">문의하기</button>
+    </div>
     <div class="nd-note">※ 1단계에서는 옵션을 개별 추가·삭제하는 방식이 아니라, 원본 엑셀에 존재하는 실제 옵션 구성 중에서 선택합니다.</div>
   </div>
 
-  <div class="condPanel" id="stockCondPanel">
+  <div class="stockStepPanel" id="stockStepPanel">
+  <div class="directNewHead">
+    <span class="eyebrow">READY TO GO</span>
+    <h3>즉시 출고 차량 찾기</h3>
+    <p>조건을 먼저 정한 뒤, 실제 즉시 출고 차량을 브랜드부터 옵션 구성까지 순서대로 찾아보세요.</p>
+  </div>
+
+  <div class="stockTopFlow">
+    <div class="stockTopBlock">
+      <div class="stockTopTitle"><b>01</b><span><strong>월 납입료 범위</strong><small>원하는 월 납입 범위를 설정하세요</small></span></div>
+      <div class="budgetBox stockBudget">
+        <div class="rangeValues">
+          <div><div class="bnum"><input id="stBMinNum" type="number" min="0" max="500" step="1" value="0" inputmode="numeric"><span>만원</span></div><small>최소</small></div>
+          <div><div class="bnum"><input id="stBMaxNum" type="number" min="0" max="500" step="1" value="500" inputmode="numeric"><span>만원</span></div><small>최대</small></div>
+        </div>
+        <div class="rangeControl" id="stRangeControl" style="--start:0%;--end:100%">
+          <div class="rangeTrack"></div>
+          <input class="rangeMin" id="stBMin" type="range" min="0" max="500" step="5" value="0">
+          <input class="rangeMax" id="stBMax" type="range" min="0" max="500" step="5" value="500">
+        </div>
+        <div class="rangeLimits"><span>0</span><span>500만원</span></div>
+      </div>
+    </div>
+
+    <div class="stockTopBlock">
+      <div class="stockTopTitle"><b>02</b><span><strong>이용 조건</strong><small>렌트·리스와 희망 이용기간을 선택하세요</small></span></div>
+      <div class="stockChoiceRow" id="stForm">
+        <button type="button" data-f="전체" class="on">전체</button>
+        <button type="button" data-f="장기">장기렌트</button>
+        <button type="button" data-f="리스">리스</button>
+      </div>
+      <div class="stockTermWrap"><span>희망 이용기간</span><div class="stockChoiceRow compact" id="stTerm"></div></div>
+    </div>
+
+    <div class="stockTopBlock">
+      <div class="stockTopTitle"><b>03</b><span><strong>구분</strong><small>전체·신차·중고 중 선택하세요</small></span></div>
+      <div class="stockChoiceRow" id="stType">
+        <button type="button" data-t="전체" class="on">전체</button>
+        <button type="button" data-t="신차">신차</button>
+        <button type="button" data-t="중고">중고</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="stockVisualStep">
+    <label class="nd-step-title">04 브랜드</label>
+    <input id="stBrandSearch" class="nd-search" placeholder="브랜드명을 입력하거나 아래 로고에서 선택하세요">
+    <div class="nd-brand-grid" id="stBrandGrid"></div>
+  </div>
+
+  <div class="stockVisualStep">
+    <label class="nd-step-title">05 모델</label>
+    <input id="stModelSearch" class="nd-search" placeholder="모델명을 입력하거나 아래 차량에서 선택하세요" disabled>
+    <div class="nd-model-grid" id="stModelGrid"></div>
+  </div>
+
+  <div class="nd-flow nd-flow-detail stock-flow">
+    <div class="nd-field"><label for="stYear">06 연식</label><select id="stYear" disabled></select></div>
+    <div class="nd-field"><label for="stFuel">07 연료</label><select id="stFuel" disabled></select></div>
+    <div class="nd-field"><label for="stTrim">08 트림 / 세부모델</label><select id="stTrim" disabled></select></div>
+    <div class="nd-field"><label for="stColor">09 색상</label><select id="stColor" disabled></select></div>
+    <div class="nd-field"><label for="stOption">10 옵션 구성</label><select id="stOption" disabled></select></div>
+  </div>
+  <input id="stBrand" type="hidden"><input id="stModel" type="hidden">
+  <button type="button" class="nd-go stApply" id="stApply" disabled>선택한 즉시 출고 차량 보기 →</button>
+</div>
+<div class="stockGuide stockLegacy" id="stockGuide">
+    <div class="sgHead"><span class="eyebrow">AVAILABLE VEHICLES</span><h3>즉시 출고 차량 찾기</h3><p>차량명을 먼저 검색하고, 필요한 경우 조건을 더 좁혀보세요.</p></div>
+    <div class="sgSteps">
+      <div><b>01</b><span><strong>차량 검색</strong><small>모델명으로 빠르게 찾기</small></span></div>
+      <i>→</i>
+      <div><b>02</b><span><strong>조건 좁히기</strong><small>예산·기간·연료 등 선택</small></span></div>
+      <i>→</i>
+      <div><b>03</b><span><strong>차량 선택</strong><small>목록에서 원하는 차량 선택</small></span></div>
+    </div>
+  </div>
+  <div class="condPanel stockLegacy" id="stockCondPanel">
   <aside class="filters collapsed" id="filters">
-    <div class="fhead"><h3>조건 입력</h3><div class="fhead-r"><button class="freset" id="reset" type="button" title="필터 초기화">↻ 초기화</button><button class="ftoggle" id="ftoggle">필터 열기</button></div></div>
+    <div class="fhead"><h3>차량 검색 · 조건</h3><div class="fhead-r"><button class="freset" id="reset" type="button" title="필터 초기화">↻ 초기화</button><button class="ftoggle" id="ftoggle">필터 열기</button></div></div>
     <div class="fbody">
-      <div class="step"><span class="no">01</span><div><b>차량 찾기</b><small>원하는 차종을 검색하세요</small></div></div>
-      <div class="fld2"><span class="lb">차량 검색</span><input id="fSearch" type="text" placeholder="예: 카니발, 그랜저" autocomplete="off"></div>
+      <div class="step"><span class="no">01</span><div><b>어떤 차량을 찾으세요?</b><small>차량명을 입력하면 바로 목록이 좁혀져요</small></div></div>
+      <div class="fld2"><span class="lb">차량 검색</span><input id="fSearch" type="text" placeholder="예: 그랜저, 카니발, 쏘렌토" autocomplete="off"></div>
 
       <div class="fdiv"></div>
-      <div class="step"><span class="no">02</span><div><b>월 납입료 예산</b><small>매달 낼 수 있는 금액 범위예요</small></div></div>
+      <div class="step"><span class="no">02</span><div><b>월 납입료 범위</b><small>원하는 예산이 있다면 설정하세요</small></div></div>
       <div class="budgetBox">
         <div class="rangeValues">
           <div><div class="bnum"><input id="bMinNum" type="number" min="0" max="500" step="1" value="0" inputmode="numeric" aria-label="월 납입료 최소"><span>만원</span></div><small>최소</small></div>
@@ -1300,7 +1393,7 @@ body[data-view="compare"] .sec-compare{display:block;animation:viewIn .26s ease 
       </div>
 
       <div class="fdiv"></div>
-      <div class="step"><span class="no">03</span><div><b>이용 조건</b><small>원하는 계약 방식을 선택해주세요</small></div></div>
+      <div class="step"><span class="no">03</span><div><b>이용 조건</b><small>렌트·리스와 이용기간을 선택하세요</small></div></div>
       <div class="fld2"><span class="lb">계약 형태</span><div class="pills2 dark" id="segForm"><button type="button" data-f="전체" class="on">전체</button><button type="button" data-f="장기">장기렌트</button><button type="button" data-f="리스">리스</button></div></div>
       <div class="fld2" style="margin-bottom:0"><span class="lb">희망 이용기간 <span style="color:#98A2B3;font-weight:600">(미선택 = 자동)</span></span><div class="pills2 dark grid3" id="fTerm"></div></div>
 
@@ -1393,12 +1486,28 @@ if(typeof PRICELIST==='undefined'){window.PRICELIST={};}
 if(typeof PURCHASE==='undefined'){window.PURCHASE={};}
 /* ===== helpers ===== */
 const won=x=>x==null||isNaN(x)?"–":Math.round(x).toLocaleString("ko-KR");
+const round100k=x=>Math.round(Number(x||0)/100000)*100000;
 const man=x=>x==null?"–":Math.round(x/10000).toLocaleString("ko-KR")+"만";
 const uniq=a=>Array.from(new Set(a));
 const byId=id=>document.getElementById(id);
 const esc=s=>String(s==null?"":s).replace(/[<>&"]/g,c=>({"<":"&lt;",">":"&gt;","&":"&amp;",'"':"&quot;"}[c]));
 function 구입형(prod){return prod.indexOf("구입형")>=0;}
 function vid(v){return v.구분+"|"+v.code;}   /* 신차·중고가 코드를 공유하므로 (구분+코드)로 식별 */
+function 선택재고유닛(v){
+  if(!v||v.구분==="신차")return null;
+  var a=v.재고||[];
+  if(선택재고&&a.indexOf(선택재고)>=0)return 선택재고;
+  var root=PURCHASE[vid(v)]||{}, units=root.재고||{};
+  return a.find(function(u){return u.차량번호&&units[u.차량번호];})||null;
+}
+function 구입형엔트리(v){
+  var root=PURCHASE[vid(v)]||{};
+  if(v&&v.구분!=="신차"){
+    var u=선택재고유닛(v);return (u&&root.재고&&root.재고[u.차량번호])||{};
+  }
+  return root;
+}
+function 구입형메타(v){return 구입형엔트리(v)._meta||{};}
 /* ===== 렌트료관리 파일 조회 (비구입형 상품) =====
    PRICELIST 는 "차량번호(자산번호)" 단위로 값이 들어있고, 같은 라인업코드 그룹 안에서도
    차량마다 렌트료가 다릅니다(실측: 재고 2대 이상 55개 그룹 중 43개가 상이, 최대 월 31만원 차이).
@@ -1442,23 +1551,23 @@ function 최저월(v){
     Object.keys(g[prod]).forEach(function(m){var r=g[prod][m].료;if(r&&(mn==null||r<mn))mn=r;});});
   ["동반차(구입형)","구입형리스"].forEach(function(prod){
     if(!사용가능(v,prod))return;
-    var t=(PURCHASE[vid(v)]||{})[prod]; if(!t)return;
+    var t=구입형엔트리(v)[prod]; if(!t)return;
     Object.keys(t).forEach(function(k){var r=t[k]&&t[k].월;if(r&&(mn==null||r<mn))mn=r;});});
   _minPayCache[ck]=mn;return mn;
 }
 /* 선수금액: 비구입형은 데이터상 항상 0, 구입형은 차량가 x 선수율 */
 function 선수금액of(v,prod,m){
-  if(구입형(prod))return Math.round((v.가격||0)*선수율()/100);
+  if(구입형(prod))return Math.round((구입형메타(v).적용차량가||v.가격||0)*선수율()/100);
   var f=파일가(v,prod,m);return f?(f.선수||0):0;}
 /* ===== 구입형: 미리 계산된 값 조회 (PURCHASE 테이블 · 보증금율_선수금율 조합) ===== */
 /* 보증금 허용/최소 규칙 (데이터에서 결정 · 차량가 구간별) */
-function 리스허용(v){return (v.구입형리스보증허용&&v.구입형리스보증허용.length)?v.구입형리스보증허용:[10,15,20];}
+function 리스허용(v){var m=구입형메타(v),a=m.구입형리스보증허용||v.구입형리스보증허용;return (a&&a.length)?a:[10,15,20];}
 function 유효보증(v,prod){
-  if(prod==="동반차(구입형)")return v.구입형렌트보증||10;      /* 구입형렌트: 차량가 구간별 자동 고정 */
+  if(prod==="동반차(구입형)")return 구입형메타(v).구입형렌트보증||v.구입형렌트보증||10;      /* 적용차량가 구간별 자동 고정 */
   if(prod==="구입형리스"){var al=리스허용(v);return (al.indexOf(보증율())>=0)?보증율():al[0];}  /* 구입형리스: 최소 이상만 */
   return 보증율();}
 function 구입형료(v,prod,m){
-  var t=(PURCHASE[vid(v)]||{})[prod];if(!t)return null;
+  var t=구입형엔트리(v)[prod];if(!t)return null;
   var mm=m||48;                                  /* 계약개월(48/60)을 키에 포함 */
   var base=유효보증(v,prod)+"_"+선수율();
   return t[base+"_"+mm] || t[base+"_48"] || t[base] || null;}  /* 신·구 키 모두 대응 */
@@ -1621,7 +1730,7 @@ function renderTermPills(){
     return '<button type="button" data-m="'+o[0]+'"'+((String(window._term||"")===o[0])?' class="on"':'')+'>'+o[1]+'</button>';}).join("");
 }
 /* ===== 상태 ===== */
-let 구분="전체",형태="전체",선택차=null,_mideum=null;
+let 구분="전체",형태="전체",선택차=null,선택재고=null,_mideum=null;
 let _보증=10,_선수=0;
 function 보증율(){return _보증;} function 선수율(){return _선수;}
 const B_MIN=0,B_MAX=500;
@@ -1766,9 +1875,22 @@ function 부드럽게이동(el){
 var _vehScrollY=0;
 function _toTop(){try{window.scrollTo({top:0,behavior:"instant"});}catch(e){window.scrollTo(0,0);}}
 function setView(name){document.body.setAttribute("data-view",name);}
-function showEntryView(){setView("entry");_toTop();}
-function showNeedsView(){setView("needs");renderNeeds();_toTop();}   /* 답변/진행상태는 초기화하지 않음 */
-function showVehicleSearch(){_needsStep=NEEDS_Q.length;setView("needs");renderNeeds();_toTop();}   /* 니즈는 유지하고 차량 선택 단계로 */
+function resetEstimateState(){
+  선택차=null;_mideum=null;_보증=10;_선수=0;
+  window._fuel="";window._cls="";window._term="";window._promoOnly=false;
+  _ndBrand="";_ndSelected=null;
+  ["ndBrandSearch","ndModelSearch","ndSeries","ndYear","ndFuel","ndTrim","ndColor","ndOption","stBrandSearch","stModelSearch","stBrand","stModel","stYear","stFuel","stTrim","stColor","stOption"].forEach(function(id){var e=byId(id);if(e)e.value="";});
+  if(byId("ndModelSearch"))byId("ndModelSearch").disabled=true;
+  if(byId("ndPreview")){byId("ndPreview").hidden=true;byId("ndPreview").innerHTML="";}
+  if(byId("ndGo"))byId("ndGo").disabled=true;
+  if(byId("hero"))byId("hero").innerHTML="";
+  if(byId("products"))byId("products").innerHTML="";
+  if(byId("pickPanel"))byId("pickPanel").innerHTML="";
+  try{renderDirectNew(0);renderBrandModel();setVehicleMode(needsState.vehicleCondition==="used"?"stock":"direct");renderTermPills();}catch(e){}
+}
+function showEntryView(){resetEstimateState();setView("entry");_toTop();}
+function showNeedsView(){resetEstimateState();setView("needs");renderNeeds();_toTop();}   /* 답변/진행상태는 초기화하지 않음 */
+function showVehicleSearch(){resetEstimateState();_needsStep=NEEDS_Q.length;setView("needs");renderNeeds();_toTop();}   /* 니즈는 유지하고 차량 선택 단계로 */
 /* 니즈의 렌트/리스 선택 → 결과 계약형태(형태)로 동기화 (rent→장기 · lease→리스 · all→전체) */
 function 형태동기화(){var f=needsState.form;형태=(f==="rent")?"장기":(f==="lease")?"리스":"전체";}
 /* 니즈의 신차/중고 선택 → 구분으로 동기화 (new→신차 · used→중고 · all/미선택→전체) */
@@ -2266,7 +2388,10 @@ function 목록에보이기(el){
   if(r.top<b.top)box.scrollTop+=(r.top-b.top);
   else if(r.bottom>b.bottom)box.scrollTop+=(r.bottom-b.bottom);
 }
-function selectCar(x){선택차=x;
+function selectCar(x){
+  if(!선택차||vid(선택차)!==vid(x))선택재고=null;
+  선택차=x;
+  if(x.구분!=="신차"&&!선택재고)선택재고=선택재고유닛(x);
   if(needsState.form)형태동기화();   /* 니즈에서 고른 렌트/리스를 결과 계약형태로 반영 */
   if(needsState.vehicleCondition)조건동기화();   /* 신차/중고 조건을 구분에 반영 */
   var selEl=null;
@@ -2282,6 +2407,14 @@ function renderHero(v){
   var promos=차량프로모(v);
   var promoChip=promos.length?('<span class="vt promo">🎁 '+esc(promos[0].title)+(promos.length>1?(' 외 '+(promos.length-1)):'')+'</span>'):'';
   var 색상=(v.색상목록||[]);
+  var unit=선택재고유닛(v), unitPrice=(unit&&unit.가격)||v.가격, pm=구입형메타(v), cv=pm.현재가치;
+  var unitSelect='';
+  if(v.구분!=="신차"){
+    var root=PURCHASE[vid(v)]||{}, available=root.재고||{};
+    var opts=(v.재고||[]).filter(function(u){return u.차량번호;}).map(function(u){
+      var ok=!!available[u.차량번호];return '<option value="'+esc(u.차량번호)+'"'+(unit&&u.차량번호===unit.차량번호?' selected':'')+(ok?'':' disabled')+'>'+esc(u.차량번호)+' · '+won(u.주행)+'km · '+won(u.가격)+'원'+(ok?'':' · 계산정보 부족')+'</option>';}).join('');
+    unitSelect='<div class="vd-row"><span class="vd-k">계산 차량</span><span class="vd-v"><select id="unitSel" aria-label="개별 재고 차량">'+opts+'</select></span></div>';
+  }
   var 옵션들=[];(v.재고||[]).forEach(function(u){if(u.옵션&&옵션들.indexOf(u.옵션)<0)옵션들.push(u.옵션);});
   var cond='월 예산 '+(budgetOn()?budgetText():'미설정')+' · 희망 '+(wantTerm()?(wantTerm()+'개월'):'자동 추천')+' · '+형태라벨();
   byId("hero").innerHTML=
@@ -2296,13 +2429,14 @@ function renderHero(v){
         사진HTML(v,'carPhoto')+
         '<div class="pc-title">'+esc(v.모델||v.모델명)+'</div>'+
         '<div class="pc-trim">'+esc(트림명(v))+' · '+(v.배기량||0)+'cc</div>'+
-        '<div class="pc-price">차량가 '+won(v.가격)+'원</div>'+
+        '<div class="pc-price">차량가 '+won(unitPrice)+'원</div>'+
         '<div id="heroRec"></div>'+
         '<button class="vmore" type="button" data-vmore aria-expanded="false" aria-controls="vdetail">차량 상세정보<i>∨</i></button>'+
       '</div>'+
       '<div class="vdetail" id="vdetail" hidden>'+
       '<div class="vd-grid">'+
-        '<div class="vd-row"><span class="vd-k">총 차량가</span><span class="vd-v">'+won(v.가격)+'원</span></div>'+
+        '<div class="vd-row"><span class="vd-k">원 차량가</span><span class="vd-v">'+won(unitPrice)+'원</span></div>'+unitSelect+
+        ((v.구분!=="신차"&&cv&&cv.계산가능)?('<div class="vd-row"><span class="vd-k">구입형 적용차량가</span><span class="vd-v">'+won(cv.AD)+'원 · 진행 '+cv.진행개월+'개월</span></div>'):'')+
         '<div class="vd-row"><span class="vd-k">보증금</span><span class="vd-v">상품별 · 카드에서 확인</span></div>'+
         (d?('<div class="vd-row"><span class="vd-k">진행 / 잔여</span><span class="vd-v">'+d.진행기간+'개월 / '+d.남은기간+'개월</span></div>'):'')+
         '<div class="vd-row"><span class="vd-k">계약 개월수</span><span class="vd-v"><select id="termSel" aria-label="계약 개월수">'+개월opts+'</select></span></div>'+
@@ -2313,6 +2447,7 @@ function renderHero(v){
     '</div>'+
     '</div>';
   byId("termSel").onchange=e=>{window._term=e.target.value;renderTermPills();renderHero(선택차);renderProducts(선택차);openVDetail();};
+  var us=byId("unitSel");if(us)us.onchange=function(){선택재고=(v.재고||[]).find(function(u){return u.차량번호===us.value;})||null;_minPayCache={};renderHero(v);renderProducts(v);openVDetail();};
 }
 /* 차량 상세정보 열림 상태 유지 */
 var _vOpen=false;
@@ -2351,6 +2486,18 @@ function 상품계산(v,prod,budget){
 }
 /* 총 납입 예상액 = 월 납입료 x 계약기간 + 선수금 (보증금은 만기 반환이라 제외) */
 function 총납입(v,prod,m,price){return price*m + 선수금액of(v,prod,m);}
+function 인수까지총액(v,prod,m,price){
+  var mat=만기인수of(v,prod,m);
+  if(!(mat>0))return null;
+  return 총납입(v,prod,m,price)+mat;
+}
+function 인수총액표시HTML(v,prod,m,price){
+  var x=인수까지총액(v,prod,m,price);
+  if(x==null)return '<span class="na">해당 없음</span>';
+  var dep=보증금액of(v,prod,m,v.구분),mat=만기인수of(v,prod,m);
+  var note=(구입형(prod)&&dep>0&&dep===mat)?'<small>초기 보증금으로 인수금 준비</small>':'<small>총 납입료 + 만기 인수금</small>';
+  return '<b>'+won(x)+'원</b>'+note;
+}
 /* BEST 추천 근거 (사용자에게 "왜 이게 추천인지"를 그대로 보여주기 위한 계산) */
 function 추천근거(v,best,pool,budget){
   var r=[],want=wantTerm();
@@ -2458,6 +2605,7 @@ function 상품카드(v,c,budget,isPick){
     '<div><dt>계약기간</dt><dd data-term>'+rec.m+'개월</dd></div>'+
     '<div><dt>보증금</dt><dd data-dep>'+won(보증액)+'원</dd></div>'+
     '<div><dt>만기 인수금</dt><dd data-mat>'+만기표시HTML(v,prod,rec.m)+'</dd></div>'+
+    '<div class="acq-total'+(buy?' buy':'')+'"><dt>인수까지 총 금액</dt><dd data-acqtotal>'+인수총액표시HTML(v,prod,rec.m,rec.v)+'</dd></div>'+
   '</dl>';
   var feature='<div class="pfeature">'+esc(상품특징(prod,v))+'</div>';
   var midBody=priceBlk+spec+feature;
@@ -2467,7 +2615,7 @@ function 상품카드(v,c,budget,isPick){
     '<dl class="spec sub">'+
       '<div><dt>선수금 <span class="dtn">'+(buy?'선택':'해당 없음')+'</span></dt><dd data-adv>'+(선수액>0?won(선수액)+'원':'0원')+'</dd></div>'+
       '<div class="tot"><dt>총 납입 예상액</dt><dd data-total>'+won(tot)+'원</dd></div>'+
-      (만기액>0?'<div class="tot2"><dt>만기 인수 시 총액</dt><dd data-total2>'+won(tot+만기액)+'원</dd></div>':'<span data-total2></span>')+
+
     '</dl>'+
     (save>0?'<div class="save" data-save>월 예산 대비 '+won(save)+'원 여유<small>보증금·선수금 조건에 따라 실제 부담은 달라져요</small></div>':'<span data-save></span>')+
     cardpills+
@@ -2483,9 +2631,8 @@ function 상품카드(v,c,budget,isPick){
     detail+cta+'</div>';
 }
 function 사용가능(v,p){
-  if(p==="동반차(구입형)"&&v.구분==="중고")return false;   /* 구입형렌트는 재렌트(중고) 불가 */
   if(p==="월렌트"&&v.구분==="신차")return false;           /* 월렌트는 신차 노출 안 함 */
-  if(구입형(p))return (v.가격||0)>0;                        /* 구입형: 차량가격만 있으면 계산 가능 */
+  if(구입형(p))return !!구입형엔트리(v)[p];                 /* 중고는 선택한 개별 재고의 현재가치 계산 성공 필요 */
   return 파일상품(v,p)!=null;                               /* 그 외: 렌트료관리 파일에 값이 있어야 노출 */
 }
 /* ===== MY HARMONY PICK — 고객 니즈 기준 추천 (BEST=계산 기준 추천 과는 별개, BEST 로직 미변경) =====
@@ -2539,7 +2686,7 @@ function pickPanelHTML(v,pick){
       (burden?'<div class="pk-burden">'+burden+'</div>':'')+
       픽미니비교(v,c)+
       '<div class="pk-acq depbox">'+초기보증HTML(v,prod,m)+
-        '<div class="pa-car">현재 차량가 '+won(v.가격)+'원</div></div>'+
+        '<div class="pa-car">'+(v.구분==="신차"?'현재 차량가 ':'구입형 적용차량가 ')+won(구입형메타(v).적용차량가||v.가격)+'원</div></div>'+
       '<div class="pk-vp">'+(prod==="구입형리스"?'일반 번호판으로 내 차처럼 이용하고, 계약이 끝나면 내 차.':'월 부담은 나누고, 초기 보증금으로 만기 인수까지 준비.')+'</div>'+
       '<div class="pk-reasons"><div class="pk-rt">왜 구입형을 추천하나요?</div>'+
         '<ul class="pk-rlist">'+이유.map(function(x){return '<li><i>✓</i><div><b>'+esc(x[0])+'</b><span>'+esc(x[1])+'</span></div></li>';}).join("")+'</ul>'+
@@ -2585,25 +2732,25 @@ function renderDirectBuyJourney(v){
   function val(x){return x>0?won(x)+"원":"해당 없음";}
   var nprod=normal?normal.prod:"동반차", nm=normal?normal.rec.m:"-", npay=normal?normal.rec.v:0;
   var ndep=normal?보증금액of(v,nprod,nm,v.구분):0, nmat=normal?만기인수of(v,nprod,nm):0;
+  var buyRentTotal=총납입(v,bp,bm,bpay),buyAcquire=인수까지총액(v,bp,bm,bpay);
+  var normalRentTotal=normal?총납입(v,nprod,nm,npay):null;
+  var normalAcquire=normal?인수까지총액(v,nprod,nm,npay):null;
+  var diff=(buyAcquire!=null&&normalAcquire!=null)?normalAcquire-buyAcquire:null;
   host.innerHTML='<section class="directBuyJourney">'+
     '<div class="dbj-kicker">WHY PURCHASE TYPE</div>'+
-    '<h3>이 차, 오래 타실 생각이라면 <b>계약이 끝난 뒤까지</b> 비교해보세요</h3>'+
-    '<p class="dbj-lead">월 납입료만 보는 것보다 초기 비용과 만기 인수 구조를 함께 보면 상품의 차이가 더 분명해져요.</p>'+
+    '<h3>차량을 결국 인수할 생각이라면 <b>월 납입료보다 최종 인수 비용</b>을 비교해보세요</h3>'+
+    '<p class="dbj-lead">각 상품의 총 납입렌트료와 만기 인수금을 합쳐, 차량을 내 차로 만들 때까지 실제로 필요한 금액을 비교했어요.</p>'+
+    '<div class="dbj-totalcompare">'+
+      (normal?'<div class="dbj-totalbox"><span>'+esc(표시명[nprod]||nprod)+'</span><small>총 납입렌트료 '+val(normalRentTotal)+' + 인수금 '+val(nmat)+'</small><strong>'+(normalAcquire!=null?val(normalAcquire):'인수 조건 없음')+'</strong><em>인수까지 총 금액</em></div>':'')+
+      '<div class="dbj-vs">VS</div>'+
+      '<div class="dbj-totalbox buy"><span>'+esc(표시명[bp]||bp)+'</span><small>총 납입렌트료 '+val(buyRentTotal)+' + 인수금 '+val(mat)+'</small><strong>'+val(buyAcquire)+'</strong><em>인수까지 총 금액</em></div>'+
+    '</div>'+
+    (diff!=null&&diff!==0?'<div class="dbj-diff">'+(diff>0?('구입형이 인수까지 총 금액 기준 <b>'+won(diff)+'원 낮아요.</b>'):('다른 상품이 총 금액 기준 <b>'+won(Math.abs(diff))+'원 낮아요.</b>'))+'</div>':'')+
     '<div class="dbj-metrics">'+
       '<div class="dbj-metric"><strong>'+(eq?'보증금 = 인수금':'인수금 미리 준비')+'</strong><span>'+(eq?'초기에 납부한 보증금이 만기 인수금 역할을 해요.':'초기 보증금과 만기 인수금을 함께 확인해요.')+'</span></div>'+
       '<div class="dbj-metric"><strong>'+bm+'개월</strong><span>'+(monthlyDrop>0?('48개월보다 월 '+won(monthlyDrop)+'원 부담을 나눌 수 있어요.'):'이용기간을 나눠 월 납입 부담을 계획할 수 있어요.')+'</span></div>'+
       '<div class="dbj-metric"><strong>계약 종료 후 차량 인수</strong><span>구입형은 만기 인수를 전제로 이용하는 상품이에요.</span></div>'+
     '</div>'+
-    '<div class="dbj-compare-title">같은 '+esc(v.모델)+'라도, 계약이 끝날 때는 달라요</div>'+
-    '<div class="dbj-table">'+
-      '<div class="dbj-row head"><div>비교</div><div>'+esc(표시명[nprod]||nprod)+'</div><div class="buycol">'+esc(표시명[bp]||bp)+'</div></div>'+
-      '<div class="dbj-row"><div>월 납입료</div><div>'+(normal?val(npay):'-')+'</div><div class="buycol">'+val(bpay)+'</div></div>'+
-      '<div class="dbj-row"><div>계약기간</div><div>'+(normal?nm+'개월':'-')+'</div><div class="buycol">'+bm+'개월</div></div>'+
-      '<div class="dbj-row"><div>보증금</div><div>'+(normal?val(ndep):'-')+'</div><div class="buycol">'+val(dep)+'</div></div>'+
-      '<div class="dbj-row"><div>만기 인수금</div><div>'+(normal?val(nmat):'-')+'</div><div class="buycol">'+val(mat)+'</div></div>'+
-      '<div class="dbj-row"><div>계약 종료</div><div>'+(normal?'반납 중심':'-')+'</div><div class="buycol">차량 인수</div></div>'+
-    '</div>'+
-    (eq?'<div class="dbj-note">초기 보증금 '+won(dep)+'원이 만기 인수금 '+won(mat)+'원으로 활용되는 구조예요. 월 부담은 나눠서 내고, 인수는 처음부터 준비할 수 있어요.</div>':'')+
     '<div class="dbj-actions"><button type="button" class="dbj-primary" data-directbuy="'+esc(bp)+'">구입형 조건 자세히 보기</button><button type="button" class="dbj-secondary" data-directapply="'+esc(bp)+'">구입형으로 상담받기</button></div>'+
   '</section>';
 }
@@ -2629,7 +2776,7 @@ function renderProducts(v){
   if(픽C){목록=[픽C].concat(목록.filter(function(c){return c!==픽C;}));}
   /* 결과 탭: 니즈에서 '렌트·리스 모두(all)' 를 고른 경우에만 노출. 렌트/리스 단일 선택이면 해당 상품만 */
   var cnt={"전체":렌트All.length+리스All.length,"장기":렌트All.length,"리스":리스All.length};
-  var showTabs=(needsState.form==="all"||!needsState.form);
+  var showTabs=!v._directNew&&(needsState.form==="all"||!needsState.form);
   var tabs=showTabs?('<div class="ptabs" role="tablist">'+
     [["전체","전체"],["장기","장기렌트"],["리스","리스"]].map(function(t){
       return '<button type="button" role="tab" data-form="'+t[0]+'"'+(형태===t[0]?' class="on" aria-selected="true"':' aria-selected="false"')+'>'+t[1]+'<b>'+cnt[t[0]]+'</b></button>';
@@ -2639,11 +2786,20 @@ function renderProducts(v){
     :(픽C?'추천 상품과 다른 상품을 비교해보세요':('조건에 맞는 '+목록.length+'개 상품'));
   var pshead='<div class="sechead pshead">'+
     '<div><span class="eyebrow">상품 비교</span><h2>'+esc(결과타이틀)+'</h2>'+
-    '<p>월 납입금과 보증금·만기 인수금·총 납입액을 함께 비교해보세요.</p></div>'+tabs+'</div>';
+    '<p>월 납입금뿐 아니라 보증금·만기 인수금·인수까지 총 금액을 함께 비교해보세요.</p></div>'+tabs+'</div>';
   var body="";
   if(목록.length){
-    body='<div class="swipehint">← 좌우로 밀어 비교하세요 →</div>'+
-      '<div class="pgrid">'+목록.map(function(c){return 상품카드(v,c,budget,c===픽C);}).join("")+'</div>';
+    if(v._directNew){
+      function buyFirst(arr){return arr.slice().sort(function(a,b){var ab=구입형(a.prod)?0:1,bb=구입형(b.prod)?0:1;return ab-bb||a.sortKey-b.sortKey;});}
+      var rr=buyFirst(렌트cs),ll=buyFirst(리스cs);
+      var rb=rr.find(function(x){return 구입형(x.prod);}),lb=ll.find(function(x){return 구입형(x.prod);});
+      body='<div class="direct-product-intro"><b>신차 직접 견적 상품</b><span>렌트와 리스를 나눠 비교하고, 차량을 오래 이용해 만기 인수까지 생각한다면 구입형을 먼저 확인해보세요.</span></div>';
+      if(rr.length)body+='<section class="direct-prod-section"><div class="direct-prod-head"><span>RENT</span><h3>렌트 상품</h3><p>구입형렌트를 먼저 보여드려요. 월 부담을 나누면서 계약 종료 후 차량 인수까지 처음부터 계획할 수 있어요.</p></div><div class="pgrid">'+rr.map(function(c){return 상품카드(v,c,budget,c===rb);}).join("")+'</div></section>';
+      if(ll.length)body+='<section class="direct-prod-section lease"><div class="direct-prod-head"><span>LEASE</span><h3>리스 상품</h3><p>구입형리스를 먼저 보여드려요. 일반 번호판으로 내 차처럼 이용하면서 계약 종료 후 인수하는 구조예요.</p></div><div class="pgrid">'+ll.map(function(c){return 상품카드(v,c,budget,c===lb);}).join("")+'</div></section>';
+    }else{
+      body='<div class="swipehint">← 좌우로 밀어 비교하세요 →</div>'+
+        '<div class="pgrid">'+목록.map(function(c){return 상품카드(v,c,budget,c===픽C);}).join("")+'</div>';
+    }
   }else{
     var 렌트가능=렌트상품.some(p=>사용가능(v,p)), 리스가능=리스상품.some(p=>사용가능(v,p));
     if(형태==="장기"&&리스가능) body='<div class="empty">이 차량은 <b>리스 상품</b>만 있어요.<br><button class="switchbtn" type="button" onclick="계약형태전환(\'전체\')">전체 상품 보기</button></div>';
@@ -2676,9 +2832,8 @@ byId("products").addEventListener("change",function(e){
   if(q("[data-dep]"))q("[data-dep]").textContent=won(보증액)+"원";
   if(q("[data-adv]"))q("[data-adv]").textContent=(선수액>0?won(선수액)+"원":"0원");
   if(q("[data-mat]"))q("[data-mat]").innerHTML=만기표시HTML(v,prod,m);
+  if(q("[data-acqtotal]"))q("[data-acqtotal]").innerHTML=인수총액표시HTML(v,prod,m,price);
   if(q("[data-total]"))q("[data-total]").textContent=won(tot)+"원";
-  var t2=q("[data-total2]");
-  if(t2)t2.outerHTML=(만기액>0?'<div class="tot2"><dt>만기 인수 시 총액</dt><dd data-total2>'+won(tot+만기액)+'원</dd></div>':'<span data-total2></span>');
   /* 구입형: 상세조건 안의 일반렌트 비교 즉시 갱신 */
   if(구입형(prod)){
     var cm=q("[data-cmp]"); if(cm)cm.innerHTML=일반비교HTML(v,prod,m);
@@ -2843,6 +2998,7 @@ function openApply(card){
   var id=card.getAttribute("data-id"),prod=card.getAttribute("data-prod");
   var m=+card.querySelector("select[data-sel]").value,price=window._cardData[id].terms[m],v=선택차;
   var br=보증금율of(v,prod,m,구분), 보증액=보증금액of(v,prod,m,v.구분), 선수액=선수금액of(v,prod,m), 만기액=만기인수of(v,prod,m);
+  var unit=선택재고유닛(v), meta=구입형메타(v);
   var tot=총납입(v,prod,m,price);
   _희망시간="최대한 빠르게";
   byId("applyBody").innerHTML=
@@ -2850,6 +3006,8 @@ function openApply(card){
     '<div class="msub">아래 조건으로 상담을 신청합니다. 연락처를 남겨주시면 담당자가 안내드려요.</div>'+
     '<div class="applysum">'+
       '<div class="r"><span class="k">차종</span><span class="v">'+esc(v.모델명)+'</span></div>'+
+      (unit?'<div class="r"><span class="k">차량번호</span><span class="v">'+esc(unit.차량번호)+'</span></div>':'')+
+      (구입형(prod)&&meta.적용차량가?'<div class="r"><span class="k">적용차량가</span><span class="v">'+won(meta.적용차량가)+'원</span></div>':'')+
       '<div class="r"><span class="k">상품</span><span class="v">'+esc(표시명[prod]||prod)+' · '+(v.구분==="신차"?"신차":"재렌트")+'/'+형태라벨()+'</span></div>'+
       '<div class="r"><span class="k">계약 개월</span><span class="v">'+m+'개월</span></div>'+
       '<div class="r"><span class="k">보증금</span><span class="v">'+won(보증액)+'원 ('+br+'%)</span></div>'+
@@ -2875,7 +3033,7 @@ function openApply(card){
     var no=접수번호(), at=지금시각(), btn=this;
     btn.disabled=true;btn.textContent="전송 중…";
     sendToSheet({type:"상담신청",접수번호:no,신청시각:at,name:name,phone:phone,희망시간:_희망시간,
-      차량코드:v.code,구분:v.구분,모델명:v.모델명,상품:(표시명[prod]||prod),계약기간:m,
+      차량코드:v.code,차량번호:(unit&&unit.차량번호)||"",구분:v.구분,모델명:v.모델명,상품:(표시명[prod]||prod),계약기간:m,적용차량가:(meta.적용차량가||v.가격||0),
       월납입료:price,보증금율:br,보증금액:보증액,선수금율:(구입형(prod)?선수율():0),선수금액:선수액,만기인수금:만기액,총납입예상액:tot,
       car:v.모델명,product:(표시명[prod]||prod)+"("+(v.구분==="신차"?"신차":"재렌트")+"/"+형태라벨()+")",term:m+"개월",deposit:br+"%",monthly:won(price)+"원",note:_희망시간
     }).then(function(r){
@@ -3021,7 +3179,7 @@ byId("resetModal").addEventListener("click",function(e){if(e.target===byId("rese
    - 선택 시 기존 PRICELIST/PURCHASE 구조에 임시 주입 후 기존 MY HARMONY PLAN 재사용
    ========================================================================== */
 const DIRECT_NEW=[{"id":"ND001","plate":"31하7202","series":"ATTO 3","fuel":"전기","trim":"ATTO 3 Plus","modelName":"ATTO 3 전기 ATTO 3 Plus 2026 년형","year":"2026","price":33500000,"options":"","exterior":"Atlantis Gray","interior":"Black","ordinary":{"동반차":{"36":{"료":786000,"보증":1500000,"선수":0,"만기":21770000},"48":{"료":731000,"보증":1500000,"선수":0,"만기":19430000},"60":{"료":701000,"보증":1500000,"선수":0,"만기":16750000}},"6&12렌트":{"6":{"료":878000,"보증":1500000,"선수":0,"만기":0},"12":{"료":841000,"보증":1500000,"선수":0,"만기":0}},"믿음카":{"48":{"료":622000,"보증":3400000,"선수":0,"만기":19430000}},"월렌트":{"1":{"료":0,"보증":300000,"선수":0,"만기":0}}},"purchase":{"구입형리스":{"20_0_48":{"월":836502,"보증":6700000,"만기":6700000},"20_0_60":{"월":722229,"보증":6700000,"만기":6700000}},"동반차(구입형)":{"20_0_48":{"월":836502,"보증":6700000,"만기":6700000},"20_0_60":{"월":722229,"보증":6700000,"만기":6700000}}},"rentDep":20,"leaseRates":[20]},{"id":"ND002","plate":"31하7223","series":"ATTO 3","fuel":"전기","trim":"ATTO 3 Plus","modelName":"ATTO 3 전기 ATTO 3 Plus 2027 년형","year":"2027","price":34900000,"options":"","exterior":"Ski White","interior":"Grey","ordinary":{"동반차":{"36":{"료":865000,"보증":1500000,"선수":0,"만기":22680000},"48":{"료":784000,"보증":1500000,"선수":0,"만기":20240000},"60":{"료":553000,"보증":1500000,"선수":0,"만기":17450000}},"6&12렌트":{"6":{"료":941000,"보증":1500000,"선수":0,"만기":0},"12":{"료":902000,"보증":1500000,"선수":0,"만기":0}},"믿음카":{"48":{"료":667000,"보증":3500000,"선수":0,"만기":20240000}},"월렌트":{"1":{"료":0,"보증":300000,"선수":0,"만기":0}}},"purchase":{"구입형리스":{"20_0_48":{"월":872004,"보증":6980000,"만기":6980000},"20_0_60":{"월":752757,"보증":6980000,"만기":6980000}},"동반차(구입형)":{"20_0_48":{"월":872004,"보증":6980000,"만기":6980000},"20_0_60":{"월":752757,"보증":6980000,"만기":6980000}}},"rentDep":20,"leaseRates":[20]},{"id":"ND003","plate":"31하7221","series":"Dolphin","fuel":"전기","trim":"Dolphin","modelName":"Dolphin 전기 Dolphin 2026 년형","year":"2026","price":24500000,"options":"","exterior":"Ski White","interior":"Grey & Black","ordinary":{"동반차":{"36":{"료":636000,"보증":1500000,"선수":0,"만기":15920000},"48":{"료":592000,"보증":1500000,"선수":0,"만기":14210000},"60":{"료":567000,"보증":1500000,"선수":0,"만기":12250000}},"6&12렌트":{"6":{"료":711000,"보증":1500000,"선수":0,"만기":0},"12":{"료":681000,"보증":1500000,"선수":0,"만기":0}},"믿음카":{"48":{"료":504000,"보증":2500000,"선수":0,"만기":14210000}},"월렌트":{"1":{"료":0,"보증":200000,"선수":0,"만기":0}}},"purchase":{"구입형리스":{"20_0_48":{"월":618481,"보증":4900000,"만기":4900000},"20_0_60":{"월":536189,"보증":4900000,"만기":4900000}},"동반차(구입형)":{"20_0_48":{"월":618481,"보증":4900000,"만기":4900000},"20_0_60":{"월":536189,"보증":4900000,"만기":4900000}}},"rentDep":20,"leaseRates":[20]},{"id":"ND004","plate":"31하6224","series":"EV3","fuel":"전기","trim":"롱레인지 에어 2WD (17인치)","modelName":"EV3 롱레인지 에어 2WD (17인치) 2026 년형","year":"2026","price":47070000,"options":"컴포트 I","exterior":"스노우 화이트 펄","interior":"미디움 그레이","ordinary":{"동반차":{"36":{"료":996000,"보증":2000000,"선수":0,"만기":29180000},"48":{"료":897000,"보증":2000000,"선수":0,"만기":25880000},"60":{"료":840000,"보증":2000000,"선수":0,"만기":22120000}},"6&12렌트":{"6":{"료":1077000,"보증":2000000,"선수":0,"만기":0},"12":{"료":1032000,"보증":2000000,"선수":0,"만기":0}},"믿음카":{"48":{"료":763000,"보증":4700000,"선수":0,"만기":25880000}},"월렌트":{"1":{"료":0,"보증":300000,"선수":0,"만기":0}}},"purchase":{"구입형리스":{"20_0_48":{"월":1164932,"보증":9414000,"만기":9414000},"20_0_60":{"월":1002439,"보증":9414000,"만기":9414000}},"동반차(구입형)":{"20_0_48":{"월":1164932,"보증":9414000,"만기":9414000},"20_0_60":{"월":1002439,"보증":9414000,"만기":9414000}}},"rentDep":20,"leaseRates":[20]},{"id":"ND005","plate":"31하6221","series":"EV4","fuel":"전기","trim":"롱레인지 에어 2WD (17인치)","modelName":"EV4 롱레인지 에어 2WD (17인치) 2026 년형","year":"2026","price":47970000,"options":"컴포트","exterior":"스노우 화이트 펄","interior":"블랙","ordinary":{"동반차":{"36":{"료":998000,"보증":2000000,"선수":0,"만기":29740000},"48":{"료":898000,"보증":2000000,"선수":0,"만기":26380000},"60":{"료":842000,"보증":2000000,"선수":0,"만기":22540000}},"6&12렌트":{"6":{"료":1078000,"보증":2000000,"선수":0,"만기":0},"12":{"료":1033000,"보증":2000000,"선수":0,"만기":0}},"믿음카":{"48":{"료":764000,"보증":4800000,"선수":0,"만기":26380000}},"월렌트":{"1":{"료":0,"보증":300000,"선수":0,"만기":0}}},"purchase":{"구입형리스":{"20_0_48":{"월":1187455,"보증":9594000,"만기":9594000},"20_0_60":{"월":1021763,"보증":9594000,"만기":9594000}},"동반차(구입형)":{"20_0_48":{"월":1187455,"보증":9594000,"만기":9594000},"20_0_60":{"월":1021763,"보증":9594000,"만기":9594000}}},"rentDep":20,"leaseRates":[20]},{"id":"ND006","plate":"31하6222","series":"EV4","fuel":"전기","trim":"롱레인지 에어 2WD (17인치)","modelName":"EV4 롱레인지 에어 2WD (17인치) 2026 년형","year":"2026","price":48780000,"options":"컨비니언스, 컴포트","exterior":"셰일 그레이","interior":"블랙","ordinary":{"동반차":{"36":{"료":1040000,"보증":2000000,"선수":0,"만기":30240000},"48":{"료":936000,"보증":2000000,"선수":0,"만기":26820000},"60":{"료":876000,"보증":2000000,"선수":0,"만기":22920000}},"6&12렌트":{"6":{"료":1124000,"보증":2000000,"선수":0,"만기":0},"12":{"료":1077000,"보증":2000000,"선수":0,"만기":0}},"믿음카":{"48":{"료":796000,"보증":4900000,"선수":0,"만기":26820000}},"월렌트":{"1":{"료":0,"보증":300000,"선수":0,"만기":0}}},"purchase":{},"rentDep":20,"leaseRates":[]},{"id":"ND007","plate":"31하6212","series":"EV4","fuel":"전기","trim":"롱레인지 에어 2WD (17인치)","modelName":"EV4 롱레인지 에어 2WD (17인치) 2026 년형","year":"2026","price":49250000,"options":"드라이브 와이즈, 컴포트","exterior":"스노우 화이트 펄","interior":"블랙","ordinary":{"동반차":{"36":{"료":1045000,"보증":2000000,"선수":0,"만기":30530000},"48":{"료":940000,"보증":2000000,"선수":0,"만기":27080000},"60":{"료":881000,"보증":2000000,"선수":0,"만기":23140000}},"6&12렌트":{"6":{"료":1128000,"보증":2000000,"선수":0,"만기":0},"12":{"료":1081000,"보증":2000000,"선수":0,"만기":0}},"믿음카":{"48":{"료":799000,"보증":4900000,"선수":0,"만기":27080000}},"월렌트":{"1":{"료":0,"보증":300000,"선수":0,"만기":0}}},"purchase":{},"rentDep":20,"leaseRates":[]},{"id":"ND008","plate":"109호8154","series":"G80","fuel":"가솔린","trim":"F/L 가솔린 2.5 터보 2WD","modelName":"디 올 뉴 G80 F/L 가솔린 2.5 터보 2WD 2025 년형","year":"2025","price":62450000,"options":"파퓰러 패키지Ⅰ","exterior":"비크 블랙(일반)","interior":"옵시디언 블랙 모노톤","ordinary":{"동반차":{"36":{"료":1558000,"보증":3000000,"선수":0,"만기":39960000},"48":{"료":1405000,"보증":3000000,"선수":0,"만기":35590000},"60":{"료":1317000,"보증":3000000,"선수":0,"만기":30600000}},"6&12렌트":{"6":{"료":1686000,"보증":3000000,"선수":0,"만기":0},"12":{"료":1616000,"보증":3000000,"선수":0,"만기":0}},"믿음카":{"48":{"료":1195000,"보증":6200000,"선수":0,"만기":35590000}},"월렌트":{"1":{"료":0,"보증":2000000,"선수":0,"만기":0}}},"purchase":{},"rentDep":20,"leaseRates":[]},{"id":"ND009","plate":"AST2026070564","series":"G80","fuel":"가솔린","trim":"F/L 가솔린 2.5 터보 2WD","modelName":"디 올 뉴 G80 F/L 가솔린 2.5 터보 2WD 2026 년형","year":"2026","price":64930000,"options":"파퓰러 패키지","exterior":"비크 블랙","interior":"옵시디언 블랙 모노톤","ordinary":{"동반차":{"36":{"료":1827000,"보증":3000000,"선수":0,"만기":41550000},"48":{"료":1645000,"보증":3000000,"선수":0,"만기":37010000},"60":{"료":1541000,"보증":3000000,"선수":0,"만기":31810000}},"6&12렌트":{"6":{"료":1974000,"보증":3000000,"선수":0,"만기":0},"12":{"료":1892000,"보증":3000000,"선수":0,"만기":0}},"믿음카":{"48":{"료":1399000,"보증":6500000,"선수":0,"만기":37010000}},"월렌트":{"1":{"료":0,"보증":2000000,"선수":0,"만기":0}}},"purchase":{"구입형리스":{"20_0_48":{"월":1662173,"보증":12986000,"만기":12986000},"20_0_60":{"월":1425961,"보증":12986000,"만기":12986000}},"동반차(구입형)":{"20_0_48":{"월":1662173,"보증":12986000,"만기":12986000},"20_0_60":{"월":1425961,"보증":12986000,"만기":12986000}}},"rentDep":20,"leaseRates":[20]},{"id":"ND010","plate":"109호8093","series":"GV70","fuel":"가솔린","trim":"2.5 터보 2WD","modelName":"GV70 가솔린 2.5 터보 2WD 2025 년형","year":"2025","price":54500000,"options":"2열 컴포트 패키지","exterior":"우유니 화이트","interior":"옵시디언 블랙 모노톤(옵시디언 블랙 시트)","ordinary":{"동반차":{"36":{"료":1285000,"보증":2000000,"선수":0,"만기":35970000},"48":{"료":1155000,"보증":2000000,"선수":0,"만기":32150000},"60":{"료":1084000,"보증":2000000,"선수":0,"만기":27790000}},"6&12렌트":{"6":{"료":1386000,"보증":2000000,"선수":0,"만기":0},"12":{"료":1329000,"보증":2000000,"선수":0,"만기":0}},"믿음카":{"48":{"료":982000,"보증":5500000,"선수":0,"만기":32150000}},"월렌트":{"1":{"료":0,"보증":2000000,"선수":0,"만기":0}}},"purchase":{},"rentDep":20,"leaseRates":[]},{"id":"ND011","plate":"109호8180","series":"GV70","fuel":"가솔린","trim":"2.5 터보 2WD","modelName":"GV70 가솔린 2.5 터보 2WD 2026 년형","year":"2026","price":60600000,"options":"빌트인 캠 패키지, 시그니쳐 디자인 셀렉션 Ⅰ, 파퓰러 패키지 Ⅰ, 2열 컴포트 패키지","exterior":"우유니 화이트","interior":"옵시디언 블랙 모노톤(옵시디언 블랙 시트)","ordinary":{"동반차":{"36":{"료":1352000,"보증":3000000,"선수":0,"만기":39990000},"48":{"료":1209000,"보증":3000000,"선수":0,"만기":35750000},"60":{"료":1130000,"보증":3000000,"선수":0,"만기":30900000}},"6&12렌트":{"6":{"료":1449000,"보증":3000000,"선수":0,"만기":0},"12":{"료":1382000,"보증":3000000,"선수":0,"만기":0}},"믿음카":{"48":{"료":1028000,"보증":6100000,"선수":0,"만기":35750000}},"월렌트":{"1":{"료":1530000,"보증":2000000,"선수":0,"만기":0}}},"purchase":{},"rentDep":20,"leaseRates":[]},{"id":"ND012","plate":"AST2026070490","series":"GV80","fuel":"가솔린","trim":"F/L (JX1 F/L) 가솔린 2.5 터보 5인승 2WD","modelName":"GV80 F/L (JX1 F/L) 가솔린 2.5 터보 5인승 2WD 2026 년형","year":"2026","price":74410000,"options":"파퓰러 패키지","exterior":"마칼루 그레이","interior":"스모키 그린/어스 브라운 투톤","ordinary":{"동반차":{"36":{"료":1845000,"보증":3000000,"선수":0,"만기":47620000},"48":{"료":1647000,"보증":3000000,"선수":0,"만기":42410000},"60":{"료":1539000,"보증":3000000,"선수":0,"만기":36460000}},"6&12렌트":{"6":{"료":1977000,"보증":3000000,"선수":0,"만기":0},"12":{"료":1895000,"보증":3000000,"선수":0,"만기":0}},"믿음카":{"48":{"료":1400000,"보증":7400000,"선수":0,"만기":42410000}},"월렌트":{"1":{"료":0,"보증":2000000,"선수":0,"만기":0}}},"purchase":{"구입형리스":{"20_0_48":{"월":1883779,"보증":14882000,"만기":14882000},"20_0_60":{"월":1613235,"보증":14882000,"만기":14882000}},"동반차(구입형)":{"20_0_48":{"월":1883779,"보증":14882000,"만기":14882000},"20_0_60":{"월":1613235,"보증":14882000,"만기":14882000}}},"rentDep":20,"leaseRates":[20]},{"id":"ND013","plate":"109호8198","series":"GV80","fuel":"가솔린","trim":"F/L (JX1 F/L) 가솔린 2.5 터보 5인승 2WD","modelName":"GV80 F/L (JX1 F/L) 가솔린 2.5 터보 5인승 2WD 2026 년형","year":"2026","price":75710000,"options":"265/50R20 미쉐린 타이어 & 다이아몬드 컷팅 휠, 파퓰러 패키지","exterior":"비크 블랙","interior":"스모키 그린/어스 브라운 투톤","ordinary":{"동반차":{"36":{"료":1875000,"보증":3000000,"선수":0,"만기":48450000},"48":{"료":1673000,"보증":3000000,"선수":0,"만기":43150000},"60":{"료":1563000,"보증":3000000,"선수":0,"만기":37090000}},"6&12렌트":{"6":{"료":2008000,"보증":3000000,"선수":0,"만기":0},"12":{"료":1924000,"보증":3000000,"선수":0,"만기":0}},"믿음카":{"48":{"료":1423000,"보증":7600000,"선수":0,"만기":43150000}},"월렌트":{"1":{"료":0,"보증":2000000,"선수":0,"만기":0}}},"purchase":{"구입형리스":{"20_0_48":{"월":1915653,"보증":15142000,"만기":15142000},"20_0_60":{"월":1640400,"보증":15142000,"만기":15142000}},"동반차(구입형)":{"20_0_48":{"월":1915653,"보증":15142000,"만기":15142000},"20_0_60":{"월":1640400,"보증":15142000,"만기":15142000}}},"rentDep":20,"leaseRates":[20]},{"id":"ND014","plate":"109호8199","series":"GV80","fuel":"가솔린","trim":"F/L (JX1 F/L) 가솔린 2.5 터보 5인승 AWD","modelName":"GV80 F/L (JX1 F/L) 가솔린 2.5 터보 5인승 AWD 2026 년형","year":"2026","price":78060000,"options":"파퓰러 패키지","exterior":"비크 블랙","interior":"스모키 그린/어스 브라운 투톤","ordinary":{"동반차":{"36":{"료":1929000,"보증":3000000,"선수":0,"만기":49950000},"48":{"료":1722000,"보증":3000000,"선수":0,"만기":44490000},"60":{"료":1608000,"보증":3000000,"선수":0,"만기":38240000}},"6&12렌트":{"6":{"료":2067000,"보증":3000000,"선수":0,"만기":0},"12":{"료":1981000,"보증":3000000,"선수":0,"만기":0}},"믿음카":{"48":{"료":1464000,"보증":7800000,"선수":0,"만기":44490000}},"월렌트":{"1":{"료":0,"보증":2000000,"선수":0,"만기":0}}},"purchase":{"구입형리스":{"20_0_48":{"월":1973270,"보증":15612000,"만기":15612000},"20_0_60":{"월":1689505,"보증":15612000,"만기":15612000}},"동반차(구입형)":{"20_0_48":{"월":1973270,"보증":15612000,"만기":15612000},"20_0_60":{"월":1689505,"보증":15612000,"만기":15612000}}},"rentDep":20,"leaseRates":[20]},{"id":"ND015","plate":"AST2026070492","series":"GV80","fuel":"가솔린","trim":"F/L (JX1 F/L) 가솔린 2.5 터보 7인승 AWD","modelName":"GV80 F/L (JX1 F/L) 가솔린 2.5 터보 7인승 AWD 2026 년형","year":"2026","price":79060000,"options":"파퓰러 패키지","exterior":"우유니 화이트","interior":"스모키 그린/어스 브라운 투톤","ordinary":{"동반차":{"36":{"료":1944000,"보증":3000000,"선수":0,"만기":50590000},"48":{"료":1734000,"보증":3000000,"선수":0,"만기":45060000},"60":{"료":1619000,"보증":3000000,"선수":0,"만기":38730000}},"6&12렌트":{"6":{"료":2081000,"보증":3000000,"선수":0,"만기":0},"12":{"료":1995000,"보증":3000000,"선수":0,"만기":0}},"믿음카":{"48":{"료":1474000,"보증":7900000,"선수":0,"만기":45060000}},"월렌트":{"1":{"료":0,"보증":2000000,"선수":0,"만기":0}}},"purchase":{"구입형리스":{"20_0_48":{"월":1997787,"보증":15812000,"만기":15812000},"20_0_60":{"월":1710402,"보증":15812000,"만기":15812000}},"동반차(구입형)":{"20_0_48":{"월":1997787,"보증":15812000,"만기":15812000},"20_0_60":{"월":1710402,"보증":15812000,"만기":15812000}}},"rentDep":20,"leaseRates":[20]},{"id":"ND016","plate":"AST2026070387","series":"K5","fuel":"LPG","trim":"2.0 렌터카 트렌디","modelName":"더 뉴 K5 LPI 2.0 렌터카 트렌디 2026 년형","year":"2026","price":25810000,"options":"컴포트, 하이패스 시스템","exterior":"오로라 블랙 펄","interior":"블랙","ordinary":{"동반차":{"36":{"료":740000,"보증":1000000,"선수":0,"만기":16260000},"48":{"료":666000,"보증":1000000,"선수":0,"만기":14450000},"60":{"료":626000,"보증":1000000,"선수":0,"만기":12380000}},"6&12렌트":{"6":{"료":800000,"보증":1000000,"선수":0,"만기":0},"12":{"료":766000,"보증":1000000,"선수":0,"만기":0}},"믿음카":{"48":{"료":567000,"보증":2600000,"선수":0,"만기":14450000}},"월렌트":{"1":{"료":0,"보증":200000,"선수":0,"만기":0}}},"purchase":{"구입형리스":{"20_0_48":{"월":711539,"보증":5162000,"만기":5162000},"20_0_60":{"월":617004,"보증":5162000,"만기":5162000}},"동반차(구입형)":{"20_0_48":{"월":711539,"보증":5162000,"만기":5162000},"20_0_60":{"월":617004,"보증":5162000,"만기":5162000}}},"rentDep":20,"leaseRates":[20]},{"id":"ND017","plate":"161하7388","series":"K5","fuel":"가솔린","trim":"2.0 베스트 셀렉션","modelName":"더 뉴 K5 가솔린 2.0 베스트 셀렉션 2026 년형","year":"2026","price":29810000,"options":"","exterior":"스노우 화이트 펄","interior":"블랙","ordinary":{"동반차":{"36":{"료":815000,"보증":1000000,"선수":0,"만기":19970000},"48":{"료":740000,"보증":1000000,"선수":0,"만기":17880000},"60":{"료":699000,"보증":1000000,"선수":0,"만기":15500000}},"6&12렌트":{"6":{"료":888000,"보증":1000000,"선수":0,"만기":0},"12":{"료":851000,"보증":1000000,"선수":0,"만기":0}},"믿음카":{"48":{"료":629000,"보증":3000000,"선수":0,"만기":17880000}},"월렌트":{"1":{"료":0,"보증":200000,"선수":0,"만기":0}}},"purchase":{"구입형리스":{"20_0_48":{"월":814277,"보증":5962000,"만기":5962000},"20_0_60":{"월":705254,"보증":5962000,"만기":5962000}},"동반차(구입형)":{"20_0_48":{"월":814277,"보증":5962000,"만기":5962000},"20_0_60":{"월":705254,"보증":5962000,"만기":5962000}}},"rentDep":20,"leaseRates":[20]},{"id":"ND018","plate":"161하7337","series":"K8","fuel":"가솔린","trim":"2.5 노블레스","modelName":"The New K8(GL3) 가솔린 2.5 노블레스 2026 년형","year":"2026","price":42050000,"options":"드라이브  와이즈","exterior":"스노우 화이트 펄","interior":"블랙","ordinary":{"동반차":{"36":{"료":1030000,"보증":2000000,"선수":0,"만기":28170000},"48":{"료":931000,"보증":2000000,"선수":0,"만기":25230000},"60":{"료":876000,"보증":2000000,"선수":0,"만기":21860000}},"6&12렌트":{"6":{"료":1118000,"보증":2000000,"선수":0,"만기":0},"12":{"료":1071000,"보증":2000000,"선수":0,"만기":0}},"믿음카":{"48":{"료":792000,"보증":4200000,"선수":0,"만기":25230000}},"월렌트":{"1":{"료":0,"보증":300000,"선수":0,"만기":0}}},"purchase":{"구입형리스":{"20_0_48":{"월":1107906,"보증":8410000,"만기":8410000},"20_0_60":{"월":954556,"보증":8410000,"만기":8410000}},"동반차(구입형)":{"20_0_48":{"월":1107906,"보증":8410000,"만기":8410000},"20_0_60":{"월":954556,"보증":8410000,"만기":8410000}}},"rentDep":20,"leaseRates":[20]},{"id":"ND019","plate":"154하3189","series":"K9","fuel":"가솔린","trim":"3.8 플래티넘 베스트 셀렉션Ⅰ AWD","modelName":"더 뉴 K9(RJ F/L) 가솔린 3.8 플래티넘 베스트 셀렉션Ⅰ AWD 2025 년형","year":"2025","price":67890000,"options":"","exterior":"오로라 블랙 펄","interior":"블랙","ordinary":{"동반차":{"36":{"료":1803000,"보증":3000000,"선수":0,"만기":37330000},"48":{"료":1599000,"보증":3000000,"선수":0,"만기":32580000},"60":{"료":1482000,"보증":3000000,"선수":0,"만기":27150000}},"6&12렌트":{"6":{"료":1919000,"보증":3000000,"선수":0,"만기":0},"12":{"료":1839000,"보증":3000000,"선수":0,"만기":0}},"믿음카":{"48":{"료":1360000,"보증":6800000,"선수":0,"만기":32580000}},"월렌트":{"1":{"료":0,"보증":2000000,"선수":0,"만기":0}}},"purchase":{"구입형리스":{"20_0_48":{"월":1762994,"보증":13578000,"만기":13578000},"20_0_60":{"월":1516061,"보증":13578000,"만기":13578000}},"동반차(구입형)":{"20_0_48":{"월":1762994,"보증":13578000,"만기":13578000},"20_0_60":{"월":1516061,"보증":13578000,"만기":13578000}}},"rentDep":20,"leaseRates":[20]},{"id":"ND020","plate":"31하7226","series":"SEALION 7","fuel":"전기","trim":"SEALION 7 Plus","modelName":"SEALION 7 전기 SEALION 7 Plus 2027 년형","year":"2027","price":46900000,"options":"","exterior":"Atlantis Gray","interior":"Black","ordinary":{"동반차":{"36":{"료":1132000,"보증":2000000,"선수":0,"만기":30480000},"48":{"료":1023000,"보증":2000000,"선수":0,"만기":27200000},"60":{"료":0,"보증":2000000,"선수":0,"만기":23450000}},"6&12렌트":{"6":{"료":1228000,"보증":2000000,"선수":0,"만기":0},"12":{"료":1177000,"보증":2000000,"선수":0,"만기":0}},"믿음카":{"48":{"료":870000,"보증":4700000,"선수":0,"만기":27200000}},"월렌트":{"1":{"료":0,"보증":300000,"선수":0,"만기":0}}},"purchase":{"구입형리스":{"20_0_48":{"월":1160678,"보증":9380000,"만기":9380000},"20_0_60":{"월":998788,"보증":9380000,"만기":9380000}},"동반차(구입형)":{"20_0_48":{"월":1160678,"보증":9380000,"만기":9380000},"20_0_60":{"월":998788,"보증":9380000,"만기":9380000}}},"rentDep":20,"leaseRates":[20]},{"id":"ND021","plate":"154하3451","series":"그랜저","fuel":"LPG","trim":"3.5 일반판매용 프리미엄","modelName":"더 뉴 그랜저(GN7) LPG 3.5 일반판매용 프리미엄 2027 년형","year":"2027","price":43980000,"options":"","exterior":"어비스 블랙 펄","interior":"블랙 모노톤","ordinary":{"동반차":{"36":{"료":1140000,"보증":2000000,"선수":0,"만기":29460000},"48":{"료":1030000,"보증":2000000,"선수":0,"만기":26380000},"60":{"료":970000,"보증":2000000,"선수":0,"만기":22860000}},"6&12렌트":{"6":{"료":1236000,"보증":2000000,"선수":0,"만기":0},"12":{"료":1185000,"보증":2000000,"선수":0,"만기":0}},"믿음카":{"48":{"료":876000,"보증":4400000,"선수":0,"만기":26380000}},"월렌트":{"1":{"료":0,"보증":300000,"선수":0,"만기":0}}},"purchase":{"구입형리스":{"20_0_48":{"월":1177112,"보증":8796000,"만기":8796000},"20_0_60":{"월":1016771,"보증":8796000,"만기":8796000}},"동반차(구입형)":{"20_0_48":{"월":1177112,"보증":8796000,"만기":8796000},"20_0_60":{"월":1016771,"보증":8796000,"만기":8796000}}},"rentDep":20,"leaseRates":[20]},{"id":"ND022","plate":"154하3449","series":"그랜저","fuel":"LPG","trim":"3.5 일반판매용 프리미엄","modelName":"더 뉴 그랜저(GN7) LPG 3.5 일반판매용 프리미엄 2027 년형","year":"2027","price":44080000,"options":"","exterior":"세레니티 화이트 펄","interior":"블랙 모노톤","ordinary":{"동반차":{"36":{"료":1143000,"보증":2000000,"선수":0,"만기":29530000},"48":{"료":1032000,"보증":2000000,"선수":0,"만기":26440000},"60":{"료":972000,"보증":2000000,"선수":0,"만기":22920000}},"6&12렌트":{"6":{"료":1239000,"보증":2000000,"선수":0,"만기":0},"12":{"료":1187000,"보증":2000000,"선수":0,"만기":0}},"믿음카":{"48":{"료":878000,"보증":4400000,"선수":0,"만기":26440000}},"월렌트":{"1":{"료":0,"보증":300000,"선수":0,"만기":0}}},"purchase":{"구입형리스":{"20_0_48":{"월":1179604,"보증":8816000,"만기":8816000},"20_0_60":{"월":1018902,"보증":8816000,"만기":8816000}},"동반차(구입형)":{"20_0_48":{"월":1179604,"보증":8816000,"만기":8816000},"20_0_60":{"월":1018902,"보증":8816000,"만기":8816000}}},"rentDep":20,"leaseRates":[20]},{"id":"ND023","plate":"AST2026070560","series":"그랜저","fuel":"가솔린","trim":"2.5 2WD 프리미엄","modelName":"더 뉴 그랜저(GN7) 가솔린 2.5 2WD 프리미엄 2027 년형","year":"2027","price":42450000,"options":"","exterior":"어비스 블랙 펄","interior":"블랙 모노톤","ordinary":{"동반차":{"36":{"료":1102000,"보증":2000000,"선수":0,"만기":28440000},"48":{"료":995000,"보증":2000000,"선수":0,"만기":25470000},"60":{"료":937000,"보증":2000000,"선수":0,"만기":22070000}},"6&12렌트":{"6":{"료":1194000,"보증":2000000,"선수":0,"만기":0},"12":{"료":1145000,"보증":2000000,"선수":0,"만기":0}},"믿음카":{"48":{"료":846000,"보증":4200000,"선수":0,"만기":25470000}},"월렌트":{"1":{"료":0,"보증":300000,"선수":0,"만기":0}}},"purchase":{"구입형리스":{"20_0_48":{"월":1117880,"보증":8490000,"만기":8490000},"20_0_60":{"월":963081,"보증":8490000,"만기":8490000}},"동반차(구입형)":{"20_0_48":{"월":1117880,"보증":8490000,"만기":8490000},"20_0_60":{"월":963081,"보증":8490000,"만기":8490000}}},"rentDep":20,"leaseRates":[20]},{"id":"ND024","plate":"AST2026080080","series":"그랜저","fuel":"가솔린","trim":"2.5 2WD 프리미엄","modelName":"더 뉴 그랜저(GN7) 가솔린 2.5 2WD 프리미엄 2027 년형","year":"2027","price":42550000,"options":"","exterior":"세레니티 화이트 펄","interior":"블랙 모노톤","ordinary":{"동반차":{"36":{"료":1104000,"보증":2000000,"선수":0,"만기":28500000},"48":{"료":997000,"보증":2000000,"선수":0,"만기":25530000},"60":{"료":939000,"보증":2000000,"선수":0,"만기":22120000}},"6&12렌트":{"6":{"료":1197000,"보증":2000000,"선수":0,"만기":0},"12":{"료":1147000,"보증":2000000,"선수":0,"만기":0}},"믿음카":{"48":{"료":848000,"보증":4300000,"선수":0,"만기":25530000}},"월렌트":{"1":{"료":0,"보증":300000,"선수":0,"만기":0}}},"purchase":{"구입형리스":{"20_0_48":{"월":1120374,"보증":8510000,"만기":8510000},"20_0_60":{"월":965212,"보증":8510000,"만기":8510000}},"동반차(구입형)":{"20_0_48":{"월":1120374,"보증":8510000,"만기":8510000},"20_0_60":{"월":965212,"보증":8510000,"만기":8510000}}},"rentDep":20,"leaseRates":[20]},{"id":"ND025","plate":"AST2026070494","series":"레이","fuel":"가솔린","trim":"PE (TAM F/L) 가솔린 1.0 프레스티지","modelName":"더 뉴 레이 PE (TAM F/L) 가솔린 1.0 프레스티지 2027 년형","year":"2027","price":18650000,"options":"8인치 내비게이션","exterior":"밀키 베이지","interior":"블랙","ordinary":{"동반차":{"36":{"료":588000,"보증":1000000,"선수":0,"만기":11000000},"48":{"료":531000,"보증":1000000,"선수":0,"만기":9690000},"60":{"료":499000,"보증":1000000,"선수":0,"만기":8200000}},"6&12렌트":{"6":{"료":638000,"보증":1000000,"선수":0,"만기":0},"12":{"료":611000,"보증":1000000,"선수":0,"만기":0}},"믿음카":{"48":{"료":452000,"보증":1900000,"선수":0,"만기":9690000}},"월렌트":{"1":{"료":0,"보증":200000,"선수":0,"만기":0}}},"purchase":{"구입형리스":{"20_0_48":{"월":501034,"보증":3730000,"만기":3730000},"20_0_60":{"월":438642,"보증":3730000,"만기":3730000}},"동반차(구입형)":{"20_0_48":{"월":501034,"보증":3730000,"만기":3730000},"20_0_60":{"월":438642,"보증":3730000,"만기":3730000}}},"rentDep":20,"leaseRates":[20]},{"id":"ND026","plate":"154하3341","series":"베뉴","fuel":"가솔린","trim":"1.6 스마트","modelName":"베뉴 가솔린 1.6 스마트 2025 년형","year":"2025","price":19960000,"options":"15인치 알로이 휠 & 타이어, 하이패스","exterior":"데님 블루 펄","interior":"블랙","ordinary":{"동반차":{"36":{"료":570000,"보증":500000,"선수":0,"만기":12970000},"48":{"료":518000,"보증":500000,"선수":0,"만기":11570000},"60":{"료":489000,"보증":500000,"선수":0,"만기":9980000}},"6&12렌트":{"6":{"료":622000,"보증":500000,"선수":0,"만기":0},"12":{"료":596000,"보증":500000,"선수":0,"만기":0}},"믿음카":{"48":{"료":441000,"보증":2000000,"선수":0,"만기":11570000}},"월렌트":{"1":{"료":0,"보증":200000,"선수":0,"만기":0}}},"purchase":{"구입형리스":{"20_0_48":{"월":577294,"보증":3992000,"만기":3992000},"20_0_60":{"월":505305,"보증":3992000,"만기":3992000}},"동반차(구입형)":{"20_0_48":{"월":577294,"보증":3992000,"만기":3992000},"20_0_60":{"월":505305,"보증":3992000,"만기":3992000}}},"rentDep":20,"leaseRates":[20]},{"id":"ND027","plate":"AST2026060606","series":"베뉴","fuel":"가솔린","trim":"1.6 스마트","modelName":"베뉴 가솔린 1.6 스마트 2027 년형","year":"2027","price":20660000,"options":"내비게이션 패키지, 하이패스","exterior":"데님 블루 펄","interior":"블랙","ordinary":{"동반차":{"36":{"료":602000,"보증":500000,"선수":0,"만기":13420000},"48":{"료":547000,"보증":500000,"선수":0,"만기":11980000},"60":{"료":517000,"보증":500000,"선수":0,"만기":10330000}},"6&12렌트":{"6":{"료":657000,"보증":500000,"선수":0,"만기":0},"12":{"료":630000,"보증":500000,"선수":0,"만기":0}},"믿음카":{"48":{"료":465000,"보증":2100000,"선수":0,"만기":11980000}},"월렌트":{"1":{"료":0,"보증":200000,"선수":0,"만기":0}}},"purchase":{"구입형리스":{"20_0_48":{"월":562071,"보증":4132000,"만기":4132000},"20_0_60":{"월":487592,"보증":4132000,"만기":4132000}},"동반차(구입형)":{"20_0_48":{"월":562071,"보증":4132000,"만기":4132000},"20_0_60":{"월":487592,"보증":4132000,"만기":4132000}}},"rentDep":20,"leaseRates":[20]},{"id":"ND028","plate":"AST2026060780","series":"베뉴","fuel":"가솔린","trim":"1.6 스마트","modelName":"베뉴 가솔린 1.6 스마트 2027 년형","year":"2027","price":20760000,"options":"내비게이션 패키지, 하이패스","exterior":"아틀라스 화이트","interior":"블랙","ordinary":{"동반차":{"36":{"료":604000,"보증":500000,"선수":0,"만기":13490000},"48":{"료":549000,"보증":500000,"선수":0,"만기":12040000},"60":{"료":519000,"보증":500000,"선수":0,"만기":10380000}},"6&12렌트":{"6":{"료":659000,"보증":500000,"선수":0,"만기":0},"12":{"료":632000,"보증":500000,"선수":0,"만기":0}},"믿음카":{"48":{"료":467000,"보증":2100000,"선수":0,"만기":12040000}},"월렌트":{"1":{"료":0,"보증":200000,"선수":0,"만기":0}}},"purchase":{"구입형리스":{"20_0_48":{"월":564649,"보증":4152000,"만기":4152000},"20_0_60":{"월":489815,"보증":4152000,"만기":4152000}},"동반차(구입형)":{"20_0_48":{"월":564649,"보증":4152000,"만기":4152000},"20_0_60":{"월":489815,"보증":4152000,"만기":4152000}}},"rentDep":20,"leaseRates":[20]},{"id":"ND029","plate":"154하3610","series":"셀토스","fuel":"가솔린","trim":"1.6 터보 트렌디 2WD","modelName":"디 올 뉴 셀토스 가솔린 1.6 터보 트렌디 2WD 2026 년형","year":"2026","price":26880000,"options":"12.3인치 내비게이션, 컨비니언스","exterior":"그래비티 그레이","interior":"그레이","ordinary":{"동반차":{"36":{"료":714000,"보증":700000,"선수":0,"만기":18000000},"48":{"료":647000,"보증":700000,"선수":0,"만기":16120000},"60":{"료":611000,"보증":700000,"선수":0,"만기":13970000}},"6&12렌트":{"6":{"료":777000,"보증":700000,"선수":0,"만기":0},"12":{"료":745000,"보증":700000,"선수":0,"만기":0}},"믿음카":{"48":{"료":550000,"보증":2700000,"선수":0,"만기":16120000}},"월렌트":{"1":{"료":0,"보증":200000,"선수":0,"만기":0}}},"purchase":{"구입형리스":{"20_0_48":{"월":722395,"보증":5376000,"만기":5376000},"20_0_60":{"월":625814,"보증":5376000,"만기":5376000}},"동반차(구입형)":{"20_0_48":{"월":722395,"보증":5376000,"만기":5376000},"20_0_60":{"월":625814,"보증":5376000,"만기":5376000}}},"rentDep":20,"leaseRates":[20]},{"id":"ND030","plate":"154하3617","series":"셀토스","fuel":"가솔린","trim":"1.6 터보 트렌디 2WD","modelName":"디 올 뉴 셀토스 가솔린 1.6 터보 트렌디 2WD 2026 년형","year":"2026","price":26960000,"options":"12.3인치 내비게이션, 컨비니언스","exterior":"스노우 화이트 펄","interior":"그레이","ordinary":{"동반차":{"36":{"료":716000,"보증":700000,"선수":0,"만기":18060000},"48":{"료":649000,"보증":700000,"선수":0,"만기":16170000},"60":{"료":613000,"보증":700000,"선수":0,"만기":14010000}},"6&12렌트":{"6":{"료":779000,"보증":700000,"선수":0,"만기":0},"12":{"료":747000,"보증":700000,"선수":0,"만기":0}},"믿음카":{"48":{"료":552000,"보증":2700000,"선수":0,"만기":16170000}},"월렌트":{"1":{"료":0,"보증":200000,"선수":0,"만기":0}}},"purchase":{"구입형리스":{"20_0_48":{"월":724457,"보증":5392000,"만기":5392000},"20_0_60":{"월":627591,"보증":5392000,"만기":5392000}},"동반차(구입형)":{"20_0_48":{"월":724457,"보증":5392000,"만기":5392000},"20_0_60":{"월":627591,"보증":5392000,"만기":5392000}}},"rentDep":20,"leaseRates":[20]},{"id":"ND031","plate":"161하7497","series":"스타리아","fuel":"하이브리드","trim":"HEV 투어러 가솔린 1.6 터보 9인승 스마트","modelName":"더 뉴 스타리아 HEV 투어러 가솔린 1.6 터보 9인승 스마트 2026 년형","year":"2026","price":40460000,"options":"멀티미디어 내비플러스Ⅰ","exterior":"에코트로닉 그레이 펄","interior":"블랙 원톤","ordinary":{"동반차":{"36":{"료":1132000,"보증":1500000,"선수":0,"만기":25890000},"48":{"료":1020000,"보증":1500000,"선수":0,"만기":23060000},"60":{"료":957000,"보증":1500000,"선수":0,"만기":19820000}},"6&12렌트":{"6":{"료":1224000,"보증":1500000,"선수":0,"만기":0},"12":{"료":1173000,"보증":1500000,"선수":0,"만기":0}},"믿음카":{"48":{"료":867000,"보증":4000000,"선수":0,"만기":23060000}},"월렌트":{"1":{"료":0,"보증":300000,"선수":0,"만기":0}}},"purchase":{"구입형리스":{"20_0_48":{"월":1042082,"보증":8092000,"만기":8092000},"20_0_60":{"월":897243,"보증":8092000,"만기":8092000}},"동반차(구입형)":{"20_0_48":{"월":1042082,"보증":8092000,"만기":8092000},"20_0_60":{"월":897243,"보증":8092000,"만기":8092000}}},"rentDep":20,"leaseRates":[20]},{"id":"ND032","plate":"AST2026080102","series":"스포티지","fuel":"가솔린","trim":"1.6 터보 2WD 노블레스","modelName":"더 뉴 스포티지(NQ5 F/L) 가솔린 1.6 터보 2WD 노블레스 2026 년형","year":"2026","price":33590000,"options":"파노라마 선루프","exterior":"스노우 화이트 펄","interior":"라운지 브라운","ordinary":{"동반차":{"36":{"료":896000,"보증":1500000,"선수":0,"만기":22160000},"48":{"료":809000,"보증":1500000,"선수":0,"만기":19810000},"60":{"료":762000,"보증":1500000,"선수":0,"만기":17130000}},"6&12렌트":{"6":{"료":971000,"보증":1500000,"선수":0,"만기":0},"12":{"료":931000,"보증":1500000,"선수":0,"만기":0}},"믿음카":{"48":{"료":688000,"보증":3400000,"선수":0,"만기":19810000}},"월렌트":{"1":{"료":0,"보증":300000,"선수":0,"만기":0}}},"purchase":{"구입형리스":{"20_0_48":{"월":881353,"보증":6718000,"만기":6718000},"20_0_60":{"월":760928,"보증":6718000,"만기":6718000}},"동반차(구입형)":{"20_0_48":{"월":881353,"보증":6718000,"만기":6718000},"20_0_60":{"월":760928,"보증":6718000,"만기":6718000}}},"rentDep":20,"leaseRates":[20]},{"id":"ND033","plate":"AST2026080087","series":"스포티지","fuel":"가솔린","trim":"1.6 터보 2WD 노블레스","modelName":"더 뉴 스포티지(NQ5 F/L) 가솔린 1.6 터보 2WD 노블레스 2026 년형","year":"2026","price":33740000,"options":"드라이브 와이즈","exterior":"스노우 화이트 펄","interior":"블랙","ordinary":{"동반차":{"36":{"료":899000,"보증":1500000,"선수":0,"만기":22260000},"48":{"료":812000,"보증":1500000,"선수":0,"만기":19900000},"60":{"료":765000,"보증":1500000,"선수":0,"만기":17200000}},"6&12렌트":{"6":{"료":975000,"보증":1500000,"선수":0,"만기":0},"12":{"료":934000,"보증":1500000,"선수":0,"만기":0}},"믿음카":{"48":{"료":691000,"보증":3400000,"선수":0,"만기":19900000}},"월렌트":{"1":{"료":0,"보증":300000,"선수":0,"만기":0}}},"purchase":{"구입형리스":{"20_0_48":{"월":885158,"보증":6748000,"만기":6748000},"20_0_60":{"월":764199,"보증":6748000,"만기":6748000}},"동반차(구입형)":{"20_0_48":{"월":885158,"보증":6748000,"만기":6748000},"20_0_60":{"월":764199,"보증":6748000,"만기":6748000}}},"rentDep":20,"leaseRates":[20]},{"id":"ND034","plate":"AST2026080085","series":"스포티지","fuel":"가솔린","trim":"1.6 터보 2WD 노블레스","modelName":"더 뉴 스포티지(NQ5 F/L) 가솔린 1.6 터보 2WD 노블레스 2026 년형","year":"2026","price":34550000,"options":"드라이브 와이즈, 스타일","exterior":"그래비티 그레이","interior":"라운지 브라운","ordinary":{"동반차":{"36":{"료":918000,"보증":1500000,"선수":0,"만기":22800000},"48":{"료":829000,"보증":1500000,"선수":0,"만기":20380000},"60":{"료":780000,"보증":1500000,"선수":0,"만기":17620000}},"6&12렌트":{"6":{"료":995000,"보증":1500000,"선수":0,"만기":0},"12":{"료":954000,"보증":1500000,"선수":0,"만기":0}},"믿음카":{"48":{"료":705000,"보증":3500000,"선수":0,"만기":20380000}},"월렌트":{"1":{"료":0,"보증":300000,"선수":0,"만기":0}}},"purchase":{"구입형리스":{"20_0_48":{"월":905698,"보증":6910000,"만기":6910000},"20_0_60":{"월":781861,"보증":6910000,"만기":6910000}},"동반차(구입형)":{"20_0_48":{"월":905698,"보증":6910000,"만기":6910000},"20_0_60":{"월":781861,"보증":6910000,"만기":6910000}}},"rentDep":20,"leaseRates":[20]},{"id":"ND035","plate":"AST2026080086","series":"스포티지","fuel":"가솔린","trim":"1.6 터보 2WD 노블레스","modelName":"더 뉴 스포티지(NQ5 F/L) 가솔린 1.6 터보 2WD 노블레스 2026 년형","year":"2026","price":34630000,"options":"드라이브 와이즈, 스타일","exterior":"스노우 화이트 펄","interior":"라운지 브라운","ordinary":{"동반차":{"36":{"료":920000,"보증":1500000,"선수":0,"만기":22850000},"48":{"료":831000,"보증":1500000,"선수":0,"만기":20430000},"60":{"료":782000,"보증":1500000,"선수":0,"만기":17660000}},"6&12렌트":{"6":{"료":998000,"보증":1500000,"선수":0,"만기":0},"12":{"료":956000,"보증":1500000,"선수":0,"만기":0}},"믿음카":{"48":{"료":707000,"보증":3500000,"선수":0,"만기":20430000}},"월렌트":{"1":{"료":0,"보증":300000,"선수":0,"만기":0}}},"purchase":{"구입형리스":{"20_0_48":{"월":907726,"보증":6926000,"만기":6926000},"20_0_60":{"월":783606,"보증":6926000,"만기":6926000}},"동반차(구입형)":{"20_0_48":{"월":907726,"보증":6926000,"만기":6926000},"20_0_60":{"월":783606,"보증":6926000,"만기":6926000}}},"rentDep":20,"leaseRates":[20]},{"id":"ND036","plate":"AST2026080012","series":"스포티지","fuel":"가솔린","trim":"1.6 터보 2WD 프레스티지","modelName":"더 뉴 스포티지(NQ5 F/L) 가솔린 1.6 터보 2WD 프레스티지 2026 년형","year":"2026","price":29920000,"options":"12.3인치 내비게이션","exterior":"퓨전 블랙","interior":"블랙","ordinary":{"동반차":{"36":{"료":811000,"보증":1500000,"선수":0,"만기":19740000},"48":{"료":734000,"보증":1500000,"선수":0,"만기":17650000},"60":{"료":691000,"보증":1500000,"선수":0,"만기":15250000}},"6&12렌트":{"6":{"료":881000,"보증":1500000,"선수":0,"만기":0},"12":{"료":845000,"보증":1500000,"선수":0,"만기":0}},"믿음카":{"48":{"료":624000,"보증":3000000,"선수":0,"만기":17650000}},"월렌트":{"1":{"료":0,"보증":200000,"선수":0,"만기":0}}},"purchase":{"구입형리스":{"20_0_48":{"월":800752,"보증":5984000,"만기":5984000},"20_0_60":{"월":693369,"보증":5984000,"만기":5984000}},"동반차(구입형)":{"20_0_48":{"월":800752,"보증":5984000,"만기":5984000},"20_0_60":{"월":693369,"보증":5984000,"만기":5984000}}},"rentDep":20,"leaseRates":[20]},{"id":"ND037","plate":"AST2026080014","series":"스포티지","fuel":"가솔린","trim":"1.6 터보 2WD 프레스티지","modelName":"더 뉴 스포티지(NQ5 F/L) 가솔린 1.6 터보 2WD 프레스티지 2026 년형","year":"2026","price":30000000,"options":"12.3인치 내비게이션","exterior":"스노우 화이트 펄","interior":"블랙","ordinary":{"동반차":{"36":{"료":812000,"보증":1500000,"선수":0,"만기":19800000},"48":{"료":735000,"보증":1500000,"선수":0,"만기":17700000},"60":{"료":693000,"보증":1500000,"선수":0,"만기":15300000}},"6&12렌트":{"6":{"료":882000,"보증":1500000,"선수":0,"만기":0},"12":{"료":846000,"보증":1500000,"선수":0,"만기":0}},"믿음카":{"48":{"료":625000,"보증":3000000,"선수":0,"만기":17700000}},"월렌트":{"1":{"료":0,"보증":300000,"선수":0,"만기":0}}},"purchase":{"구입형리스":{"20_0_48":{"월":790315,"보증":6000000,"만기":6000000},"20_0_60":{"월":682647,"보증":6000000,"만기":6000000}},"동반차(구입형)":{"20_0_48":{"월":790315,"보증":6000000,"만기":6000000},"20_0_60":{"월":682647,"보증":6000000,"만기":6000000}}},"rentDep":20,"leaseRates":[20]},{"id":"ND038","plate":"AST2026080083","series":"싼타페","fuel":"가솔린","trim":"2.5 터보 5인승 익스클루시브 2WD","modelName":"디 올 뉴 싼타페(MX5) 가솔린 2.5 터보 5인승 익스클루시브 2WD 2026 년형","year":"2026","price":37020000,"options":"빌트인 캠 2, 증강현실 내비게이션","exterior":"어비스 블랙 펄","interior":"블랙","ordinary":{"동반차":{"36":{"료":1002000,"보증":2000000,"선수":0,"만기":24800000},"48":{"료":908000,"보증":2000000,"선수":0,"만기":22210000},"60":{"료":856000,"보증":2000000,"선수":0,"만기":19250000}},"6&12렌트":{"6":{"료":1090000,"보증":2000000,"선수":0,"만기":0},"12":{"료":1045000,"보증":2000000,"선수":0,"만기":0}},"믿음카":{"48":{"료":772000,"보증":3700000,"선수":0,"만기":22210000}},"월렌트":{"1":{"료":0,"보증":300000,"선수":0,"만기":0}}},"purchase":{"구입형리스":{"20_0_48":{"월":994826,"보증":7404000,"만기":7404000},"20_0_60":{"월":859692,"보증":7404000,"만기":7404000}},"동반차(구입형)":{"20_0_48":{"월":994826,"보증":7404000,"만기":7404000},"20_0_60":{"월":859692,"보증":7404000,"만기":7404000}}},"rentDep":20,"leaseRates":[20]},{"id":"ND039","plate":"161하7495","series":"싼타페","fuel":"가솔린","trim":"2.5 터보 5인승 익스클루시브 2WD","modelName":"디 올 뉴 싼타페(MX5) 가솔린 2.5 터보 5인승 익스클루시브 2WD 2026 년형","year":"2026","price":37070000,"options":"빌트인 캠 2, 증강현실 내비게이션","exterior":"에코트로닉 그레이 펄","interior":"블랙","ordinary":{"동반차":{"36":{"료":1004000,"보증":2000000,"선수":0,"만기":24830000},"48":{"료":909000,"보증":2000000,"선수":0,"만기":22240000},"60":{"료":857000,"보증":2000000,"선수":0,"만기":19270000}},"6&12렌트":{"6":{"료":1091000,"보증":2000000,"선수":0,"만기":0},"12":{"료":1046000,"보증":2000000,"선수":0,"만기":0}},"믿음카":{"48":{"료":773000,"보증":3700000,"선수":0,"만기":22240000}},"월렌트":{"1":{"료":0,"보증":300000,"선수":0,"만기":0}}},"purchase":{"구입형리스":{"20_0_48":{"월":996090,"보증":7414000,"만기":7414000},"20_0_60":{"월":860774,"보증":7414000,"만기":7414000}},"동반차(구입형)":{"20_0_48":{"월":996090,"보증":7414000,"만기":7414000},"20_0_60":{"월":860774,"보증":7414000,"만기":7414000}}},"rentDep":20,"leaseRates":[20]},{"id":"ND040","plate":"AST2026080057","series":"싼타페","fuel":"가솔린","trim":"2.5 터보 5인승 익스클루시브 2WD","modelName":"디 올 뉴 싼타페(MX5) 가솔린 2.5 터보 5인승 익스클루시브 2WD 2026 년형","year":"2026","price":37100000,"options":"빌트인 캠 2, 증강현실 내비게이션","exterior":"크리미 화이트 펄","interior":"블랙","ordinary":{"동반차":{"36":{"료":1004000,"보증":2000000,"선수":0,"만기":24850000},"48":{"료":910000,"보증":2000000,"선수":0,"만기":22260000},"60":{"료":858000,"보증":2000000,"선수":0,"만기":19290000}},"6&12렌트":{"6":{"료":1092000,"보증":2000000,"선수":0,"만기":0},"12":{"료":1047000,"보증":2000000,"선수":0,"만기":0}},"믿음카":{"48":{"료":774000,"보증":3700000,"선수":0,"만기":22260000}},"월렌트":{"1":{"료":0,"보증":300000,"선수":0,"만기":0}}},"purchase":{"구입형리스":{"20_0_48":{"월":996848,"보증":7420000,"만기":7420000},"20_0_60":{"월":861423,"보증":7420000,"만기":7420000}},"동반차(구입형)":{"20_0_48":{"월":996848,"보증":7420000,"만기":7420000},"20_0_60":{"월":861423,"보증":7420000,"만기":7420000}}},"rentDep":20,"leaseRates":[20]},{"id":"ND041","plate":"AST2026080043","series":"싼타페","fuel":"하이브리드","trim":"HEV(MX5) 가솔린 1.6 터보 2WD 5인승 익스클루시브","modelName":"디 올 뉴 싼타페 HEV(MX5) 가솔린 1.6 터보 2WD 5인승 익스클루시브 2026 년형","year":"2026","price":41300000,"options":"","exterior":"크리미 화이트 펄","interior":"블랙","ordinary":{"동반차":{"36":{"료":1106000,"보증":2000000,"선수":0,"만기":26840000},"48":{"료":998000,"보증":2000000,"선수":0,"만기":23950000},"60":{"료":937000,"보증":2000000,"선수":0,"만기":20650000}},"6&12렌트":{"6":{"료":1198000,"보증":2000000,"선수":0,"만기":0},"12":{"료":1148000,"보증":2000000,"선수":0,"만기":0}},"믿음카":{"48":{"료":849000,"보증":4100000,"선수":0,"만기":23950000}},"월렌트":{"1":{"료":0,"보증":300000,"선수":0,"만기":0}}},"purchase":{"구입형리스":{"20_0_48":{"월":1063104,"보증":8260000,"만기":8260000},"20_0_60":{"월":915280,"보증":8260000,"만기":8260000}},"동반차(구입형)":{"20_0_48":{"월":1063104,"보증":8260000,"만기":8260000},"20_0_60":{"월":915280,"보증":8260000,"만기":8260000}}},"rentDep":20,"leaseRates":[20]},{"id":"ND042","plate":"AST2026060601","series":"쏘나타","fuel":"LPG","trim":"디 엣지 LPi 2.0 렌터카 Business 2","modelName":"쏘나타 디 엣지 LPi 2.0 렌터카 Business 2 2026 년형","year":"2026","price":29840000,"options":"","exterior":"어비스 블랙 펄","interior":"블랙 원톤","ordinary":{"동반차":{"36":{"료":757000,"보증":1000000,"선수":0,"만기":21180000},"48":{"료":692000,"보증":1000000,"선수":0,"만기":19090000},"60":{"료":656000,"보증":1000000,"선수":0,"만기":16710000}},"6&12렌트":{"6":{"료":831000,"보증":1000000,"선수":0,"만기":0},"12":{"료":796000,"보증":1000000,"선수":0,"만기":0}},"믿음카":{"48":{"료":589000,"보증":3000000,"선수":0,"만기":19090000}},"월렌트":{"1":{"료":0,"보증":200000,"선수":0,"만기":0}}},"purchase":{"구입형리스":{"20_0_48":{"월":815048,"보증":5968000,"만기":5968000},"20_0_60":{"월":705916,"보증":5968000,"만기":5968000}},"동반차(구입형)":{"20_0_48":{"월":815048,"보증":5968000,"만기":5968000},"20_0_60":{"월":705916,"보증":5968000,"만기":5968000}}},"rentDep":20,"leaseRates":[20]},{"id":"ND043","plate":"AST2026060603","series":"쏘나타","fuel":"LPG","trim":"디 엣지 LPi 2.0 렌터카 Business 2","modelName":"쏘나타 디 엣지 LPi 2.0 렌터카 Business 2 2026 년형","year":"2026","price":29920000,"options":"","exterior":"세레니티 화이트 펄","interior":"블랙 원톤","ordinary":{"동반차":{"36":{"료":759000,"보증":1000000,"선수":0,"만기":21240000},"48":{"료":693000,"보증":1000000,"선수":0,"만기":19140000},"60":{"료":658000,"보증":1000000,"선수":0,"만기":16750000}},"6&12렌트":{"6":{"료":832000,"보증":1000000,"선수":0,"만기":0},"12":{"료":797000,"보증":1000000,"선수":0,"만기":0}},"믿음카":{"48":{"료":590000,"보증":3000000,"선수":0,"만기":19140000}},"월렌트":{"1":{"료":0,"보증":200000,"선수":0,"만기":0}}},"purchase":{"구입형리스":{"20_0_48":{"월":817101,"보증":5984000,"만기":5984000},"20_0_60":{"월":707682,"보증":5984000,"만기":5984000}},"동반차(구입형)":{"20_0_48":{"월":817101,"보증":5984000,"만기":5984000},"20_0_60":{"월":707682,"보증":5984000,"만기":5984000}}},"rentDep":20,"leaseRates":[20]},{"id":"ND044","plate":"AST2026070590","series":"쏘나타","fuel":"가솔린","trim":"디 엣지 가솔린 2.0 에스","modelName":"쏘나타 디 엣지 가솔린 2.0 에스 2026 년형","year":"2026","price":30430000,"options":"빌트인 캠 2, 증강현실 내비게이션","exterior":"녹턴 그레이 메탈릭","interior":"블랙 원톤","ordinary":{"동반차":{"36":{"료":788000,"보증":1000000,"선수":0,"만기":21600000},"48":{"료":720000,"보증":1000000,"선수":0,"만기":19470000},"60":{"료":683000,"보증":1000000,"선수":0,"만기":17040000}},"6&12렌트":{"6":{"료":864000,"보증":1000000,"선수":0,"만기":0},"12":{"료":828000,"보증":1000000,"선수":0,"만기":0}},"믿음카":{"48":{"료":612000,"보증":3000000,"선수":0,"만기":19470000}},"월렌트":{"1":{"료":0,"보증":300000,"선수":0,"만기":0}}},"purchase":{"구입형리스":{"20_0_48":{"월":817522,"보증":6086000,"만기":6086000},"20_0_60":{"월":706254,"보증":6086000,"만기":6086000}},"동반차(구입형)":{"20_0_48":{"월":817522,"보증":6086000,"만기":6086000},"20_0_60":{"월":706254,"보증":6086000,"만기":6086000}}},"rentDep":20,"leaseRates":[20]},{"id":"ND045","plate":"AST2026070630","series":"쏘나타","fuel":"가솔린","trim":"디 엣지 가솔린 2.0 에스","modelName":"쏘나타 디 엣지 가솔린 2.0 에스 2026 년형","year":"2026","price":30510000,"options":"빌트인 캠 2, 증강현실 내비게이션","exterior":"세레니티 화이트 펄","interior":"블랙 원톤","ordinary":{"동반차":{"36":{"료":789000,"보증":1000000,"선수":0,"만기":21660000},"48":{"료":721000,"보증":1000000,"선수":0,"만기":19520000},"60":{"료":684000,"보증":1000000,"선수":0,"만기":17080000}},"6&12렌트":{"6":{"료":866000,"보증":1000000,"선수":0,"만기":0},"12":{"료":830000,"보증":1000000,"선수":0,"만기":0}},"믿음카":{"48":{"료":613000,"보증":3100000,"선수":0,"만기":19520000}},"월렌트":{"1":{"료":0,"보증":300000,"선수":0,"만기":0}}},"purchase":{"구입형리스":{"20_0_48":{"월":819543,"보증":6102000,"만기":6102000},"20_0_60":{"월":707986,"보증":6102000,"만기":6102000}},"동반차(구입형)":{"20_0_48":{"월":819543,"보증":6102000,"만기":6102000},"20_0_60":{"월":707986,"보증":6102000,"만기":6102000}}},"rentDep":20,"leaseRates":[20]},{"id":"ND046","plate":"AST2026060598","series":"쏘나타","fuel":"가솔린","trim":"디 엣지 가솔린 2.0 에스","modelName":"쏘나타 디 엣지 가솔린 2.0 에스 2026 년형","year":"2026","price":31780000,"options":"파킹 어시스트Ⅰ","exterior":"세레니티 화이트 펄","interior":"블랙 원톤","ordinary":{"동반차":{"36":{"료":771000,"보증":1000000,"선수":0,"만기":22560000},"48":{"료":704000,"보증":1000000,"선수":0,"만기":20330000},"60":{"료":668000,"보증":1000000,"선수":0,"만기":17790000}},"6&12렌트":{"6":{"료":845000,"보증":1000000,"선수":0,"만기":0},"12":{"료":810000,"보증":1000000,"선수":0,"만기":0}},"믿음카":{"48":{"료":599000,"보증":3200000,"선수":0,"만기":20330000}},"월렌트":{"1":{"료":0,"보증":300000,"선수":0,"만기":0}}},"purchase":{"구입형리스":{"20_0_48":{"월":851633,"보증":6356000,"만기":6356000},"20_0_60":{"월":735476,"보증":6356000,"만기":6356000}},"동반차(구입형)":{"20_0_48":{"월":851633,"보증":6356000,"만기":6356000},"20_0_60":{"월":735476,"보증":6356000,"만기":6356000}}},"rentDep":20,"leaseRates":[20]},{"id":"ND047","plate":"154하3137","series":"쏘나타","fuel":"가솔린","trim":"디 엣지 가솔린 2.0 프리미엄","modelName":"쏘나타 디 엣지 가솔린 2.0 프리미엄 2026 년형","year":"2026","price":30940000,"options":"하이패스, 인포테인먼트 내비Ⅰ, 컴포트Ⅰ(1열 편의)","exterior":"녹턴 그레이 메탈릭","interior":"블랙 원톤","ordinary":{"동반차":{"36":{"료":752000,"보증":1000000,"선수":0,"만기":21960000},"48":{"료":687000,"보증":1000000,"선수":0,"만기":19800000},"60":{"료":652000,"보증":1000000,"선수":0,"만기":17320000}},"6&12렌트":{"6":{"료":825000,"보증":1000000,"선수":0,"만기":0},"12":{"료":791000,"보증":1000000,"선수":0,"만기":0}},"믿음카":{"48":{"료":584000,"보증":3100000,"선수":0,"만기":19800000}},"월렌트":{"1":{"료":0,"보증":300000,"선수":0,"만기":0}}},"purchase":{"구입형리스":{"20_0_48":{"월":830408,"보증":6188000,"만기":6188000},"20_0_60":{"월":717294,"보증":6188000,"만기":6188000}},"동반차(구입형)":{"20_0_48":{"월":830408,"보증":6188000,"만기":6188000},"20_0_60":{"월":717294,"보증":6188000,"만기":6188000}}},"rentDep":20,"leaseRates":[20]},{"id":"ND048","plate":"AST2026070536","series":"쏘렌토","fuel":"가솔린","trim":"2.5 터보 5인승 노블레스 2WD","modelName":"더 뉴 쏘렌토 (MQ4 F/L) 가솔린 2.5 터보 5인승 노블레스 2WD 2026 년형","year":"2026","price":39460000,"options":"","exterior":"인터스텔라 그레이","interior":"올리브 브라운","ordinary":{"동반차":{"36":{"료":1060000,"보증":1500000,"선수":0,"만기":26830000},"48":{"료":962000,"보증":1500000,"선수":0,"만기":24070000},"60":{"료":907000,"보증":1500000,"선수":0,"만기":20910000}},"6&12렌트":{"6":{"료":1155000,"보증":1500000,"선수":0,"만기":0},"12":{"료":1107000,"보증":1500000,"선수":0,"만기":0}},"믿음카":{"48":{"료":818000,"보증":3900000,"선수":0,"만기":24070000}},"월렌트":{"1":{"료":0,"보증":300000,"선수":0,"만기":0}}},"purchase":{"구입형리스":{"20_0_48":{"월":1056479,"보증":7892000,"만기":7892000},"20_0_60":{"월":912509,"보증":7892000,"만기":7892000}},"동반차(구입형)":{"20_0_48":{"월":1056479,"보증":7892000,"만기":7892000},"20_0_60":{"월":912509,"보증":7892000,"만기":7892000}}},"rentDep":20,"leaseRates":[20]},{"id":"ND049","plate":"AST2026080039","series":"쏘렌토","fuel":"가솔린","trim":"2.5 터보 5인승 노블레스 2WD","modelName":"더 뉴 쏘렌토 (MQ4 F/L) 가솔린 2.5 터보 5인승 노블레스 2WD 2026 년형","year":"2026","price":41970000,"options":"스타일, 드라이브 와이즈","exterior":"스노우 화이트 펄","interior":"올리브 브라운","ordinary":{"동반차":{"36":{"료":1119000,"보증":1500000,"선수":0,"만기":28530000},"48":{"료":1016000,"보증":1500000,"선수":0,"만기":25600000},"60":{"료":957000,"보증":1500000,"선수":0,"만기":22240000}},"6&12렌트":{"6":{"료":1220000,"보증":1500000,"선수":0,"만기":0},"12":{"료":1169000,"보증":1500000,"선수":0,"만기":0}},"믿음카":{"48":{"료":864000,"보증":4200000,"선수":0,"만기":25600000}},"월렌트":{"1":{"료":0,"보증":300000,"선수":0,"만기":0}}},"purchase":{"구입형리스":{"20_0_48":{"월":1105912,"보증":8394000,"만기":8394000},"20_0_60":{"월":952850,"보증":8394000,"만기":8394000}},"동반차(구입형)":{"20_0_48":{"월":1105912,"보증":8394000,"만기":8394000},"20_0_60":{"월":952850,"보증":8394000,"만기":8394000}}},"rentDep":20,"leaseRates":[20]},{"id":"ND050","plate":"154하3696","series":"쏘렌토","fuel":"가솔린","trim":"2.5 터보 5인승 프레스티지 2WD","modelName":"더 뉴 쏘렌토 (MQ4 F/L) 가솔린 2.5 터보 5인승 프레스티지 2WD 2026 년형","year":"2026","price":38270000,"options":"드라이브 와이즈, 12.3인치 클러스터","exterior":"스노우 화이트 펄","interior":"블랙","ordinary":{"동반차":{"36":{"료":1031000,"보증":1500000,"선수":0,"만기":26020000},"48":{"료":936000,"보증":1500000,"선수":0,"만기":23340000},"60":{"료":883000,"보증":1500000,"선수":0,"만기":20280000}},"6&12렌트":{"6":{"료":1124000,"보증":1500000,"선수":0,"만기":0},"12":{"료":1077000,"보증":1500000,"선수":0,"만기":0}},"믿음카":{"48":{"료":796000,"보증":3800000,"선수":0,"만기":23340000}},"월렌트":{"1":{"료":0,"보증":300000,"선수":0,"만기":0}}},"purchase":{"구입형리스":{"20_0_48":{"월":1026412,"보증":7654000,"만기":7654000},"20_0_60":{"월":886750,"보증":7654000,"만기":7654000}},"동반차(구입형)":{"20_0_48":{"월":1026412,"보증":7654000,"만기":7654000},"20_0_60":{"월":886750,"보증":7654000,"만기":7654000}}},"rentDep":20,"leaseRates":[20]},{"id":"ND051","plate":"AST2026080038","series":"쏘렌토","fuel":"하이브리드","trim":"HEV (MQ4 F/L) 가솔린 1.6T HEV 2WD 5인승 노블레스","modelName":"더 뉴 쏘렌토 HEV (MQ4 F/L) 가솔린 1.6T HEV 2WD 5인승 노블레스 2026 년형","year":"2026","price":46120000,"options":"드라이브 와이즈, 스타일","exterior":"오로라 블랙 펄","interior":"올리브 브라운","ordinary":{"동반차":{"36":{"료":1221000,"보증":1500000,"선수":0,"만기":30430000},"48":{"료":1103000,"보증":1500000,"선수":0,"만기":27210000},"60":{"료":1037000,"보증":1500000,"선수":0,"만기":23520000}},"6&12렌트":{"6":{"료":1324000,"보증":1500000,"선수":0,"만기":0},"12":{"료":1269000,"보증":1500000,"선수":0,"만기":0}},"믿음카":{"48":{"료":938000,"보증":4600000,"선수":0,"만기":27210000}},"월렌트":{"1":{"료":0,"보증":300000,"선수":0,"만기":0}}},"purchase":{"구입형리스":{"20_0_48":{"월":1183727,"보증":9224000,"만기":9224000},"20_0_60":{"월":1018776,"보증":9224000,"만기":9224000}},"동반차(구입형)":{"20_0_48":{"월":1183727,"보증":9224000,"만기":9224000},"20_0_60":{"월":1018776,"보증":9224000,"만기":9224000}}},"rentDep":20,"leaseRates":[20]},{"id":"ND052","plate":"154하3437","series":"아반떼","fuel":"가솔린","trim":"1.6 모던","modelName":"더 뉴 아반떼 가솔린 1.6 모던 2026 년형","year":"2026","price":23880000,"options":"","exterior":"어비스 블랙 펄","interior":"블랙 원톤","ordinary":{"동반차":{"36":{"료":640000,"보증":500000,"선수":0,"만기":16230000},"48":{"료":582000,"보증":500000,"선수":0,"만기":14560000},"60":{"료":550000,"보증":500000,"선수":0,"만기":12650000}},"6&12렌트":{"6":{"료":699000,"보증":500000,"선수":0,"만기":0},"12":{"료":670000,"보증":500000,"선수":0,"만기":0}},"믿음카":{"48":{"료":495000,"보증":2400000,"선수":0,"만기":14560000}},"월렌트":{"1":{"료":0,"보증":200000,"선수":0,"만기":0}}},"purchase":{"구입형리스":{"20_0_48":{"월":655518,"보증":4776000,"만기":4776000},"20_0_60":{"월":569598,"보증":4776000,"만기":4776000}},"동반차(구입형)":{"20_0_48":{"월":655518,"보증":4776000,"만기":4776000},"20_0_60":{"월":569598,"보증":4776000,"만기":4776000}}},"rentDep":20,"leaseRates":[20]},{"id":"ND053","plate":"154하3565","series":"아반떼","fuel":"가솔린","trim":"1.6 모던","modelName":"더 뉴 아반떼 가솔린 1.6 모던 2026 년형","year":"2026","price":23910000,"options":"","exterior":"아틀라스 화이트","interior":"블랙 원톤","ordinary":{"동반차":{"36":{"료":640000,"보증":500000,"선수":0,"만기":16250000},"48":{"료":582000,"보증":500000,"선수":0,"만기":14580000},"60":{"료":550000,"보증":500000,"선수":0,"만기":12670000}},"6&12렌트":{"6":{"료":699000,"보증":500000,"선수":0,"만기":0},"12":{"료":670000,"보증":500000,"선수":0,"만기":0}},"믿음카":{"48":{"료":495000,"보증":2400000,"선수":0,"만기":14580000}},"월렌트":{"1":{"료":0,"보증":200000,"선수":0,"만기":0}}},"purchase":{"구입형리스":{"20_0_48":{"월":656180,"보증":4782000,"만기":4782000},"20_0_60":{"월":570152,"보증":4782000,"만기":4782000}},"동반차(구입형)":{"20_0_48":{"월":656180,"보증":4782000,"만기":4782000},"20_0_60":{"월":570152,"보증":4782000,"만기":4782000}}},"rentDep":20,"leaseRates":[20]},{"id":"ND054","plate":"154하3679","series":"아반떼","fuel":"가솔린","trim":"1.6 모던","modelName":"더 뉴 아반떼 가솔린 1.6 모던 2026 년형","year":"2026","price":24330000,"options":"익스테리어 디자인","exterior":"아틀라스 화이트","interior":"블랙 원톤","ordinary":{"동반차":{"36":{"료":650000,"보증":500000,"선수":0,"만기":16540000},"48":{"료":591000,"보증":500000,"선수":0,"만기":14840000},"60":{"료":559000,"보증":500000,"선수":0,"만기":12890000}},"6&12렌트":{"6":{"료":710000,"보증":500000,"선수":0,"만기":0},"12":{"료":680000,"보증":500000,"선수":0,"만기":0}},"믿음카":{"48":{"료":503000,"보증":2400000,"선수":0,"만기":14840000}},"월렌트":{"1":{"료":0,"보증":200000,"선수":0,"만기":0}}},"purchase":{"구입형리스":{"20_0_48":{"월":665430,"보증":4866000,"만기":4866000},"20_0_60":{"월":577910,"보증":4866000,"만기":4866000}},"동반차(구입형)":{"20_0_48":{"월":665430,"보증":4866000,"만기":4866000},"20_0_60":{"월":577910,"보증":4866000,"만기":4866000}}},"rentDep":20,"leaseRates":[20]},{"id":"ND055","plate":"161하7577","series":"아반떼","fuel":"가솔린","trim":"1.6 모던","modelName":"더 뉴 아반떼 가솔린 1.6 모던 2026 년형","year":"2026","price":24360000,"options":"익스테리어 디자인","exterior":"아틀라스 화이트","interior":"블랙 원톤","ordinary":{"동반차":{"36":{"료":650000,"보증":500000,"선수":0,"만기":16560000},"48":{"료":591000,"보증":500000,"선수":0,"만기":14850000},"60":{"료":558000,"보증":500000,"선수":0,"만기":12910000}},"6&12렌트":{"6":{"료":710000,"보증":500000,"선수":0,"만기":0},"12":{"료":680000,"보증":500000,"선수":0,"만기":0}},"믿음카":{"48":{"료":503000,"보증":2400000,"선수":0,"만기":14850000}},"월렌트":{"1":{"료":0,"보증":200000,"선수":0,"만기":0}}},"purchase":{"구입형리스":{"20_0_48":{"월":666091,"보증":4872000,"만기":4872000},"20_0_60":{"월":578464,"보증":4872000,"만기":4872000}},"동반차(구입형)":{"20_0_48":{"월":666091,"보증":4872000,"만기":4872000},"20_0_60":{"월":578464,"보증":4872000,"만기":4872000}}},"rentDep":20,"leaseRates":[20]},{"id":"ND056","plate":"154하3676","series":"아반떼","fuel":"가솔린","trim":"1.6 모던","modelName":"더 뉴 아반떼 가솔린 1.6 모던 2026 년형","year":"2026","price":24570000,"options":"현대 스마트센스","exterior":"어비스 블랙 펄","interior":"블랙 원톤","ordinary":{"동반차":{"36":{"료":655000,"보증":500000,"선수":0,"만기":16700000},"48":{"료":595000,"보증":500000,"선수":0,"만기":14980000},"60":{"료":563000,"보증":500000,"선수":0,"만기":13020000}},"6&12렌트":{"6":{"료":714000,"보증":500000,"선수":0,"만기":0},"12":{"료":685000,"보증":500000,"선수":0,"만기":0}},"믿음카":{"48":{"료":506000,"보증":2500000,"선수":0,"만기":14980000}},"월렌트":{"1":{"료":0,"보증":200000,"선수":0,"만기":0}}},"purchase":{"구입형리스":{"20_0_48":{"월":670716,"보증":4914000,"만기":4914000},"20_0_60":{"월":582344,"보증":4914000,"만기":4914000}},"동반차(구입형)":{"20_0_48":{"월":670716,"보증":4914000,"만기":4914000},"20_0_60":{"월":582344,"보증":4914000,"만기":4914000}}},"rentDep":20,"leaseRates":[20]},{"id":"ND057","plate":"154하3515","series":"아반떼","fuel":"가솔린","trim":"1.6 모던","modelName":"더 뉴 아반떼 가솔린 1.6 모던 2026 년형","year":"2026","price":24600000,"options":"현대 스마트센스","exterior":"어비스 블랙 펄","interior":"블랙 원톤","ordinary":{"동반차":{"36":{"료":655000,"보증":500000,"선수":0,"만기":16720000},"48":{"료":595000,"보증":500000,"선수":0,"만기":15000000},"60":{"료":563000,"보증":500000,"선수":0,"만기":13030000}},"6&12렌트":{"6":{"료":714000,"보증":500000,"선수":0,"만기":0},"12":{"료":685000,"보증":500000,"선수":0,"만기":0}},"믿음카":{"48":{"료":506000,"보증":2500000,"선수":0,"만기":15000000}},"월렌트":{"1":{"료":0,"보증":200000,"선수":0,"만기":0}}},"purchase":{"구입형리스":{"20_0_48":{"월":671377,"보증":4920000,"만기":4920000},"20_0_60":{"월":582898,"보증":4920000,"만기":4920000}},"동반차(구입형)":{"20_0_48":{"월":671377,"보증":4920000,"만기":4920000},"20_0_60":{"월":582898,"보증":4920000,"만기":4920000}}},"rentDep":20,"leaseRates":[20]},{"id":"ND058","plate":"154하3665","series":"카니발","fuel":"가솔린","trim":"3.5 9인승 프레스티지","modelName":"더 뉴 카니발 가솔린 3.5 9인승 프레스티지 2026 년형","year":"2026","price":37540000,"options":"컨비니언스","exterior":"스노우 화이트 펄","interior":"토프","ordinary":{"동반차":{"36":{"료":977000,"보증":2000000,"선수":0,"만기":25900000},"48":{"료":887000,"보증":2000000,"선수":0,"만기":23270000},"60":{"료":838000,"보증":2000000,"선수":0,"만기":20270000}},"6&12렌트":{"6":{"료":1065000,"보증":2000000,"선수":0,"만기":0},"12":{"료":1021000,"보증":2000000,"선수":0,"만기":0}},"믿음카":{"48":{"료":754000,"보증":3800000,"선수":0,"만기":23270000}},"월렌트":{"1":{"료":0,"보증":300000,"선수":0,"만기":0}}},"purchase":{"구입형리스":{"20_0_48":{"월":1029047,"보증":7508000,"만기":7508000},"20_0_60":{"월":892031,"보증":7508000,"만기":7508000}},"동반차(구입형)":{"20_0_48":{"월":1029047,"보증":7508000,"만기":7508000},"20_0_60":{"월":892031,"보증":7508000,"만기":7508000}}},"rentDep":20,"leaseRates":[20]},{"id":"ND059","plate":"154하3525","series":"카니발","fuel":"하이브리드","trim":"HEV 가솔린 1.6 터보 9인승 프레스티지","modelName":"더 뉴 카니발 HEV 가솔린 1.6 터보 9인승 프레스티지 2026 년형","year":"2026","price":42010000,"options":"컨비니언스","exterior":"오로라 블랙 펄","interior":"토프","ordinary":{"동반차":{"36":{"료":1109000,"보증":2000000,"선수":0,"만기":28980000},"48":{"료":1007000,"보증":2000000,"선수":0,"만기":26040000},"60":{"료":951000,"보증":2000000,"선수":0,"만기":22680000}},"6&12렌트":{"6":{"료":1209000,"보증":2000000,"선수":0,"만기":0},"12":{"료":1159000,"보증":2000000,"선수":0,"만기":0}},"믿음카":{"48":{"료":856000,"보증":4200000,"선수":0,"만기":26040000}},"월렌트":{"1":{"료":0,"보증":300000,"선수":0,"만기":0}}},"purchase":{"구입형리스":{"20_0_48":{"월":1080871,"보증":8402000,"만기":8402000},"20_0_60":{"월":930526,"보증":8402000,"만기":8402000}},"동반차(구입형)":{"20_0_48":{"월":1080871,"보증":8402000,"만기":8402000},"20_0_60":{"월":930526,"보증":8402000,"만기":8402000}}},"rentDep":20,"leaseRates":[20]},{"id":"ND060","plate":"154하3650","series":"카니발","fuel":"하이브리드","trim":"HEV 가솔린 1.6 터보 9인승 프레스티지","modelName":"더 뉴 카니발 HEV 가솔린 1.6 터보 9인승 프레스티지 2026 년형","year":"2026","price":42090000,"options":"컨비니언스","exterior":"스노우 화이트 펄","interior":"토프","ordinary":{"동반차":{"36":{"료":1111000,"보증":2000000,"선수":0,"만기":29040000},"48":{"료":1009000,"보증":2000000,"선수":0,"만기":26090000},"60":{"료":952000,"보증":2000000,"선수":0,"만기":22720000}},"6&12렌트":{"6":{"료":1211000,"보증":2000000,"선수":0,"만기":0},"12":{"료":1161000,"보증":2000000,"선수":0,"만기":0}},"믿음카":{"48":{"료":858000,"보증":4200000,"선수":0,"만기":26090000}},"월렌트":{"1":{"료":0,"보증":300000,"선수":0,"만기":0}}},"purchase":{"구입형리스":{"20_0_48":{"월":1082874,"보증":8418000,"만기":8418000},"20_0_60":{"월":932244,"보증":8418000,"만기":8418000}},"동반차(구입형)":{"20_0_48":{"월":1082874,"보증":8418000,"만기":8418000},"20_0_60":{"월":932244,"보증":8418000,"만기":8418000}}},"rentDep":20,"leaseRates":[20]},{"id":"ND061","plate":"AST2026060990","series":"캐스퍼","fuel":"가솔린","trim":"1.0 디 에센셜","modelName":"더 뉴 캐스퍼 가솔린 1.0 디 에센셜 2026 년형","year":"2026","price":18310000,"options":"17인치 알로이 휠 패키지","exterior":"언블리치드 아이보리","interior":"블랙","ordinary":{"동반차":{"36":{"료":581000,"보증":500000,"선수":0,"만기":10800000},"48":{"료":524000,"보증":500000,"선수":0,"만기":9520000},"60":{"료":493000,"보증":500000,"선수":0,"만기":8050000}},"6&12렌트":{"6":{"료":629000,"보증":500000,"선수":0,"만기":0},"12":{"료":603000,"보증":500000,"선수":0,"만기":0}},"믿음카":{"48":{"료":446000,"보증":1800000,"선수":0,"만기":9520000}},"월렌트":{"1":{"료":0,"보증":200000,"선수":0,"만기":0}}},"purchase":{"구입형리스":{"20_0_48":{"월":492154,"보증":3662000,"만기":3662000},"20_0_60":{"월":430882,"보증":3662000,"만기":3662000}},"동반차(구입형)":{"20_0_48":{"월":492154,"보증":3662000,"만기":3662000},"20_0_60":{"월":430882,"보증":3662000,"만기":3662000}}},"rentDep":20,"leaseRates":[20]},{"id":"ND062","plate":"AST2026080096","series":"투싼","fuel":"가솔린","trim":"1.6 터보 모던 2WD","modelName":"더 뉴 투싼(NX4) 가솔린 1.6 터보 모던 2WD 2026 년형","year":"2026","price":30020000,"options":"인포테인먼트 내비, 컴포트Ⅰ","exterior":"크리미 화이트 펄","interior":"블랙 원톤","ordinary":{"동반차":{"36":{"료":818000,"보증":1500000,"선수":0,"만기":19810000},"48":{"료":741000,"보증":1500000,"선수":0,"만기":17710000},"60":{"료":698000,"보증":1500000,"선수":0,"만기":15310000}},"6&12렌트":{"6":{"료":890000,"보증":1500000,"선수":0,"만기":0},"12":{"료":853000,"보증":1500000,"선수":0,"만기":0}},"믿음카":{"48":{"료":630000,"보증":3000000,"선수":0,"만기":17710000}},"월렌트":{"1":{"료":0,"보증":300000,"선수":0,"만기":0}}},"purchase":{"구입형리스":{"20_0_48":{"월":790822,"보증":6004000,"만기":6004000},"20_0_60":{"월":683082,"보증":6004000,"만기":6004000}},"동반차(구입형)":{"20_0_48":{"월":790822,"보증":6004000,"만기":6004000},"20_0_60":{"월":683082,"보증":6004000,"만기":6004000}}},"rentDep":20,"leaseRates":[20]},{"id":"ND063","plate":"154하3625","series":"팰리세이드","fuel":"가솔린","trim":"2.5 터보 - 7인승 익스클루시브 2WD","modelName":"디 올 뉴 팰리세이드 가솔린 2.5 터보 - 7인승 익스클루시브 2WD 2025 년형","year":"2025","price":47900000,"options":"컴포트, 현대 스마트센스","exterior":"어비스 블랙 펄","interior":"블랙 원톤","ordinary":{"동반차":{"36":{"료":1161000,"보증":2000000,"선수":0,"만기":31610000},"48":{"료":1041000,"보증":2000000,"선수":0,"만기":28260000},"60":{"료":977000,"보증":2000000,"선수":0,"만기":24420000}},"6&12렌트":{"6":{"료":1250000,"보증":2000000,"선수":0,"만기":0},"12":{"료":1198000,"보증":2000000,"선수":0,"만기":0}},"믿음카":{"48":{"료":885000,"보증":4800000,"선수":0,"만기":28260000}},"월렌트":{"1":{"료":0,"보증":300000,"선수":0,"만기":0}}},"purchase":{"구입형리스":{"20_0_48":{"월":1253773,"보증":9580000,"만기":9580000},"20_0_60":{"월":1079236,"보증":9580000,"만기":9580000}},"동반차(구입형)":{"20_0_48":{"월":1253773,"보증":9580000,"만기":9580000},"20_0_60":{"월":1079236,"보증":9580000,"만기":9580000}}},"rentDep":20,"leaseRates":[20]},{"id":"ND064","plate":"AST2026070529","series":"팰리세이드","fuel":"가솔린","trim":"2.5 터보 - 7인승 익스클루시브 2WD","modelName":"디 올 뉴 팰리세이드 가솔린 2.5 터보 - 7인승 익스클루시브 2WD 2025 년형","year":"2025","price":48000000,"options":"컴포트, 현대 스마트센스","exterior":"크리미 화이트 펄","interior":"블랙 원톤","ordinary":{"동반차":{"36":{"료":1163000,"보증":2000000,"선수":0,"만기":31680000},"48":{"료":1043000,"보증":2000000,"선수":0,"만기":28320000},"60":{"료":979000,"보증":2000000,"선수":0,"만기":24480000}},"6&12렌트":{"6":{"료":1252000,"보증":2000000,"선수":0,"만기":0},"12":{"료":1200000,"보증":2000000,"선수":0,"만기":0}},"믿음카":{"48":{"료":887000,"보증":4800000,"선수":0,"만기":28320000}},"월렌트":{"1":{"료":0,"보증":300000,"선수":0,"만기":0}}},"purchase":{"구입형리스":{"20_0_48":{"월":1256266,"보증":9600000,"만기":9600000},"20_0_60":{"월":1081367,"보증":9600000,"만기":9600000}},"동반차(구입형)":{"20_0_48":{"월":1256266,"보증":9600000,"만기":9600000},"20_0_60":{"월":1081367,"보증":9600000,"만기":9600000}}},"rentDep":20,"leaseRates":[20]},{"id":"ND065","plate":"AST2026060777","series":"포터2","fuel":"LPG","trim":"2.5 2WD 슈퍼캡 초장축 Smart (스마트)","modelName":"포터2(HR) LPG 2.5 2WD 슈퍼캡 초장축 Smart (스마트) 2026 년형","year":"2026","price":22710000,"options":"중량짐용 후륜 현가장치","exterior":"오닉스 블루","interior":"그레이","ordinary":{"동반차리스":{"48":{"료":543000,"보증":500000,"선수":0,"만기":14760000},"60":{"료":514000,"보증":500000,"선수":0,"만기":12940000}},"믿음카리스":{"48":{"료":489000,"보증":2300000,"선수":0,"만기":14760000},"60":{"료":463000,"보증":2300000,"선수":0,"만기":12940000}}},"purchase":{"구입형리스":{"20_0_48":{"월":582378,"보증":4542000,"만기":4542000},"20_0_60":{"월":500790,"보증":4542000,"만기":4542000},"10_0_48":{"월":342000,"보증":2300000,"만기":14760000}},"동반차(구입형)":{"20_0_48":{"월":582378,"보증":4542000,"만기":4542000},"20_0_60":{"월":500790,"보증":4542000,"만기":4542000}}},"rentDep":20,"leaseRates":[10,20]}];
-var _vehicleMode="stock",_ndSelected=null;
+var _vehicleMode="direct",_ndSelected=null;
 
 function _ndUniq(a){return Array.from(new Set(a));}
 function _ndOptText(s){
@@ -3040,7 +3198,18 @@ function _ndFiltered(){
   return DIRECT_NEW.filter(function(x){return (!s||x.series===s)&&(!f||x.fuel===f)&&(!t||x.trim===t);});
 }
 var _ndBrand="";
-function _ndBrandOf(v){var k=norm(v);if(["아반떼","쏘나타","그랜저","투싼","팰리세이드","캐스퍼","포터"].some(x=>k.includes(norm(x))))return "현대";if(["카니발","쏘렌토","스포티지","셀토스","K3","K5","K8","K9","EV3","EV4","EV5","EV6","EV9","니로","레이","모닝","타스만"].some(x=>k.includes(norm(x))))return "기아";if(["G70","G80","G90","GV60","GV70","GV80"].some(x=>k.includes(norm(x))))return "제네시스";if(k.includes("ATTO")||k.includes("DOLPHIN")||k.includes("SEAL"))return "BYD";if(k.includes("토레스")||k.includes("티볼리")||k.includes("액티언")||k.includes("무쏘"))return "KGM";return "기타";}
+function _ndBrandOf(v){
+  var k=norm(v);
+  if(["아반떼","쏘나타","그랜저","투싼","팰리세이드","캐스퍼","포터","포터2","베뉴","스타리아","싼타페","아이오닉","코나","넥쏘"].some(function(x){return k.includes(norm(x));}))return "현대";
+  if(["카니발","쏘렌토","스포티지","셀토스","K3","K5","K8","K9","EV3","EV4","EV5","EV6","EV9","니로","레이","모닝","타스만","봉고"].some(function(x){return k.includes(norm(x));}))return "기아";
+  if(["G70","G80","G90","GV60","GV70","GV80"].some(function(x){return k.includes(norm(x));}))return "제네시스";
+  if(k.includes("ATTO")||k.includes("DOLPHIN")||k.includes("SEAL"))return "BYD";
+  if(k.includes("토레스")||k.includes("티볼리")||k.includes("액티언")||k.includes("무쏘"))return "KGM";
+  if(k.includes("벤츠")||k.includes("MERCEDES"))return "벤츠";
+  if(k.includes("르노")||k.includes("그랑 콜레오스")||k.includes("아르카나"))return "르노코리아";
+  if(k.includes("트랙스")||k.includes("트레일블레이저")||k.includes("콜로라도")||k.includes("타호"))return "쉐보레";
+  return "기타";
+}
 function _ndBrands(){return _ndUniq(DIRECT_NEW.map(x=>_ndBrandOf(x.series))).sort()}
 function _ndModels(b){return _ndUniq(DIRECT_NEW.filter(x=>!b||_ndBrandOf(x.series)===b).map(x=>x.series)).sort()}
 const ND_BRAND_LOGOS={"현대": "https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/hyundai.svg", "현대자동차": "https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/hyundai.svg", "기아": "https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/kia.svg", "제네시스": "https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/genesis.svg", "벤츠": "https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/mercedes.svg", "메르세데스-벤츠": "https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/mercedes.svg", "BMW": "https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/bmw.svg", "MINI": "https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/mini.svg", "미니": "https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/mini.svg", "아우디": "https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/audi.svg", "포르쉐": "https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/porsche.svg", "포드": "https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/ford.svg", "테슬라": "https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/tesla.svg", "쉐보레": "https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/chevrolet.svg", "BYD": "https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/byd.svg", "볼보": "https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/volvo.svg", "폭스바겐": "https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/volkswagen.svg", "랜드로버": "https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/landrover.svg", "렉서스": "https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/lexus.svg", "토요타": "https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/toyota.svg", "혼다": "https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/honda.svg", "지프": "https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/jeep.svg", "푸조": "https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/peugeot.svg"};
@@ -3059,36 +3228,46 @@ Object.assign(USER_BRAND_LOGOS,{
 function renderBrandModel(){var bg=byId("ndBrandGrid"),mg=byId("ndModelGrid"),bs=byId("ndBrandSearch"),ms=byId("ndModelSearch");if(!bg||!mg)return;var bq=norm(bs.value||"");bg.innerHTML="";_ndBrands().filter(b=>!bq||norm(b).includes(bq)).forEach(function(b){var e=document.createElement("button");e.type="button";e.className="nd-brand-card"+(_ndBrand===b?" on":"");var logo=USER_BRAND_LOGOS[b]||ND_BRAND_LOGOS[b]||"";
 e.innerHTML=logo?'<span class="nd-brand-mark"><img src="'+logo+'" alt="'+esc(b)+' 로고" onerror="this.closest(\'.nd-brand-mark\').textContent=\''+esc(b)+'\'"></span>':'<span class="nd-brand-mark">'+esc(b)+'</span>';e.onclick=function(){
   _ndBrand=b; bs.value=b; ms.disabled=false; ms.value="";
-  byId("ndSeries").value=""; byId("ndFuel").value=""; byId("ndTrim").value=""; byId("ndOption").value="";
+  byId("ndSeries").value=""; byId("ndYear").value=""; byId("ndFuel").value=""; byId("ndTrim").value=""; byId("ndColor").value=""; byId("ndOption").value="";
   _ndSelected=null; renderBrandModel(); renderDirectNew(1);
 };bg.appendChild(e)});mg.innerHTML="";if(!_ndBrand){ms.disabled=true;return}ms.disabled=false;var mq=norm(ms.value||"");_ndModels(_ndBrand).filter(m=>!mq||norm(m).includes(mq)).forEach(function(m){var e=document.createElement("button");e.type="button";e.className="nd-model-card"+(byId("ndSeries").value===m?" on":"");var im=차량이미지({모델:m,시리즈명:m,모델명:m});e.innerHTML='<div class="nd-model-img">'+(im?'<img src="'+im+'" alt="'+esc(m)+'">':'<span class="nd-model-ph"><b>'+esc(m)+'</b><small>차량 이미지 준비중</small></span>')+'</div><span>'+esc(m)+'</span>';e.onclick=function(){
   byId("ndSeries").value=m; ms.value=m;
-  byId("ndFuel").value=""; byId("ndTrim").value=""; byId("ndOption").value="";
+  byId("ndYear").value=""; byId("ndFuel").value=""; byId("ndTrim").value=""; byId("ndColor").value=""; byId("ndOption").value="";
   _ndSelected=null; renderBrandModel(); renderDirectNew(1);
 };mg.appendChild(e)});ndUpdateBack();}
 function renderDirectNew(resetLevel){
   if(!byId("ndSeries"))return;
-  var s=byId("ndSeries"),f=byId("ndFuel"),t=byId("ndTrim"),o=byId("ndOption");
-  if(!s.options.length||resetLevel===0){
-    _ndSetSelect(s,_ndUniq(DIRECT_NEW.map(function(x){return x.series;})).sort(),"시리즈를 선택하세요");
+  var sr=byId("ndSeries"),y=byId("ndYear"),f=byId("ndFuel"),t=byId("ndTrim"),c=byId("ndColor"),o=byId("ndOption");
+  if(!sr.options.length||resetLevel===0){
+    _ndSetSelect(sr,_ndUniq(DIRECT_NEW.map(function(x){return x.series;})).sort(),"모델을 선택하세요");
   }
-  var a=DIRECT_NEW.filter(function(x){return (!_ndBrand||_ndBrandOf(x.series)===_ndBrand)&&(!s.value||x.series===s.value);});
-  if(resetLevel<=1){_ndSetSelect(f,_ndUniq(a.map(function(x){return x.fuel;})).sort(),"연료를 선택하세요");}
+  var a=DIRECT_NEW.filter(function(x){return (!_ndBrand||_ndBrandOf(x.series)===_ndBrand)&&(!sr.value||x.series===sr.value);});
+
+  if(resetLevel<=1)_ndSetSelect(y,_ndUniq(a.map(function(x){return x.year;})).sort().reverse(),"연식을 선택하세요");
+  a=a.filter(function(x){return !y.value||x.year===y.value;});
+
+  if(resetLevel<=2)_ndSetSelect(f,_ndUniq(a.map(function(x){return x.fuel;})).sort(),"연료를 선택하세요");
   a=a.filter(function(x){return !f.value||x.fuel===f.value;});
-  if(resetLevel<=2){_ndSetSelect(t,_ndUniq(a.map(function(x){return x.trim;})).sort(),"트림/세부모델을 선택하세요");}
+
+  if(resetLevel<=3)_ndSetSelect(t,_ndUniq(a.map(function(x){return x.trim;})).sort(),"트림/세부모델을 선택하세요");
   a=a.filter(function(x){return !t.value||x.trim===t.value;});
-  if(resetLevel<=3){
+
+  if(resetLevel<=4)_ndSetSelect(c,_ndUniq(a.map(function(x){return x.exterior||"색상 미표기";})).sort(),"색상을 선택하세요");
+  a=a.filter(function(x){return !c.value||(x.exterior||"색상 미표기")===c.value;});
+
+  if(resetLevel<=5){
     o.innerHTML='<option value="">옵션 구성을 선택하세요</option>'+a.map(function(x){
       return '<option value="'+esc(x.id)+'">'+esc(_ndOptText(x.options))+' · '+won(x.price)+'원</option>';
     }).join("");
-    o.disabled=!a.length||!t.value;
+    o.disabled=!a.length||!c.value;
   }
+  y.disabled=!sr.value; f.disabled=!y.value; t.disabled=!f.value; c.disabled=!t.value;
   _ndSelected=DIRECT_NEW.find(function(x){return x.id===o.value;})||null;
   var pv=byId("ndPreview"),go=byId("ndGo");
   if(_ndSelected){
     pv.hidden=false;
     pv.innerHTML='<div><div class="nd-p-title">'+esc(_ndSelected.series)+' · '+esc(_ndSelected.trim)+'</div>'+
-      '<div class="nd-p-sub">'+esc(_ndSelected.fuel)+' · '+esc(_ndSelected.year)+'년형 · '+esc(_ndSelected.exterior||"외장색 미표기")+'</div>'+
+      '<div class="nd-p-sub">'+esc(_ndSelected.year)+'년형 · '+esc(_ndSelected.fuel)+' · '+esc(_ndSelected.exterior||"외장색 미표기")+'</div>'+
       '<div class="nd-p-opt">'+esc(_ndSelected.options||"옵션 정보 없음")+'</div></div>'+
       '<div class="nd-p-price">차량가 '+won(_ndSelected.price)+'원</div>';
     go.disabled=false;
@@ -3096,6 +3275,10 @@ function renderDirectNew(resetLevel){
   ndUpdateBack();
 }
 function _ndVirtual(x){
+  var directPurchase=JSON.parse(JSON.stringify(x.purchase||{}));
+  Object.keys(directPurchase).forEach(function(prod){Object.keys(directPurchase[prod]||{}).forEach(function(k){
+    var r=directPurchase[prod][k];if(r){r.보증=round100k(r.보증);r.만기=r.보증;}
+  });});
   var v={
     구분:"신차",code:"DIRECT_"+x.id,제조사:_ndBrandOf(x.series),모델:x.series,시리즈명:x.series,
     모델명:x.modelName,세부:x.trim,연식:x.year,유종:x.fuel,배기량:0,승차정원:5,차종구분:"",
@@ -3106,7 +3289,7 @@ function _ndVirtual(x){
     _directNew:true,_directId:x.id
   };
   PRICELIST[x.plate]=x.ordinary||{};
-  PURCHASE[vid(v)]=x.purchase||{};
+  PURCHASE[vid(v)]=directPurchase;
   _priceCache={};_minPayCache={};
   return v;
 }
@@ -3118,53 +3301,246 @@ function selectDirectNew(){
   구분="신차";
   renderHero(v);renderProducts(v);showPlanView();
 }
+
+
+function _stVal(v,keys){
+  for(var i=0;i<keys.length;i++){var x=v[keys[i]];if(x!=null&&String(x).trim())return String(x).trim();}
+  return "";
+}
+function _stRows(){
+  var rows=[];
+  (차량목록||[]).forEach(function(v){
+    var brand=_ndBrandOf((v.모델||"")+" "+(v.시리즈명||"")+" "+(v.모델명||""));
+    var model=_stVal(v,["시리즈명","모델","모델명"]);
+    var year=_stVal(v,["연식","년형","연형"]);
+    var fuel=_stVal(v,["연료","유종"]);
+    var trim=_stVal(v,["트림","세부모델","세부","등급"])||트림명(v);
+    var stocks=(v.재고&&v.재고.length)?v.재고:[{}];
+    stocks.forEach(function(z){
+      rows.push({
+        v:v, brand:brand, model:model, year:year, fuel:fuel, trim:trim,
+        color:_stVal(z,["색상","외장색","컬러"])||_stVal(v,["색상","외장색","컬러"]),
+        option:_stVal(z,["옵션","옵션구성","선택옵션"])||_stVal(v,["옵션","옵션구성","선택옵션"]),
+        kind:v.구분
+      });
+    });
+  });
+  return rows;
+}
+function _stFilteredBase(){
+  var rows=_stRows();
+  var typ=byId("stType")?.querySelector("button.on")?.getAttribute("data-t")||"전체";
+  if(typ!=="전체")rows=rows.filter(function(x){return x.kind===typ;});
+  return rows;
+}
+function _stUniqVals(rows,key){return _ndUniq(rows.map(function(x){return x[key];}).filter(Boolean)).sort();}
+function renderStockBrandModel(){
+  var bg=byId("stBrandGrid"),mg=byId("stModelGrid"),bs=byId("stBrandSearch"),ms=byId("stModelSearch");
+  if(!bg||!mg)return;
+  var rows=_stFilteredBase(),bq=norm(bs.value||""),curB=byId("stBrand").value;
+  bg.innerHTML="";
+  _stUniqVals(rows,"brand").filter(function(b){return !bq||norm(b).includes(bq);}).forEach(function(b){
+    var e=document.createElement("button");e.type="button";e.className="nd-brand-card"+(curB===b?" on":"");
+    var logo=(typeof USER_BRAND_LOGOS!=="undefined"&&USER_BRAND_LOGOS[b])||(typeof ND_BRAND_LOGOS!=="undefined"&&ND_BRAND_LOGOS[b])||"";
+    e.innerHTML=logo?'<span class="nd-brand-mark"><img src="'+logo+'" alt="'+esc(b)+' 로고"></span>':'<span class="nd-brand-mark">'+esc(b)+'</span>';
+    e.onclick=function(){
+      byId("stBrand").value=b;bs.value=b;byId("stModel").value="";ms.value="";ms.disabled=false;
+      ["stYear","stFuel","stTrim","stColor","stOption"].forEach(function(id){byId(id).value="";});
+      renderStockBrandModel();renderStockSteps(1);
+    };
+    bg.appendChild(e);
+  });
+  mg.innerHTML="";
+  if(!curB){ms.disabled=true;return;}
+  ms.disabled=false;
+  rows=rows.filter(function(x){return x.brand===curB;});
+  var mq=norm(ms.value||""),curM=byId("stModel").value;
+  _stUniqVals(rows,"model").filter(function(m){return !mq||norm(m).includes(mq);}).forEach(function(m){
+    var e=document.createElement("button");e.type="button";e.className="nd-model-card"+(curM===m?" on":"");
+    var sample=rows.find(function(x){return x.model===m;});
+    var im=sample?차량이미지(sample.v):"";
+    e.innerHTML='<div class="nd-model-img">'+(im?'<img src="'+im+'" alt="'+esc(m)+'">':'<span class="nd-model-ph"><b>'+esc(m)+'</b><small>차량 이미지 준비중</small></span>')+'</div><span>'+esc(m)+'</span>';
+    e.onclick=function(){
+      byId("stModel").value=m;ms.value=m;
+      ["stYear","stFuel","stTrim","stColor","stOption"].forEach(function(id){byId(id).value="";});
+      renderStockBrandModel();renderStockSteps(2);
+    };
+    mg.appendChild(e);
+  });
+}
+function _stSet(id,vals,ph){
+  var e=byId(id);if(!e)return;
+  var keep=e.value;vals=_ndUniq(vals.filter(Boolean)).sort();
+  e.innerHTML='<option value="">'+ph+'</option>'+vals.map(function(x){return '<option value="'+esc(x)+'">'+esc(x)+'</option>';}).join("");
+  if(vals.indexOf(keep)>=0)e.value=keep;
+}
+function _stockWizardRows(){
+  var rows=_stFilteredBase(),b=byId("stBrand").value,m=byId("stModel").value,y=byId("stYear").value,
+      f=byId("stFuel").value,t=byId("stTrim").value,c=byId("stColor").value,o=byId("stOption").value;
+  if(b)rows=rows.filter(function(x){return x.brand===b;});
+  if(m)rows=rows.filter(function(x){return x.model===m;});
+  if(y)rows=rows.filter(function(x){return x.year===y;});
+  if(f)rows=rows.filter(function(x){return x.fuel===f;});
+  if(t)rows=rows.filter(function(x){return x.trim===t;});
+  if(c)rows=rows.filter(function(x){return (x.color||"색상 미표기")===c;});
+  if(o)rows=rows.filter(function(x){return (x.option||"기본/옵션 미표기")===o;});
+  return rows;
+}
+function renderStockSteps(level){
+  var b=byId("stBrand").value,m=byId("stModel").value;
+  var rows=_stFilteredBase();
+  if(b)rows=rows.filter(function(x){return x.brand===b;});
+  if(m)rows=rows.filter(function(x){return x.model===m;});
+  if(level<=2)_stSet("stYear",_stUniqVals(rows,"year").sort().reverse(),"연식을 선택하세요");
+  var y=byId("stYear").value;if(y)rows=rows.filter(function(x){return x.year===y;});
+  if(level<=3)_stSet("stFuel",_stUniqVals(rows,"fuel"),"연료를 선택하세요");
+  var f=byId("stFuel").value;if(f)rows=rows.filter(function(x){return x.fuel===f;});
+  if(level<=4)_stSet("stTrim",_stUniqVals(rows,"trim"),"트림/세부모델을 선택하세요");
+  var t=byId("stTrim").value;if(t)rows=rows.filter(function(x){return x.trim===t;});
+  if(level<=5)_stSet("stColor",_ndUniq(rows.map(function(x){return x.color||"색상 미표기";})).sort(),"색상을 선택하세요");
+  var c=byId("stColor").value;if(c)rows=rows.filter(function(x){return (x.color||"색상 미표기")===c;});
+  if(level<=6)_stSet("stOption",_ndUniq(rows.map(function(x){return x.option||"기본/옵션 미표기";})).sort(),"옵션 구성을 선택하세요");
+  byId("stYear").disabled=!m;byId("stFuel").disabled=!byId("stYear").value;byId("stTrim").disabled=!byId("stFuel").value;
+  byId("stColor").disabled=!byId("stTrim").value;byId("stOption").disabled=!byId("stColor").value;
+  byId("stApply").disabled=!(b&&m);
+}
+function renderStockWizardResults(){
+  var rows=_stockWizardRows(),seen={},cars=[];
+  rows.forEach(function(r){var k=vid(r.v);if(!seen[k]){seen[k]=1;cars.push(r.v);}});
+  // 월 납입료 범위도 기존 필터 엔진과 동일하게 반영
+  var min=Number(byId("stBMinNum").value||0)*10000,max=Number(byId("stBMaxNum").value||500)*10000;
+  cars=cars.filter(function(v){var mp=최저월(v);return !mp||(mp>=min&&mp<=max);});
+  cars=정렬적용(cars);
+  byId("matchcnt").innerHTML=cars.length?('선택 조건에 맞는 즉시 출고 차량 <b>'+cars.length+'</b>종'):'선택 조건에 맞는 즉시 출고 차량이 없어요.';
+  byId("stocklist").innerHTML=cars.length?cars.map(function(x){return srowHTML(x,true);}).join(""):noStockHTML();
+  if(cars.length){selectCar(cars[0]);}else{선택차=null;updateStepAction();}
+  updateScrollHint();
+}
+function _stockResetCascade(){
+  byId("stBrand").value="";byId("stModel").value="";byId("stBrandSearch").value="";byId("stModelSearch").value="";
+  byId("stModelSearch").disabled=true;
+  ["stYear","stFuel","stTrim","stColor","stOption"].forEach(function(id){var e=byId(id);e.value="";e.disabled=true;});
+  renderStockBrandModel();renderStockSteps(0);byId("stApply").disabled=true;
+}
+if(byId("stBrandSearch"))byId("stBrandSearch").addEventListener("input",function(){
+  var q=norm(this.value),x=_stUniqVals(_stFilteredBase(),"brand").find(function(b){return norm(b)===q;});
+  if(x){byId("stBrand").value=x;byId("stModelSearch").disabled=false;renderStockSteps(1);}
+  renderStockBrandModel();
+});
+if(byId("stModelSearch"))byId("stModelSearch").addEventListener("input",function(){
+  var b=byId("stBrand").value,q=norm(this.value),rows=_stFilteredBase().filter(function(x){return x.brand===b;});
+  var x=_stUniqVals(rows,"model").find(function(m){return norm(m)===q;});
+  if(x){byId("stModel").value=x;renderStockSteps(2);}
+  renderStockBrandModel();
+});
+["stYear","stFuel","stTrim","stColor","stOption"].forEach(function(id,i){
+  var e=byId(id);if(!e)return;
+  e.addEventListener("change",function(){
+    var all=["stYear","stFuel","stTrim","stColor","stOption"];
+    for(var j=i+1;j<all.length;j++){var x=byId(all[j]);x.value="";}
+    renderStockSteps(i+3);
+  });
+});
+if(byId("stApply"))byId("stApply").addEventListener("click",renderStockWizardResults);
+
+/* 즉시출고 상단 조건 */
+function _stSetBtn(group,btn){
+  group.querySelectorAll("button").forEach(function(x){x.classList.toggle("on",x===btn);});
+}
+if(byId("stForm"))byId("stForm").addEventListener("click",function(e){
+  var b=e.target.closest("button");if(!b)return;_stSetBtn(this,b);형태=b.getAttribute("data-f");
+  // 기존 숨은 컨트롤도 동기화
+  document.querySelectorAll("#segForm button").forEach(function(x){x.classList.toggle("on",x.getAttribute("data-f")===형태);});
+  renderStockWizardResults();
+});
+function renderStockTerms(){
+  var el=byId("stTerm");if(!el)return;
+  var vals=[24,36,48,60,72];
+  el.innerHTML=vals.map(function(m){return '<button type="button" data-m="'+m+'" class="'+(String(window._term||"")===String(m)?"on":"")+'">'+m+'개월</button>';}).join("");
+}
+if(byId("stTerm"))byId("stTerm").addEventListener("click",function(e){
+  var b=e.target.closest("button");if(!b)return;
+  var m=b.getAttribute("data-m");window._term=(String(window._term||"")===m)?"":m;renderStockTerms();renderTermPills();renderStockWizardResults();
+});
+if(byId("stType"))byId("stType").addEventListener("click",function(e){
+  var b=e.target.closest("button");if(!b)return;_stSetBtn(this,b);구분=b.getAttribute("data-t");
+  document.querySelectorAll("#segType button").forEach(function(x){x.classList.toggle("on",x.getAttribute("data-t")===구분);});
+  _stockResetCascade();
+});
+function _stSyncBudget(from){
+  var mi=byId("stBMin"),ma=byId("stBMax"),mn=byId("stBMinNum"),mx=byId("stBMaxNum");
+  if(from==="range"){mn.value=mi.value;mx.value=ma.value;}else{mi.value=mn.value||0;ma.value=mx.value||500;}
+  if(Number(mi.value)>Number(ma.value)){if(from==="range")ma.value=mi.value;else mx.value=mn.value;}
+  var a=Number(mi.value)/5,b=Number(ma.value)/5;byId("stRangeControl").style.setProperty("--start",a+"%");byId("stRangeControl").style.setProperty("--end",b+"%");
+  // 기존 예산 컨트롤도 동기화
+  byId("bMin").value=mi.value;byId("bMax").value=ma.value;byId("bMinNum").value=mn.value;byId("bMaxNum").value=mx.value;syncRange("num");
+  renderStockWizardResults();
+}
+["stBMin","stBMax"].forEach(function(id){if(byId(id))byId(id).addEventListener("input",function(){_stSyncBudget("range");});});
+["stBMinNum","stBMaxNum"].forEach(function(id){if(byId(id))byId(id).addEventListener("input",function(){_stSyncBudget("num");});});
+renderStockTerms();
+function openEstimateInquiry(){
+  var btn=document.getElementById("inquiryBtn")||document.querySelector('[data-action="inquiry"]')||document.querySelector('a[href*="contact"],button[onclick*="inquiry"]');
+  if(btn){btn.click();return;}
+  var topBtn=Array.from(document.querySelectorAll("button,a")).find(function(x){return x.textContent.trim()==="문의하기";});
+  if(topBtn)topBtn.click();
+}
+if(byId("ndInquiryBtn"))byId("ndInquiryBtn").addEventListener("click",openEstimateInquiry);
+
 function setVehicleMode(mode){
   if(mode==="direct"&&needsState.vehicleCondition==="used"){
     alert("신차 직접 견적은 신차 또는 둘 다를 선택했을 때 이용할 수 있어요.");return;
   }
   _vehicleMode=mode;
   document.querySelectorAll("[data-vmode]").forEach(function(b){b.classList.toggle("on",b.getAttribute("data-vmode")===mode);});
-  var stock=byId("stockCondPanel"),direct=byId("directNewPanel");
-  if(stock)stock.style.display=mode==="stock"?"grid":"none";
+  var stock=byId("stockCondPanel"),direct=byId("directNewPanel"),sg=byId("stockGuide"),sp=byId("stockStepPanel");
+  if(stock)stock.style.display=mode==="stock"?"grid":"none";if(sp)sp.style.display=mode==="stock"?"block":"none";
+  if(sg)sg.style.display=mode==="stock"?"block":"none";
   if(direct)direct.hidden=mode!=="direct";
   if(mode==="direct")renderDirectNew(0);renderBrandModel();
 }
 function ndSyncMode(){
   var b=document.querySelector('[data-vmode="direct"]');
   if(b)b.disabled=needsState.vehicleCondition==="used";
-  if(needsState.vehicleCondition==="used"&&_vehicleMode==="direct")setVehicleMode("stock");
+  if(needsState.vehicleCondition==="used"){
+    if(_vehicleMode==="direct")setVehicleMode("stock");
+  }else if(!_vehicleMode){
+    setVehicleMode("direct");
+  }
 }
 if(byId("vehicleModeTabs"))byId("vehicleModeTabs").addEventListener("click",function(e){
   var b=e.target.closest("[data-vmode]");if(b&&!b.disabled)setVehicleMode(b.getAttribute("data-vmode"));
 });
 if(byId("ndBrandSearch"))byId("ndBrandSearch").addEventListener("input",function(){var q=norm(this.value),x=_ndBrands().find(b=>norm(b)===q);if(x){_ndBrand=x;byId("ndModelSearch").disabled=false;byId("ndModelSearch").value="";byId("ndSeries").value="";byId("ndFuel").value="";byId("ndTrim").value="";byId("ndOption").value="";_ndSelected=null;renderDirectNew(1)}renderBrandModel()});
 if(byId("ndModelSearch"))byId("ndModelSearch").addEventListener("input",function(){var q=norm(this.value),x=_ndModels(_ndBrand).find(m=>norm(m)===q);if(x){byId("ndSeries").value=x;byId("ndFuel").value="";byId("ndTrim").value="";byId("ndOption").value="";_ndSelected=null;renderDirectNew(1)}renderBrandModel()});
-if(byId("ndSeries"))byId("ndSeries").addEventListener("change",function(){byId("ndFuel").value="";byId("ndTrim").value="";byId("ndOption").value="";renderDirectNew(1);});
-if(byId("ndFuel"))byId("ndFuel").addEventListener("change",function(){byId("ndTrim").value="";byId("ndOption").value="";renderDirectNew(2);});
-if(byId("ndTrim"))byId("ndTrim").addEventListener("change",function(){byId("ndOption").value="";renderDirectNew(3);});
-if(byId("ndOption"))byId("ndOption").addEventListener("change",function(){renderDirectNew(4);});
+if(byId("ndSeries"))byId("ndSeries").addEventListener("change",function(){byId("ndYear").value="";byId("ndFuel").value="";byId("ndTrim").value="";byId("ndColor").value="";byId("ndOption").value="";renderDirectNew(1);});
+if(byId("ndYear"))byId("ndYear").addEventListener("change",function(){byId("ndFuel").value="";byId("ndTrim").value="";byId("ndColor").value="";byId("ndOption").value="";renderDirectNew(2);});
+if(byId("ndFuel"))byId("ndFuel").addEventListener("change",function(){byId("ndTrim").value="";byId("ndColor").value="";byId("ndOption").value="";renderDirectNew(3);});
+if(byId("ndTrim"))byId("ndTrim").addEventListener("change",function(){byId("ndColor").value="";byId("ndOption").value="";renderDirectNew(4);});
+if(byId("ndColor"))byId("ndColor").addEventListener("change",function(){byId("ndOption").value="";renderDirectNew(5);});
+if(byId("ndOption"))byId("ndOption").addEventListener("change",function(){renderDirectNew(6);});
 if(byId("ndGo"))byId("ndGo").addEventListener("click",selectDirectNew);
 renderDirectNew(0);renderBrandModel();
 
 
 
 function ndUpdateBack(){
-  var p=byId("ndPath"),b=byId("ndBackBtn"); if(!p||!b)return;
-  var vals=[];
-  if(_ndBrand)vals.push(_ndBrand);
-  if(byId("ndSeries")&&byId("ndSeries").value)vals.push(byId("ndSeries").value);
-  if(byId("ndFuel")&&byId("ndFuel").value)vals.push(byId("ndFuel").value);
-  if(byId("ndTrim")&&byId("ndTrim").value)vals.push(byId("ndTrim").value);
+  var p=byId("ndPath"),b=byId("ndBackBtn");if(!p||!b)return;
+  var vals=[];if(_ndBrand)vals.push(_ndBrand);
+  ["ndSeries","ndYear","ndFuel","ndTrim","ndColor"].forEach(function(id){var e=byId(id);if(e&&e.value)vals.push(e.value);});
   p.textContent=vals.join("  ›  ");
 }
 function ndBack(){
-  var s=byId("ndSeries"),f=byId("ndFuel"),t=byId("ndTrim"),o=byId("ndOption"),ms=byId("ndModelSearch"),bs=byId("ndBrandSearch");
-  if(o&&o.value){o.value="";_ndSelected=null;renderDirectNew(3);}
-  else if(t&&t.value){t.value="";o.value="";_ndSelected=null;renderDirectNew(2);}
-  else if(f&&f.value){f.value="";t.value="";o.value="";_ndSelected=null;renderDirectNew(1);}
-  else if(s&&s.value){s.value="";if(ms)ms.value="";f.value="";t.value="";o.value="";_ndSelected=null;renderBrandModel();renderDirectNew(1);}
-  else if(_ndBrand){_ndBrand="";if(bs)bs.value="";if(ms){ms.value="";ms.disabled=true;}s.value="";f.value="";t.value="";o.value="";_ndSelected=null;renderBrandModel();renderDirectNew(0);}
-  else {setVehicleMode("stock");}
+  var sr=byId("ndSeries"),y=byId("ndYear"),f=byId("ndFuel"),t=byId("ndTrim"),c=byId("ndColor"),o=byId("ndOption"),ms=byId("ndModelSearch"),bs=byId("ndBrandSearch");
+  _ndSelected=null;
+  if(o&&o.value){o.value="";renderDirectNew(5);}
+  else if(c&&c.value){c.value="";o.value="";renderDirectNew(4);}
+  else if(t&&t.value){t.value="";c.value="";o.value="";renderDirectNew(3);}
+  else if(f&&f.value){f.value="";t.value="";c.value="";o.value="";renderDirectNew(2);}
+  else if(y&&y.value){y.value="";f.value="";t.value="";c.value="";o.value="";renderDirectNew(1);}
+  else if(sr&&sr.value){sr.value="";if(ms)ms.value="";y.value="";f.value="";t.value="";c.value="";o.value="";renderBrandModel();renderDirectNew(1);}
+  else if(_ndBrand){_ndBrand="";if(bs)bs.value="";if(ms){ms.value="";ms.disabled=true;}sr.value="";y.value="";f.value="";t.value="";c.value="";o.value="";renderBrandModel();renderDirectNew(0);}
+  else {resetEstimateState();setVehicleMode(needsState.vehicleCondition==="used"?"stock":"direct");}
   ndUpdateBack();
 }
 if(byId("ndBackBtn"))byId("ndBackBtn").addEventListener("click",ndBack);
@@ -3196,8 +3572,8 @@ showVehicleView=function(){_ndOldShowVehicleView();ndSyncMode();};
 if(byId("directBuyJourney"))byId("directBuyJourney").addEventListener("click",function(e){
   var b=e.target.closest("[data-directbuy],[data-directapply]");if(!b||!선택차)return;
   var prod=b.getAttribute("data-directbuy")||b.getAttribute("data-directapply");
-  if(b.hasAttribute("data-directapply")){openApply(선택차,prod);return;}
   var card=byId("products").querySelector('.pcard[data-prod="'+prod.replace(/"/g,'\\"')+'"]');
+  if(b.hasAttribute("data-directapply")){if(card)openApply(card);else openInq();return;}
   if(card){card.classList.add("direct-focus");card.scrollIntoView({behavior:"smooth",block:"center"});setTimeout(function(){card.classList.remove("direct-focus");},2200);}
 });
 
@@ -3252,6 +3628,107 @@ function 워커로드(){
   document.head.appendChild(s);
 })();
 </script>
+
+<style>
+.stockGuide{display:none;margin:0 0 16px;padding:22px 24px;background:#fff;border:1px solid var(--line);border-radius:16px}
+.sgHead{text-align:center;margin-bottom:18px}
+.sgHead .eyebrow{justify-content:center}
+.sgHead h3{margin:3px 0 4px;font-size:21px;letter-spacing:-.03em}
+.sgHead p{margin:0;color:var(--ink-sub);font-size:13px;font-weight:600}
+.sgSteps{display:flex;align-items:center;justify-content:center;gap:12px;max-width:820px;margin:0 auto}
+.sgSteps>div{flex:1;display:flex;align-items:center;gap:10px;padding:12px 14px;background:var(--bg);border:1px solid var(--line-soft);border-radius:12px}
+.sgSteps>div>b{flex:0 0 30px;width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:var(--blue);color:#fff;font-size:11px}
+.sgSteps span{display:flex;flex-direction:column;min-width:0}
+.sgSteps strong{font-size:13px;color:var(--ink)}
+.sgSteps small{font-size:11px;color:var(--ink-mute);font-weight:600}
+.sgSteps>i{font-style:normal;color:var(--blue-200);font-weight:800}
+#stockCondPanel .filters{background:linear-gradient(180deg,#fff,var(--bg))}
+#stockCondPanel .fhead{padding-bottom:4px}
+#stockCondPanel #fSearch{font-size:15px;min-height:48px;border-color:var(--blue-200);background:#fff}
+#stockCondPanel #fSearch:focus{border-color:var(--blue)}
+#stockCondPanel .matchbar{background:#fff}
+@media(max-width:760px){
+  .stockGuide{padding:18px 16px}
+  .sgSteps{align-items:stretch;gap:7px}
+  .sgSteps>div{padding:10px 8px;flex-direction:column;text-align:center;gap:6px}
+  .sgSteps>i{align-self:center}
+  .sgSteps small{display:none}
+}
+</style>
+
+
+<style>
+.stockStepPanel{display:none;margin:0 0 16px;padding:22px 24px;background:#fff;border:1px solid var(--line);border-radius:16px}
+.stockStepPanel .directNewHead{text-align:center;margin-bottom:18px}
+.stockStepPanel .directNewHead h3{margin:3px 0 4px;font-size:22px}
+.stockStepPanel .directNewHead p{margin:0;color:var(--ink-sub);font-size:13px;font-weight:600}
+.stock-flow{grid-template-columns:repeat(4,minmax(0,1fr))}
+.stApply{margin-top:16px;width:100%}
+.stockLegacy{margin-top:14px}
+.ndInquiry{margin-top:14px;padding:16px 18px;border:1px dashed var(--blue-200);border-radius:14px;background:var(--blue-50);display:grid;grid-template-columns:1fr auto;gap:4px 16px;align-items:center}
+.ndInquiry b{font-size:14px;color:var(--blue-deep)}
+.ndInquiry span{font-size:12px;color:var(--ink-sub);font-weight:600}
+.ndInquiry .btn{grid-column:2;grid-row:1/3;min-width:100px}
+@media(max-width:900px){.stock-flow{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:600px){
+ .stockStepPanel{padding:18px 14px}.stock-flow{grid-template-columns:1fr}
+ .ndInquiry{grid-template-columns:1fr}.ndInquiry .btn{grid-column:1;grid-row:auto;width:100%;margin-top:8px}
+}
+</style>
+
+
+<style>
+.stockTopFlow{display:grid;grid-template-columns:1.15fr 1fr .72fr;gap:12px;margin:18px 0 26px}
+.stockTopBlock{border:1px solid var(--line);border-radius:14px;padding:16px;background:var(--bg)}
+.stockTopTitle{display:flex;align-items:flex-start;gap:9px;margin-bottom:12px}
+.stockTopTitle>b{width:27px;height:27px;border-radius:50%;background:var(--blue);color:#fff;display:flex;align-items:center;justify-content:center;font-size:10px;flex:0 0 27px}
+.stockTopTitle span{display:flex;flex-direction:column}.stockTopTitle strong{font-size:14px}.stockTopTitle small{font-size:11px;color:var(--ink-mute);font-weight:600}
+.stockChoiceRow{display:flex;gap:6px;flex-wrap:wrap}
+.stockChoiceRow button{flex:1;min-height:38px;border:1px solid var(--line);background:#fff;border-radius:9px;font-size:12px;font-weight:800;color:var(--ink-sub)}
+.stockChoiceRow button.on{background:var(--blue);border-color:var(--blue);color:#fff}
+.stockChoiceRow.compact button{min-width:60px;padding:7px}
+.stockTermWrap{margin-top:11px}.stockTermWrap>span{display:block;font-size:11px;font-weight:700;color:var(--ink-sub);margin-bottom:6px}
+.stockVisualStep{margin-top:20px}
+.stockBudget{padding:9px 10px}
+#stockStepPanel .nd-brand-grid,#stockStepPanel .nd-model-grid{margin-top:10px}
+#stockStepPanel .stApply{width:100%;margin-top:18px}
+.direct-inquiry{margin-top:14px;border:1px dashed var(--blue-200);background:var(--blue-50);border-radius:14px;padding:15px 17px;display:flex;align-items:center;justify-content:space-between;gap:14px}
+.direct-inquiry>div{display:flex;flex-direction:column}.direct-inquiry b{font-size:14px;color:var(--blue-deep)}.direct-inquiry span{font-size:12px;color:var(--ink-sub);font-weight:600}
+.nd-inquiry-btn{flex:0 0 auto;border:1px solid var(--blue);background:#fff;color:var(--blue-deep);border-radius:10px;padding:10px 17px;font-size:12px;font-weight:800}
+.nd-inquiry-btn:hover{background:var(--blue);color:#fff}
+@media(max-width:900px){.stockTopFlow{grid-template-columns:1fr}.stockTopBlock{padding:14px}}
+@media(max-width:600px){.direct-inquiry{align-items:stretch;flex-direction:column}.nd-inquiry-btn{width:100%}}
+</style>
+
+
+<style>
+/* 상품 카드에서 바로 비교되는 '인수까지 총 금액' */
+.pcard .spec .acq-total{margin-top:5px;padding-top:10px;border-top:1px solid var(--line-soft)}
+.pcard .spec .acq-total dt{font-weight:850;color:var(--ink)}
+.pcard .spec .acq-total dd{display:flex;flex-direction:column;align-items:flex-end;line-height:1.25}
+.pcard .spec .acq-total dd b{font-size:15px;color:var(--ink);font-variant-numeric:tabular-nums}
+.pcard .spec .acq-total dd small{margin-top:3px;font-size:10px;font-weight:700;color:var(--ink-mute)}
+.pcard.pick .spec .acq-total,.pcard .spec .acq-total.buy{background:rgba(239,246,255,.65);margin-left:-8px;margin-right:-8px;padding:10px 8px 2px;border-radius:8px;border-top:1px solid var(--blue-200)}
+.pcard.pick .spec .acq-total dd b,.pcard .spec .acq-total.buy dd b{color:var(--blue-deep)}
+.pcard .spec .na{font-size:12px;color:var(--ink-mute);font-weight:700}
+
+/* WHY PURCHASE TYPE 총비용 비교 */
+.dbj-totalcompare{display:grid;grid-template-columns:1fr auto 1fr;gap:12px;align-items:stretch;margin:22px 0 10px}
+.dbj-totalbox{border:1px solid var(--line);border-radius:14px;background:#fff;padding:17px;display:flex;flex-direction:column;gap:4px}
+.dbj-totalbox.buy{border:2px solid var(--blue);background:var(--blue-50)}
+.dbj-totalbox>span{font-size:13px;font-weight:850;color:var(--ink)}
+.dbj-totalbox>small{font-size:11px;color:var(--ink-sub);font-weight:650;line-height:1.5}
+.dbj-totalbox>strong{margin-top:8px;font-size:22px;color:var(--ink);font-variant-numeric:tabular-nums}
+.dbj-totalbox.buy>strong{color:var(--blue-deep)}
+.dbj-totalbox>em{font-style:normal;font-size:10px;font-weight:750;color:var(--ink-mute)}
+.dbj-vs{align-self:center;font-size:11px;font-weight:900;color:var(--ink-mute)}
+.dbj-diff{text-align:center;margin:8px auto 18px;padding:8px 13px;border-radius:999px;background:var(--blue-50);color:var(--blue-deep);font-size:12px;font-weight:700;width:max-content;max-width:100%}
+@media(max-width:650px){
+  .dbj-totalcompare{grid-template-columns:1fr}
+  .dbj-vs{text-align:center}
+}
+</style>
+
 </body></html>
 
 <style>
@@ -3315,4 +3792,10 @@ function 워커로드(){
 .nd-backbtn{border:0;background:transparent;color:#526173;font-weight:850;font-size:13px;cursor:pointer;padding:6px 4px}
 .nd-backbtn:hover{color:#2563eb}
 #ndPath{font-size:12px;color:#8a97a8;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+</style>
+
+<style>
+#stockCondPanel{grid-template-columns:1fr!important}
+#stockCondPanel>.filters{display:none!important}
+#stockGuide{display:none!important}
 </style>
